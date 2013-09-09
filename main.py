@@ -6,55 +6,69 @@ import ConfigParser
 sys.path.append('./lib')
 
 from common_name import *
-import constructor
-
-def _test():
-    conf = {}
-    conf[VIMRC_PATH] = './test/.vim'
-    conf[VIMERATOR_CONF_PATH] = 'etc/conf'
-    conf[VIMERATOR_PLUGIN_PATH] = 'etc/plugin'
-    conf[VIMERATOR_PRESET_PATH] = 'etc/preset'
-    conf[VIMERATOR_CONFS_TO_BE_LOADED] = ['vimrc.common.setting', 'vimrc.sh.setting' ]
-                                                           
-    c = constructor.ConstructorDefaultConf()
-    c.run(conf)
+import worker 
 
 def _conf_set_as_array(config, section_name, arg):
     return map(lambda x: x.strip(), config.get(section_name, arg).split(','))
 
-def _process_loop(section_name):
-    config = ConfigParser.SafeConfigParser()
-    config.read('etc/vimerator.conf')
+_config = None
+_loaded_conf = {}
+_workers = []
 
-    conf = {}
-    conf[VIMRC_PATH] = config.get(SECT_COMMON, VIMRC_PATH)
-    conf[VIMRC_CONF_DIR] = config.get(SECT_COMMON, VIMRC_CONF_DIR)
-    conf[VIMRC_PLUGIN_DIR] = config.get(SECT_COMMON, VIMRC_PLUGIN_DIR)
-    conf[VIMERATOR_CONF_PATH] = config.get(SECT_COMMON, VIMERATOR_CONF_PATH) 
-    conf[VIMERATOR_PLUGIN_PATH] = config.get(SECT_COMMON, VIMERATOR_PLUGIN_PATH)
-    conf[VIMERATOR_PRESET_PATH] = config.get(SECT_COMMON, VIMERATOR_PRESET_PATH)
+def _init_conf(path):
+    global _config
+    global _loaded_conf
+
+    _config = ConfigParser.SafeConfigParser()
+    _config.read(path)
+
+    _loaded_conf = {}
+    _loaded_conf[VIMRC_PATH] = _config.get(SECT_COMMON, VIMRC_PATH)
+    _loaded_conf[VIMRC_CONF_DIR] = _config.get(SECT_COMMON, VIMRC_CONF_DIR)
+    _loaded_conf[VIMRC_PLUGIN_DIR] = _config.get(SECT_COMMON, VIMRC_PLUGIN_DIR)
+    _loaded_conf[VIMERATOR_CONF_PATH] = _config.get(SECT_COMMON, VIMERATOR_CONF_PATH) 
+    _loaded_conf[VIMERATOR_PLUGIN_PATH] = _config.get(SECT_COMMON, VIMERATOR_PLUGIN_PATH)
+    _loaded_conf[VIMERATOR_PRESET_PATH] = _config.get(SECT_COMMON, VIMERATOR_PRESET_PATH)
     
-    conf[VIMRC_CONF] = _conf_set_as_array(config, section_name, VIMRC_CONF)
-    conf[VIMRC_PLUGIN] = _conf_set_as_array(config, section_name, VIMRC_PLUGIN)
 
-    # default config
-    default_conf_constructor = constructor.ConstructorDefaultConf()
-    default_conf_constructor.run(conf)
+def _init_workers():
+    global _workers
 
-    # install preset directories & files
-    preset_constructor = constructor.ConstructorPreset()
-    preset_constructor.run(conf)
+    _workers.append(worker.WorkerDefaultConf())
+    _workers.append(worker.WorkerPreset())
+    _workers.append(worker.WorkerGeneralConf())
+    _workers.append(worker.WorkerPlugin())
 
-    # install confs
-    generalconf_constructor = constructor.ConstructorGeneralConf()
-    generalconf_constructor.run(conf)
+def _install_settings(sect_name):
+    global _config
+    global _loaded_conf
+    global _workers
 
-    # install plugin
-    plugin_constructor = constructor.ConstructorPlugin()
-    plugin_constructor.run(conf)
-    
+    _loaded_conf[VIMRC_CONF] = _conf_set_as_array(_config, sect_name, VIMRC_CONF)
+    _loaded_conf[VIMRC_PLUGIN] = _conf_set_as_array(_config, sect_name, VIMRC_PLUGIN)
+
+    for w in _workers:
+        w.run_install(_loaded_conf)
+
+def _uninstall_settings(sect_name):
+    global _config
+    global _loaded_conf
+    global _workers
+
+    _loaded_conf[VIMRC_CONF] = _conf_set_as_array(_config, sect_name, VIMRC_CONF)
+    _loaded_conf[VIMRC_PLUGIN] = _conf_set_as_array(_config, sect_name, VIMRC_PLUGIN)
+
+    for w in _workers:
+        w.run_uninstall(_loaded_conf)
+
 def main(argv):
-    _process_loop('c++')
+    _init_conf('etc/vimerator.conf')
+    _init_workers()
+
+    if argv[1] == '-i':
+        _install_settings('c++')
+    elif argv[1] == '-u':
+        _uninstall_settings('c++')
 
 if __name__ == '__main__':
     main(sys.argv)

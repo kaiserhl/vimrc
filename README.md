@@ -2,7 +2,7 @@ tmuxinator
 ================================================================================
 
 - users specify programming env, then a different configuration setting will be 
-  used
+  used (DONE)
 
 example:
 
@@ -37,3 +37,14 @@ colors
 ### install ###
 
 ### deinstall ###
+
+
+TODO
+----------------------------------------
+- rename `constructorXXX` to `installerXXX`
+
+- add `deinstaller` (DONE)
+
+- add more options
+
+- fully release it
