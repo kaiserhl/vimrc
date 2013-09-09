@@ -1,0 +1,52 @@
+"===============================================================================
+" vimrc cvim setting
+"===============================================================================
+
+augroup c_general
+	autocmd!
+	set completeopt=menu,menuone
+
+	" always use space instead of tab
+	autocmd FileType cpp,c set ai sw=2 ts=2 et fo=croql
+augroup END
+
+"===============================================================================
+" VARIOUS PLUGIN CONFIGURATIONS
+"===============================================================================
+
+"---------------------------------------
+" -- ctags --
+"---------------------------------------
+augroup c_pl_ctags
+	autocmd!
+"	autocmd BufWritePost *.c,*.cc,*.cpp,*.h silent! !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
+augroup END
+
+"---------------------------------------
+" -- OmniCPP complete
+"---------------------------------------
+augroup c_pl_omnicpp
+	autocmd!
+	autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+augroup END
+
+
+let g:OmniCpp_MayCompleteDot = 1 		" autocomplete with .
+let g:OmniCpp_MayCompleteArrow = 1 		" autocomplete with ->
+let g:OmniCpp_MayCompleteScope = 1 		" autocomplete with ::
+
+let g:OmniCpp_SelectFirstItem = 2 		" select first item (but don't insert)
+
+let g:OmniCpp_ShowPrototypeInAbbr = 1 	" show function prototype in popup window
+let g:OmniCpp_ShowAccess = 1
+let g:OmniCpp_ShowScopeInAbbr = 1
+
+let g:OmniCpp_GlobalScopeSearch = 1
+let g:OmniCpp_NamespaceSearch = 2 		" search namespaces in this and included files
+let g:OmniCpp_LocalSearchDecl = 1
+
+"----------------------------------------
+" DoxygenToolkit
+"----------------------------------------
+let g:DoxygenToolkit_commentType = "C++"
+
