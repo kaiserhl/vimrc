@@ -16,6 +16,9 @@ VIMRC_PLUGIN_DIR = 'vimrc_plugin_dir'
 VIMRC_CONF = 'vimrc_conf'
 VIMRC_PLUGIN = 'vimrc_plugin'
 
+VIMRC_COMMON_CONF = 'vimrc_common_conf'
+VIMRC_COMMON_PLUGIN = 'vimrc_common_plugin'
+
 VIMERATOR_CONF_PATH = 'vimerator_conf_path'
 VIMERATOR_PLUGIN_PATH = 'vimerator_plugin_path'
 VIMERATOR_PRESET_PATH = 'vimerator_preset_path'

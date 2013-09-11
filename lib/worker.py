@@ -130,13 +130,15 @@ call pathogen#helptags()
         if not os.path.exists(vimrc_default_dir_path):
             os.makedirs(vimrc_default_dir_path)
 
+
         with open(vimrc_default_path, 'w') as file_out:
             file_out.write(WorkerDefaultConf.VIMRC_DEFAULT_CONTENT) 
             for conf in self.__confs_to_be_loaded:
                 file_out.write('execute LoadFile("%s/%s")\n' % (vimrc_default_dir_path, conf))
-
+                
         if self.__is_symbolic_link:
             os.symlink(vimrc_default_path, os.path.expanduser('~/.vimrc'))
+
     
     def _uninstall(self):            
         vimrc_default_dir_path = '%s/%s' % (self._vimrc_path, self._vimrc_conf_dir)

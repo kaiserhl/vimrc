@@ -11,7 +11,10 @@ from common_name import *
 import worker 
 
 def _conf_set_as_array(config, section_name, arg):
-    return map(lambda x: x.strip(), config.get(section_name, arg).split(','))
+    results = map(lambda x: x.strip(), config.get(section_name, arg).split(','))
+    if results == ['']:
+        results = []
+    return results
 
 _config = None
 _loaded_conf = {}
@@ -28,6 +31,10 @@ def _init_conf(path):
     _loaded_conf[VIMRC_PATH] = os.path.abspath(os.path.expanduser(_config.get(SECT_COMMON, VIMRC_PATH)))
     _loaded_conf[VIMRC_CONF_DIR] = _config.get(SECT_COMMON, VIMRC_CONF_DIR)
     _loaded_conf[VIMRC_PLUGIN_DIR] = _config.get(SECT_COMMON, VIMRC_PLUGIN_DIR)
+
+    _loaded_conf[VIMRC_COMMON_CONF] = _conf_set_as_array(_config, SECT_COMMON, VIMRC_COMMON_CONF)
+    _loaded_conf[VIMRC_COMMON_PLUGIN] = _conf_set_as_array(_config, SECT_COMMON, VIMRC_COMMON_PLUGIN)
+
     _loaded_conf[VIMERATOR_CONF_PATH] = _config.get(SECT_COMMON, VIMERATOR_CONF_PATH) 
     _loaded_conf[VIMERATOR_PLUGIN_PATH] = _config.get(SECT_COMMON, VIMERATOR_PLUGIN_PATH)
     _loaded_conf[VIMERATOR_PRESET_PATH] = _config.get(SECT_COMMON, VIMERATOR_PRESET_PATH)
@@ -48,8 +55,8 @@ def _install_settings(sect_name):
 
     assert sect_name != SECT_COMMON 
 
-    _loaded_conf[VIMRC_CONF] = _conf_set_as_array(_config, sect_name, VIMRC_CONF)
-    _loaded_conf[VIMRC_PLUGIN] = _conf_set_as_array(_config, sect_name, VIMRC_PLUGIN)
+    _loaded_conf[VIMRC_CONF] = _conf_set_as_array(_config, sect_name, VIMRC_CONF) + _loaded_conf[VIMRC_COMMON_CONF]
+    _loaded_conf[VIMRC_PLUGIN] = _conf_set_as_array(_config, sect_name, VIMRC_PLUGIN) + _loaded_conf[VIMRC_COMMON_PLUGIN]
 
     for w in _workers:
         w.run_install(_loaded_conf)
@@ -61,8 +68,8 @@ def _uninstall_settings(sect_name):
 
     assert sect_name != SECT_COMMON 
 
-    _loaded_conf[VIMRC_CONF] = _conf_set_as_array(_config, sect_name, VIMRC_CONF)
-    _loaded_conf[VIMRC_PLUGIN] = _conf_set_as_array(_config, sect_name, VIMRC_PLUGIN)
+    _loaded_conf[VIMRC_CONF] = _conf_set_as_array(_config, sect_name, VIMRC_CONF) + _loaded_conf[VIMRC_COMMON_CONF]
+    _loaded_conf[VIMRC_PLUGIN] = _conf_set_as_array(_config, sect_name, VIMRC_PLUGIN) + _loaded_conf[VIMRC_COMMON_PLUGIN]
 
     for w in _workers:
         w.run_uninstall(_loaded_conf)

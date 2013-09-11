@@ -41,10 +41,11 @@ colors
 
 TODO
 ----------------------------------------
-- rename `constructorXXX` to `installerXXX`
+- rename `constructorXXX` to `installerXXX`  (done)
 
-- add `deinstaller` (DONE)
+- add `deinstaller` (done)
 
-- add more options
+- supports command line arguments (done)
 
-- fully release it
+
+
