@@ -25,7 +25,7 @@ def _init_conf(path):
     _config.read(path)
 
     _loaded_conf = {}
-    _loaded_conf[VIMRC_PATH] = os.path.abspath(_config.get(SECT_COMMON, VIMRC_PATH))
+    _loaded_conf[VIMRC_PATH] = os.path.abspath(os.path.expanduser(_config.get(SECT_COMMON, VIMRC_PATH)))
     _loaded_conf[VIMRC_CONF_DIR] = _config.get(SECT_COMMON, VIMRC_CONF_DIR)
     _loaded_conf[VIMRC_PLUGIN_DIR] = _config.get(SECT_COMMON, VIMRC_PLUGIN_DIR)
     _loaded_conf[VIMERATOR_CONF_PATH] = _config.get(SECT_COMMON, VIMERATOR_CONF_PATH) 
