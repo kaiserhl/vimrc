@@ -1,0 +1,5 @@
+
+plugin:
+	auto_mkdir.vim
+	calendar.vim
+	cmdlinecomplete.vim
