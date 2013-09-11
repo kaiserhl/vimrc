@@ -20,6 +20,7 @@ VIMERATOR_CONF_PATH = 'vimerator_conf_path'
 VIMERATOR_PLUGIN_PATH = 'vimerator_plugin_path'
 VIMERATOR_PRESET_PATH = 'vimerator_preset_path'
 
+VIMERATOR_OPT_SYMLINK = 'vimerator_opt_symlink'
 
 
 
