@@ -15,38 +15,49 @@ augroup END
 "===============================================================================
 
 "---------------------------------------
-" -- ctags --
+" ctags 
 "---------------------------------------
-augroup c_pl_ctags
-	autocmd!
+"augroup c_pl_ctags
+"	autocmd!
 "	autocmd BufWritePost *.c,*.cc,*.cpp,*.h silent! !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
-augroup END
+"augroup END
 
 "---------------------------------------
-" -- OmniCPP complete
+" OmniCPP complete
+"
+" consider clang plugin http://www.vim.org/scripts/script.php?script_id=3302
+" which does not require ctags
 "---------------------------------------
 augroup c_pl_omnicpp
 	autocmd!
 	autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 augroup END
 
+let g:OmniCpp_GlobalScopeSearch = 0
+
+" be very careful with 2; because it could cause vim run extremely slow 
+" depend on the size of its included files
+"
+" 2: search namespaces in this and included files XXX
+" 1: search current file 
+let g:OmniCpp_NamespaceSearch = 1 		
+let g:OmniCpp_DisplayMode = 1 			" always show all members 
+
+let g:OmniCpp_ShowScopeInAbbr = 1
+let g:OmniCpp_ShowPrototypeInAbbr = 1 	" show function prototype in popup window
+let g:OmniCpp_ShowAccess = 1 			" show accessbility 
 
 let g:OmniCpp_MayCompleteDot = 1 		" autocomplete with .
 let g:OmniCpp_MayCompleteArrow = 1 		" autocomplete with ->
 let g:OmniCpp_MayCompleteScope = 1 		" autocomplete with ::
 
 let g:OmniCpp_SelectFirstItem = 2 		" select first item (but don't insert)
-
-let g:OmniCpp_ShowPrototypeInAbbr = 1 	" show function prototype in popup window
-let g:OmniCpp_ShowAccess = 1
-let g:OmniCpp_ShowScopeInAbbr = 1
-
-let g:OmniCpp_GlobalScopeSearch = 1
-let g:OmniCpp_NamespaceSearch = 2 		" search namespaces in this and included files
-let g:OmniCpp_LocalSearchDecl = 1
+let g:OmniCpp_LocalSearchDecl = 1 		" user local search function
 
 "----------------------------------------
 " DoxygenToolkit
 "----------------------------------------
-let g:DoxygenToolkit_commentType = "C++"
+let g:DoxygenToolkit_commentType = "C++" 
+let g:DoxygenToolkit_compactDoc = "yes" " compact doxygen
+
 

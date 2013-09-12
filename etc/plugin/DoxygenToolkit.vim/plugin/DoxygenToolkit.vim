@@ -356,8 +356,8 @@ if !exists("g:DoxygenToolkit_endCommentTag ")
 endif
 if exists("g:DoxygenToolkit_commentType")
   if ( g:DoxygenToolkit_commentType == "C++" )
-    let g:DoxygenToolkit_startCommentTag = "/// "
-    let g:DoxygenToolkit_interCommentTag = "/// "
+    let g:DoxygenToolkit_startCommentTag = "// "
+    let g:DoxygenToolkit_interCommentTag = "// "
     let g:DoxygenToolkit_endCommentTag = ""
     let g:DoxygenToolkit_startCommentBlock = "// "
     let g:DoxygenToolkit_interCommentBlock = "// "

@@ -6,7 +6,7 @@ import ConfigParser
 import argparse
 
 # change the current working directory
-_vimerator_path = '/home/lhk/scripts_code/my_code/vimerator'
+_vimerator_path = '/home/lightmanhk/Backup/repos/scripts_code/my_code/vimerator'
 os.chdir(_vimerator_path)
 
 sys.path.append('./lib')
@@ -56,13 +56,8 @@ def _install_settings(sect_name):
 
     assert sect_name != SECT_COMMON 
 
-<<<<<<< Updated upstream
     _loaded_conf[VIMRC_CONF] = _loaded_conf[VIMRC_COMMON_CONF] + _conf_set_as_array(_config, sect_name, VIMRC_CONF) 
     _loaded_conf[VIMRC_PLUGIN] = _loaded_conf[VIMRC_COMMON_PLUGIN] + _conf_set_as_array(_config, sect_name, VIMRC_PLUGIN)
-=======
-    _loaded_conf[VIMRC_CONF] = _conf_set_as_array(_config, sect_name, VIMRC_CONF)
-    _loaded_conf[VIMRC_PLUGIN] = _conf_set_as_array(_config, sect_name, VIMRC_PLUGIN)
->>>>>>> Stashed changes
 
     for w in _workers:
         w.run_install(_loaded_conf)
@@ -74,13 +69,8 @@ def _uninstall_settings(sect_name):
 
     assert sect_name != SECT_COMMON 
 
-<<<<<<< Updated upstream
     _loaded_conf[VIMRC_CONF] = _loaded_conf[VIMRC_COMMON_CONF] + _conf_set_as_array(_config, sect_name, VIMRC_CONF) 
     _loaded_conf[VIMRC_PLUGIN] = _loaded_conf[VIMRC_COMMON_PLUGIN] + _conf_set_as_array(_config, sect_name, VIMRC_PLUGIN)
-=======
-    _loaded_conf[VIMRC_CONF] = _conf_set_as_array(_config, sect_name, VIMRC_CONF)
-    _loaded_conf[VIMRC_PLUGIN] = _conf_set_as_array(_config, sect_name, VIMRC_PLUGIN)
->>>>>>> Stashed changes
 
     for w in _workers:
         w.run_uninstall(_loaded_conf)

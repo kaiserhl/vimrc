@@ -137,11 +137,7 @@ call pathogen#helptags()
             self.log('create: %s' % vimrc_default_dir_path)
             os.makedirs(vimrc_default_dir_path)
 
-<<<<<<< HEAD
         self.log('create: %s' % vimrc_default_path)
-=======
-
->>>>>>> 991a570b8867e6f4ef88066d7062d054e7327d5b
         with open(vimrc_default_path, 'w') as file_out:
             file_out.write(WorkerDefaultConf.VIMRC_DEFAULT_CONTENT) 
             for conf in self.__confs_to_be_loaded:
