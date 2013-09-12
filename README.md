@@ -41,11 +41,7 @@ colors
 
 TODO
 ----------------------------------------
-- rename `constructorXXX` to `installerXXX`  (done)
-
-- add `deinstaller` (done)
-
-- supports command line arguments (done)
+- rename `constructorXXX` to `installerXXX`
 
 - add `common` plugins & confs options (done)
 
