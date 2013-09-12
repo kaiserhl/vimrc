@@ -41,8 +41,12 @@ colors
 
 TODO
 ----------------------------------------
-- rename `constructorXXX` to `installerXXX`
+- rename `constructorXXX` to `installerXXX` (done)
 
 - add `common` plugins & confs options (done)
 
 - supports `verbose` options (done)
+
+- fix the bug *default* section 
+
+

@@ -30,8 +30,9 @@ vnoremap  <buffer>  /*      s/*<Space><Space>*/<Left><Left><Left><Esc>p
 inoremap  <buffer>  /*<CR>  /*<CR><CR>/<Esc>kA<Space>
 "
 "-------------------------------------------------------------------------------
-" additional mapping : {<CR> always opens a block
+" additional mapping : {<CR> always opens a block 
+" XXX this is too annoying than having it
 "-------------------------------------------------------------------------------
-inoremap  <buffer>  {<CR>    {<CR>}<Esc>O
-vnoremap  <buffer>  {<CR>   S{<CR>}<Esc>Pk=iB
+"inoremap  <buffer>  {<CR>    {<CR>}<Esc>O
+"vnoremap  <buffer>  {<CR>   S{<CR>}<Esc>Pk=iB
 "

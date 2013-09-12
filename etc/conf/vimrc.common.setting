@@ -31,7 +31,7 @@ colorscheme anotherdark
 "---------------------------------------
 " Various settings
 "---------------------------------------
-set encoding=utf-8				" encoding using utf-8
+set encoding=utf-8              " encoding using utf-8
 
 set autoindent                  " copy indent from current line
 set smartindent                 " smart autoindenting when starting a new line
@@ -65,7 +65,7 @@ set showcmd                     " display incomplete commands
 set nolist
 
 set shiftwidth=4                " number of spaces to use for each step of indent
-set backspace=2 				" backspace key
+set backspace=2					" backspace key
 set tabstop=4
 set wildignore=*.bak,*.o,*.e,*~ " wildmenu: ignore these extensions
 set wildmenu                    " command-line completion in an enhanced mode
@@ -257,4 +257,8 @@ set tags=./tags,tags
 "map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 "map <A-]> :vsp <CR>:exec("tag ",.expand("<cword>"))<CR>
 
+
+"----------------------------------------
+" DoxygenToolkit
+"----------------------------------------
 

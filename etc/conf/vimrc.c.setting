@@ -60,4 +60,3 @@ let g:OmniCpp_LocalSearchDecl = 1 		" user local search function
 let g:DoxygenToolkit_commentType = "C++" 
 let g:DoxygenToolkit_compactDoc = "yes" " compact doxygen
 
-

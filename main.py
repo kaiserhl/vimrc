@@ -19,7 +19,10 @@ _loaded_conf = {}
 _workers = []
 
 def _conf_set_as_array(config, section_name, arg):
-    return map(lambda x: x.strip(), config.get(section_name, arg).split(','))
+    retval = map(lambda x: x.strip(), config.get(section_name, arg).split(','))
+    if retval == ['']:
+        retval = []
+    return retval
 
 def _init_conf(path):
     global _config
