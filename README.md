@@ -49,7 +49,4 @@ TODO
 
 - add `common` plugins & confs options (done)
 
-- supports `verbose` options
-
-
-
+- supports `verbose` options (done)
