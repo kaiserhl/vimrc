@@ -19,7 +19,13 @@ class WorkerInterface(object):
         self._vimerator_plugin_path = conf[common_name.VIMERATOR_PLUGIN_PATH]
         self._vimerator_preset_path = conf[common_name.VIMERATOR_PRESET_PATH]
 
+        self._verbose = conf[common_name.VIMERATOR_OPT_VERBOSE]
+
         self._load_other_conf(conf)
+
+    def log(self, mesg):
+        if self._verbose:
+            print mesg
 
     def _load_other_conf(self, conf):
         """
@@ -128,25 +134,31 @@ call pathogen#helptags()
         vimrc_default_path = '%s/vimrc.default' % vimrc_default_dir_path
 
         if not os.path.exists(vimrc_default_dir_path):
+            self.log('create: %s' % vimrc_default_dir_path)
             os.makedirs(vimrc_default_dir_path)
 
+        self.log('create: %s' % vimrc_default_path)
         with open(vimrc_default_path, 'w') as file_out:
             file_out.write(WorkerDefaultConf.VIMRC_DEFAULT_CONTENT) 
             for conf in self.__confs_to_be_loaded:
                 file_out.write('execute LoadFile("%s/%s")\n' % (vimrc_default_dir_path, conf))
-
+                
         if self.__is_symbolic_link:
+            self.log('%s -> %s' % ('~/.vimrc', vimrc_default_path))
             os.symlink(vimrc_default_path, os.path.expanduser('~/.vimrc'))
     
     def _uninstall(self):            
         vimrc_default_dir_path = '%s/%s' % (self._vimrc_path, self._vimrc_conf_dir)
         vimrc_default_path = '%s/vimrc.default' % vimrc_default_dir_path
 
+        self.log('remove: %s' % vimrc_default_path)
         os.remove(vimrc_default_path)
         if os.listdir(vimrc_default_dir_path) == []:
+            self.log('remove directory: %s' % vimrc_default_dir_path)
             os.rmdir(vimrc_default_dir_path)
 
         if self.__is_symbolic_link:
+            self.log('remove: %s' % '~/.vimrc')
             _unlink(os.path.expanduser('~/.vimrc'))
 
 class WorkerPreset(WorkerInterface):
@@ -158,6 +170,7 @@ class WorkerPreset(WorkerInterface):
 
             src_path = _expand(v[0])
             dst_path = _expand('%s/%s' % (self._vimrc_path, os.path.basename(src_path)))
+            self.log('%s -> %s' % (src_path, dst_path))
             os.symlink(src_path, dst_path) 
 
     def _uninstall(self):            
@@ -168,6 +181,7 @@ class WorkerPreset(WorkerInterface):
 
             src_path = _expand(v[0])
             dst_path = _expand('%s/%s' % (self._vimrc_path, os.path.basename(src_path)))
+            self.log('remove: %s' % dst_path)
             _unlink(dst_path)
 
 class WorkerGeneralConf(WorkerInterface):
@@ -175,9 +189,17 @@ class WorkerGeneralConf(WorkerInterface):
         self.__confs_to_be_loaded = conf[common_name.VIMRC_CONF]
 
     def _install(self):
+        vimrcs_path = '%s/%s' % (self._vimrc_path, self._vimrc_conf_dir)
+
+        if not os.path.exists(vimrcs_path):
+            self.log('create: %s' % vimrcs_path)
+            os.makedirs(vimrcs_path)
+
         for conf_name in self.__confs_to_be_loaded:
             src_path = _expand('%s/%s' % (self._vimerator_conf_path, conf_name))
-            dst_path = _expand('%s/%s/%s' % (self._vimrc_path, self._vimrc_conf_dir, conf_name))
+            dst_path = _expand('%s/%s' % (vimrcs_path, conf_name))
+
+            self.log('%s -> %s' % (src_path, dst_path))
             os.symlink(src_path, dst_path)
 
     def _uninstall(self):            
@@ -186,10 +208,13 @@ class WorkerGeneralConf(WorkerInterface):
         # remove all symbolic links for configuration files
         for conf_name in self.__confs_to_be_loaded:
             path = _expand('%s/%s' % (vimrcs_path, conf_name))
+
+            self.log('remove: %s' % path)
             _unlink(path)
 
         # remove vimrcs if it is empty now
         if os.listdir(vimrcs_path) == []:
+            self.log('remove: %s' % vimrcs_path)
             os.rmdir(vimrcs_path)
 
 class WorkerPlugin(WorkerInterface):
@@ -200,11 +225,14 @@ class WorkerPlugin(WorkerInterface):
         vimrc_plugin_dir_path = '%s/%s' % (self._vimrc_path, self._vimrc_plugin_dir)
 
         if not os.path.exists(vimrc_plugin_dir_path):
+            self.log('create: %s' % vimrc_plugin_dir_path)
             os.makedirs(vimrc_plugin_dir_path)
 
         for plugin_name in self.__plugins_to_be_loaded:
             src_path = _expand('%s/%s' % (self._vimerator_plugin_path, plugin_name))
             dst_path = _expand('%s/%s' % (vimrc_plugin_dir_path, plugin_name))
+
+            self.log('%s -> %s' % (src_path, dst_path))
             os.symlink(src_path, dst_path)
 
     def _uninstall(self):            
@@ -213,8 +241,11 @@ class WorkerPlugin(WorkerInterface):
         # remove all symbolic links for plugins
         for plugin_name in self.__plugins_to_be_loaded:
             path = _expand('%s/%s' % (vimrc_plugin_dir_path, plugin_name))
+            
+            self.log('remove: %s' % path)
             _unlink(path)
 
         if os.listdir(vimrc_plugin_dir_path) == []:
+            self.log('remove: %s' % vimrc_plugin_dir_path)
             os.rmdir(vimrc_plugin_dir_path)
 

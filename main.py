@@ -5,17 +5,24 @@ import os
 import ConfigParser
 import argparse
 
+# change the current working directory
+_vimerator_path = '/home/lhk/scripts_code/my_code/vimerator'
+os.chdir(_vimerator_path)
+
 sys.path.append('./lib')
 
 from common_name import *
 import worker 
 
-def _conf_set_as_array(config, section_name, arg):
-    return map(lambda x: x.strip(), config.get(section_name, arg).split(','))
-
 _config = None
 _loaded_conf = {}
 _workers = []
+
+def _conf_set_as_array(config, section_name, arg):
+    results = map(lambda x: x.strip(), config.get(section_name, arg).split(','))
+    if results == ['']:
+        results = []
+    return results
 
 def _init_conf(path):
     global _config
@@ -25,10 +32,14 @@ def _init_conf(path):
     _config.read(path)
 
     _loaded_conf = {}
-    _loaded_conf[VIMRC_PATH] = os.path.abspath(os.path.expanduser(_config.get(SECT_COMMON, VIMRC_PATH)))
+    _loaded_conf[VIMRC_PATH] = os.path.abspath(os.path.expandvars(_config.get(SECT_COMMON, VIMRC_PATH)))
     _loaded_conf[VIMRC_CONF_DIR] = _config.get(SECT_COMMON, VIMRC_CONF_DIR)
     _loaded_conf[VIMRC_PLUGIN_DIR] = _config.get(SECT_COMMON, VIMRC_PLUGIN_DIR)
-    _loaded_conf[VIMERATOR_CONF_PATH] = _config.get(SECT_COMMON, VIMERATOR_CONF_PATH) 
+
+    _loaded_conf[VIMRC_COMMON_CONF] = _conf_set_as_array(_config, SECT_COMMON, VIMRC_COMMON_CONF)
+    _loaded_conf[VIMRC_COMMON_PLUGIN] = _conf_set_as_array(_config, SECT_COMMON, VIMRC_COMMON_PLUGIN)
+
+    _loaded_conf[VIMERATOR_CONF_PATH] = _config.get(SECT_COMMON, VIMERATOR_CONF_PATH)
     _loaded_conf[VIMERATOR_PLUGIN_PATH] = _config.get(SECT_COMMON, VIMERATOR_PLUGIN_PATH)
     _loaded_conf[VIMERATOR_PRESET_PATH] = _config.get(SECT_COMMON, VIMERATOR_PRESET_PATH)
     
@@ -48,8 +59,8 @@ def _install_settings(sect_name):
 
     assert sect_name != SECT_COMMON 
 
-    _loaded_conf[VIMRC_CONF] = _conf_set_as_array(_config, sect_name, VIMRC_CONF)
-    _loaded_conf[VIMRC_PLUGIN] = _conf_set_as_array(_config, sect_name, VIMRC_PLUGIN)
+    _loaded_conf[VIMRC_CONF] = _loaded_conf[VIMRC_COMMON_CONF] + _conf_set_as_array(_config, sect_name, VIMRC_CONF) 
+    _loaded_conf[VIMRC_PLUGIN] = _loaded_conf[VIMRC_COMMON_PLUGIN] + _conf_set_as_array(_config, sect_name, VIMRC_PLUGIN)
 
     for w in _workers:
         w.run_install(_loaded_conf)
@@ -61,8 +72,8 @@ def _uninstall_settings(sect_name):
 
     assert sect_name != SECT_COMMON 
 
-    _loaded_conf[VIMRC_CONF] = _conf_set_as_array(_config, sect_name, VIMRC_CONF)
-    _loaded_conf[VIMRC_PLUGIN] = _conf_set_as_array(_config, sect_name, VIMRC_PLUGIN)
+    _loaded_conf[VIMRC_CONF] = _loaded_conf[VIMRC_COMMON_CONF] + _conf_set_as_array(_config, sect_name, VIMRC_CONF) 
+    _loaded_conf[VIMRC_PLUGIN] = _loaded_conf[VIMRC_COMMON_PLUGIN] + _conf_set_as_array(_config, sect_name, VIMRC_PLUGIN)
 
     for w in _workers:
         w.run_uninstall(_loaded_conf)
@@ -71,6 +82,7 @@ def _create_symbolic_link():
     pass
 
 def main(argv):
+    global _vimerator_path
     global _loaded_conf
 
     _init_conf('etc/vimerator.conf')
@@ -81,9 +93,11 @@ def main(argv):
     mutual_parser_group.add_argument('--uninstall', '-u', help="name of the project")
     mutual_parser_group.add_argument('--install', '-i', help="name of the project")
     parser.add_argument('--symbolic', '-s', action='store_true', help="create a symbolic link")
+    parser.add_argument('--verbose', '-v', action='store_true', help='verbose output')
     args = parser.parse_args(sys.argv[1:])
 
     _loaded_conf[VIMERATOR_OPT_SYMLINK] = args.symbolic
+    _loaded_conf[VIMERATOR_OPT_VERBOSE] = args.verbose
     if args.install:
         _install_settings(args.install)
     if args.uninstall:
