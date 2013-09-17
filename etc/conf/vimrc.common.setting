@@ -42,6 +42,10 @@ set autowrite                   " write a modified buffer on each :next , ...
 set backspace=indent,eol,start  " backspacing over everything in insert mode
 set browsedir=current           " which directory to use for the file browser
 
+" disabling vim's autocomment; 
+" see http://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
+autocmd BufNewFile,BufRead * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
 " scan the files used for autocomplete
 " XXX be careful with `i` option where it scans its included files
 " this could cause vim be very slow

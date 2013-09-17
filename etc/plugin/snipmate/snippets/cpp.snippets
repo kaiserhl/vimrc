@@ -24,7 +24,20 @@ snippet cl
 	 private:
 	  ${3:// data }
 	};
+# for i
 snippet fori
 	for (int ${2:i} = 0; $2 < ${1:count}; $2${3:++}) {
-		${4:/* code */}
+		${4:// code }
 	}
+# comment for classes implementations
+snippet comci
+	////////////////////////////////////////////////////////////////////////////////	
+	// ${1:class_name}
+	// 
+	// Note:
+# comment for classes header
+snippet comch
+	//------------------------------------------------------------------------------	
+	// ${1:class_name}
+	// 
+	// Note:
