@@ -14,7 +14,9 @@ set nocompatible
 "---------------------------------------
 filetype on
 filetype plugin on
-filetype indent on
+
+" disabling plugins' specified indent options 
+"filetype indent on
 
 "---------------------------------------
 " Switch syntax highlighting on.
@@ -33,7 +35,7 @@ colorscheme anotherdark
 "---------------------------------------
 set encoding=utf-8              " encoding using utf-8
 
-set autoindent                  " copy indent from current line
+"set autoindent                 " copy indent from current line
 set smartindent                 " smart autoindenting when starting a new line
 
 set autoread                    " read open files again when changed outside Vim

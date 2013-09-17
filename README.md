@@ -13,7 +13,7 @@ example:
     [c]
     plugins=a.vim,authorinfo.vim,matchit,omnicppcomplete, ...
     configuration=vimrc.common.setting,vimrc.c.setting
-    
+
     [c++]
 
 
@@ -47,6 +47,9 @@ TODO
 
 - supports `verbose` options (done)
 
-- fix the bug *default* section 
+- fix the bug *default* section  (done)
+    
+- fix 80 columns
+
 
 

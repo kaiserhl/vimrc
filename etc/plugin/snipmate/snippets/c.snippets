@@ -40,7 +40,7 @@ snippet once
 	#endif // end of include guard: $1 
 # If Condition
 snippet if
-	if (${1:/* condition */}) {
+	if (${1:condition}) {
 		${2:// code }
 	}
 snippet el
@@ -49,15 +49,15 @@ snippet el
 	}
 # Ternary conditional
 snippet t
-	${1:/* condition */} ? ${2:a} : ${3:b}
+	${1:condition} ? ${2:a} : ${3:b}
 # Do While Loop
 snippet do
 	do {
 		${2:// code }
-	} while (${1:/* condition */});
+	} while (${1:condition});
 # While Loop
 snippet wh
-	while (${1:/* condition */}) {
+	while (${1:condition}) {
 		${2:// code }
 	}
 # For Loop
@@ -85,7 +85,7 @@ snippet td
 snippet st
 	struct ${1:`Filename('$1_t', 'name')`} {
 		${2:// data }
-	}${3: /* optional variable list */};${4}
+	}${3};${4}
 # Typedef struct
 snippet tds
 	typedef struct ${2:_$1 }{
