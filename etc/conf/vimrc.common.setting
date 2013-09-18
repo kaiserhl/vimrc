@@ -36,7 +36,7 @@ colorscheme anotherdark
 set encoding=utf-8              " encoding using utf-8
 
 "set autoindent                 " copy indent from current line
-set smartindent                 " smart autoindenting when starting a new line
+"set smartindent                 " smart autoindenting when starting a new line
 
 set autoread                    " read open files again when changed outside Vim
 set autowrite                   " write a modified buffer on each :next , ...
