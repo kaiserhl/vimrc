@@ -4,11 +4,11 @@ snippet test
 		${1};
 	}
 # std::map
-snippet map
-	std::map<${1:key}, ${2:value}> map${3};
+#snippet map
+#	std::map<${1:key}, ${2:value}> map${3};
 # std::vector
-snippet vector
-	std::vector<${1:char}> v${2};
+#snippet vector
+#	std::vector<${1:char}> v${2};
 # Namespace
 snippet ns
 	namespace ${1:`Filename('', 'my')`} {
@@ -25,15 +25,17 @@ snippet cl
 	  ${3:// data }
 	};
 # for i
-snippet fori
-	for (int ${2:i} = 0; $2 < ${1:count}; $2${3:++}) {
-		${4:// code }
-	}
+#snippet fori
+#	for (int ${2:i} = 0; $2 < ${1:count}; $2${3:++}) {
+#		${4:// code }
+#	}
 # comment for classes implementations
 snippet comci
 	////////////////////////////////////////////////////////////////////////////////	
 	// ${1:class_name}
+	//
 # comment for classes header
 snippet comch
 	//------------------------------------------------------------------------------	
 	// ${1:class_name}
+	//
