@@ -19,17 +19,17 @@ snippet Inc
 snippet Def
 	#ifndef $1
 	#define ${1:SYMBOL} ${2:value}
-	#endif${3}
+	#endif${3} //ifndef $1
 snippet def
 	#define
 snippet ifdef
 	#ifdef ${1:FOO}
 		${2:#define }
-	#endif
+	#endif //ifdef $1
 snippet #if
 	#if ${1:FOO}
 		${2}
-	#endif
+	#endif //if $1
 # Header Include-Guard
 snippet once
 	#ifndef ${1:`toupper(Filename('_$1_H_', '_UNTITLED_H_'))`}
