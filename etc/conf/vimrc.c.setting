@@ -8,6 +8,7 @@ augroup c_general
 
 	" always use space instead of tab
 	autocmd FileType cpp,c set ai sw=2 ts=2 et fo=croql
+	autocmd FileType cmake set ai sw=2 ts=2 et fo=croql
 augroup END
 
 "===============================================================================
