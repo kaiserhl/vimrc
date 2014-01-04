@@ -84,9 +84,6 @@ set laststatus=2
 "set statusline=[%n]\ %<%f\ %([%1*%M%*%R%Y]%)\ \ \ [%{Tlist_Get_Tagname_By_Line()}]\ %=%-19(\LINE\ [%l/%L]\ COL\ [%02c%03V]%)\ %P
 set statusline=[%n]\ %<%f\ %([%1*%M%*%R%Y]%)\ \ \ \ %=%-19(\LINE\ [%l/%L]\ COL\ [%02c%03V]%)\ %P
 
- 
-
-
 
 
 
@@ -198,6 +195,11 @@ augroup END
 "xnoremap  \"  s""<Esc>P<Right> (I add a \)
 "xnoremap  `  s``<Esc>P<Right>
 
+"----------------------------------------
+" highlighting that stays after cursor moves
+"----------------------------------------
+nnoremap <silent> <Leader>l ml:execute 'match Search /\%'.line('.').'l/'<CR>
+"nnoremap <silent> <Leader>c :execute 'match Search /\%'.virtcol('.').'v/'<CR>
 
 "----------------------------------------
 " file extension
@@ -208,6 +210,14 @@ augroup common_file_extension
 	autocmd FileType markdown set expandtab
 augroup END
 
+"----------------------------------------
+" cursor
+"----------------------------------------
+"augroup common_cursorline
+"	au!
+"	au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+"	au WinLeave * setlocal nocursorline
+"augroup END
 
 "===============================================================================
 " VARIOUS PLUGIN CONFIGURATIONS
