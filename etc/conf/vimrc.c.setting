@@ -23,8 +23,8 @@ augroup END
 "---------------------------------------
 augroup c_pl_ctags
 	autocmd!
-	set tags+=~/.vim/tags/std3.3.tags
-"	autocmd BufWritePost *.c,*.cc,*.cpp,*.h silent! !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
+	"set tags+=~/.vim/tags/std3.3.tags
+	"autocmd BufWritePost *.c,*.cc,*.cpp,*.h silent! !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
 augroup END
 
 "---------------------------------------
