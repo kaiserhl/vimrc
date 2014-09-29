@@ -13,12 +13,11 @@ execute "set rtp+=".s:bundle_path."vundle/"
 call vundle#rc()
 Bundle 'gmarik/vundle'
 
-" _. General {{{
 if count(g:vimified_packages, 'general')
     Bundle 'edsono/vim-matchit'
     Bundle 'scrooloose/nerdtree'
     Bundle 'msanders/snipmate.vim'
-    Bundle 'fholgado/minibufexpl.vim'
+    Bundle 'vim-scripts/buftabs'
     Bundle 'mbriggs/mark.vim'
     Bundle 'ervandew/supertab'
     Bundle 'majutsushi/tagbar'
@@ -54,7 +53,7 @@ set formatoptions-=o
 set complete=.,w,b,u,t,k        " scan the files used for autocomplete, no 'i'
 set completeopt=menuone,longest,preview
 
-set history=150                 " keep 50 lines of command line history
+set history=700                 " keep 50 lines of command line history
 set hlsearch                    " highlight the last used search pattern
 set incsearch                   " do incremental searching
 
@@ -62,11 +61,11 @@ set listchars=tab:>.,eol:\$     " strings to use in 'list' mode
 set mouse=a                     " enable the use of the mouse
 set popt=left:8pc,right:3pc     " print options
 set visualbell                  " visual bell instead of beeping
-set noerrorbells visualbell t_vb=
+"set noerrorbells visualbell t_vb=
 
 set nowrap                      " do not wrap lines
 set ruler                       " show the cursor position all the time
-set nu							" display line numbers
+set nu				" display line numbers
 set showcmd                     " display incomplete commands
 set nolist
 
@@ -76,7 +75,8 @@ set colorcolumn=80
 set noswapfile
 
 set laststatus=2
-set statusline=[%n]\ %<%f\ %([%1*%M%*%R%Y]%)\ \ \ \ %=%-19(\LINE\ [%l/%L]\ COL\ [%02c%03V]%)\ %P
+"set statusline=[%n]\ %<%f\ %([%1*%M%*%R%Y]%)\ \ \ \ %=%-19(\LINE\ [%l/%L]\ COL\ [%02c%03V]%)\ %P
+set statusline=%{buftabs#statusline()}
 
 nnoremap <silent> <Leader>l ml:execute 'match Search /\%'.line('.').'l/'<CR>
 
@@ -91,6 +91,7 @@ augroup common
 		\   exe "normal! g`\"" |
 		\ endif
 	autocmd BufRead,BufNewFile *.md set filetype=markdown
+	autocmd BufNewFile, BufRead *.cpp set syntax=cpp11
 	autocmd FileType markdown set expandtab
 	autocmd FileType cpp,c set ai sw=2 ts=2 et fo=croql
 	autocmd FileType cmake set ai sw=2 ts=2 et fo=croql
@@ -102,9 +103,8 @@ augroup common
 augroup END
 
 " tagbar 
- noremap <silent> <F11>  <Esc><Esc>:TagbarToggle<CR>
-inoremap <silent> <F11>  <Esc><Esc>:TagbarToggle<CR>
-
+ noremap <silent> <F11>  :TagbarToggle<CR>
+inoremap <silent> <F11>  :TagbarToggle<CR>
 let g:tagbar_left = 0
 let g:tagbar_width = 30
 let g:tagbar_autofocus = 0
@@ -116,9 +116,11 @@ let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModeSelTarget = 1
+let g:miniBufExplForceSyntaxEnable= 1
 
 " NerdTreeToggle 
-noremap   <silent> <F12>       :NERDTreeToggle<CR>
+ noremap <silent> <F12>       :NERDTreeToggle<CR>
+inoremap <silent> <F12>       :NERDTreeToggle<CR>
 let g:NERDTreeWinSize = 25
 let g:NERDTreeCaseSensitiveSort = 1
 let g:NERDTreeShowHidden = 1
@@ -128,7 +130,8 @@ let g:NERDTreeDirArrows = 1
 let g:NERDTreeQuitOnOpen = 1
 
 " gundoToggle 
-noremap   <silent> <F10>       :GundoToggle<CR>
+ noremap   <silent> <F10>       :GundoToggle<CR>
+inoremap   <silent> <F10>       :GundoToggle<CR>
 
 " supertab 
 let g:SuperTabDefaultCompletionType = "context"
@@ -147,16 +150,16 @@ augroup omnicpp
 	autocmd FileType python set omnifunc=pythoncomplete#Complete
 augroup END
 let g:OmniCpp_GlobalScopeSearch = 0
-let g:OmniCpp_NamespaceSearch = 1 		
-let g:OmniCpp_DisplayMode = 1 			" always show all members 
+let g:OmniCpp_NamespaceSearch = 1		
+let g:OmniCpp_DisplayMode = 1			" always show all members 
 let g:OmniCpp_ShowScopeInAbbr = 1
-let g:OmniCpp_ShowPrototypeInAbbr = 1 	        " show function prototype in popup window
-let g:OmniCpp_ShowAccess = 1 			" show accessbility 
-let g:OmniCpp_MayCompleteDot = 1 		" autocomplete with .
-let g:OmniCpp_MayCompleteArrow = 1 		" autocomplete with ->
-let g:OmniCpp_MayCompleteScope = 1 		" autocomplete with ::
-let g:OmniCpp_SelectFirstItem = 2 		" select first item (but don't insert)
-let g:OmniCpp_LocalSearchDecl = 1 		" user local search function
+let g:OmniCpp_ShowPrototypeInAbbr = 1		" show function prototype in popup window
+let g:OmniCpp_ShowAccess = 1			" show accessbility 
+let g:OmniCpp_MayCompleteDot = 1		" autocomplete with .
+let g:OmniCpp_MayCompleteArrow = 1		" autocomplete with ->
+let g:OmniCpp_MayCompleteScope = 1		" autocomplete with ::
+let g:OmniCpp_SelectFirstItem = 2		" select first item (but don't insert)
+let g:OmniCpp_LocalSearchDecl = 1		" user local search function
 
 " DoxygenToolkit
 let g:DoxygenToolkit_commentType = "C++" 
@@ -165,3 +168,6 @@ let g:DoxygenToolkit_compactDoc = "yes" " compact doxygen
 " Pyflakes
 let g:pyflakes_use_quickfix = 0
 
+" buftabs
+let g:buftabs_only_basename=1
+let g:buftabs_in_statusline=2
