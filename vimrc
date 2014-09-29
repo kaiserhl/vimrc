@@ -16,20 +16,22 @@ Bundle 'gmarik/vundle'
 if count(g:vimified_packages, 'general')
     "Bundle 'edkolev/tmuxline.vim'
     "Bundle 'vim-scripts/buftabs'
+    "Bundle 'msanders/snipmate.vim'
+    "Bundle 'dradtke/OmniCppComplete'
+    Bundle 'SirVer/ultisnips'
+    Bundle 'Valloric/YouCompleteMe'
     Bundle 'bling/vim-airline'
     Bundle 'bling/vim-bufferline'
     Bundle 'edsono/vim-matchit'
     Bundle 'scrooloose/nerdtree'
-    Bundle 'msanders/snipmate.vim'
     Bundle 'mbriggs/mark.vim'
     Bundle 'ervandew/supertab'
     Bundle 'majutsushi/tagbar'
     Bundle 'mrtazz/DoxygenToolkit.vim'
     Bundle 'scrooloose/nerdcommenter'
-    Bundle 'dradtke/OmniCppComplete'
-    Bundle 'taxilian/a.vim'
     Bundle 'tpope/vim-unimpaired'
     Bundle 'kevinw/pyflakes-vim'
+    Bundle 'taxilian/a.vim'
 endif
 
 "===============================================================================
@@ -87,21 +89,21 @@ hi BadWhiteSpace ctermbg=red
 autocmd BufEnter *.h,*.cc,*.py match BadWhiteSpace /\s\+$/
 
 augroup common 
-	autocmd!
-	set completeopt=menu,menuone
-	autocmd BufReadPost *
-		\ if line("'\"") > 0 && line("'\"") <= line("$") |
-		\   exe "normal! g`\"" |
-		\ endif
-	autocmd BufRead,BufNewFile *.md set filetype=markdown
-	autocmd BufNewFile, BufRead *.cpp set syntax=cpp11
-	autocmd FileType markdown set expandtab
-	autocmd FileType cpp,c set ai sw=2 ts=2 et fo=croql
-	autocmd FileType cmake set ai sw=2 ts=2 et fo=croql
-	autocmd BufEnter *.py set ai sw=4 ts=4 et fo=croql
-	autocmd BufEnter *.proto set ai sw=4 ts=4 et fo=croql
-	autocmd BufEnter *.tex set ai sw=4 ts=4 et fo=croql
-	autocmd BufEnter *.sh set ai sw=4 ts=4 et fo=croql
+  autocmd!
+  set completeopt=menu,menuone
+  autocmd BufReadPost *
+  	\ if line("'\"") > 0 && line("'\"") <= line("$") |
+  	\   exe "normal! g`\"" |
+  	\ endif
+  autocmd BufRead,BufNewFile *.md set filetype=markdown
+  autocmd FileType markdown set expandtab
+  autocmd FileType cpp,c set syntax=cpp11
+  autocmd FileType cpp,c set ai sw=2 ts=2 et fo=croql
+  autocmd FileType cmake set ai sw=2 ts=2 et fo=croql
+  autocmd FileType python set ai sw=4 ts=4 et fo=croql
+  autocmd BufEnter *.proto set ai sw=4 ts=4 et fo=croql
+  autocmd BufEnter *.tex set ai sw=4 ts=4 et fo=croql
+  autocmd BufEnter *.sh set ai sw=4 ts=4 et fo=croql
 augroup END
 
 " tagbar 
@@ -141,16 +143,11 @@ let g:SuperTabDefaultCompletionType = "context"
 " ctags
 set tags=./tags,tags
 augroup ctags 
-	autocmd!
-	autocmd BufWritePost *.c,*.cc,*.cpp,*.h silent! !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
+  autocmd!
+  autocmd BufWritePost *.c,*.cc,*.cpp,*.h silent! !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
 augroup END
 
 " OmniCPP complete
-augroup omnicpp
-	autocmd!
-	autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-	autocmd FileType python set omnifunc=pythoncomplete#Complete
-augroup END
 let g:OmniCpp_GlobalScopeSearch = 0
 let g:OmniCpp_NamespaceSearch = 1		
 let g:OmniCpp_DisplayMode = 1			" always show all members 
