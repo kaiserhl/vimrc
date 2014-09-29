@@ -1,4 +1,4 @@
-#!/usr/env sh
+#!/usr/bin/env sh
 
 INSTALLDIR=${INSTALLDIR:-"$PWD/vimrc"}
 echo $INSTALLDIR
@@ -7,8 +7,8 @@ which git > /dev/null || (echo "Need git installed" && exit 1)
 which vim > /dev/null || (echo "Need vim installed" && exit 1)
 
 cd $INSTALLDIR
-[ ! -f ~/.vim ] && ln -sfn $INSTALLDIR ~/.vim
-[ ! -f ~/.vimrc ] && ln -sfn $INSTALLDIR/vimrc ~/.vimrc
+[ ! -f ~/.vim ] && ln -vsfn $INSTALLDIR ~/.vim
+[ ! -f ~/.vimrc ] && ln -vsfn $INSTALLDIR/vimrc ~/.vimrc
 
 if [ ! -d "bundle" ]; then
     echo "Creating bundle directory ..."
