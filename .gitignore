@@ -1,6 +1,7 @@
 bundle/
-*.swp
 tmp/
+
 .DS_Store
+*.swp
 *.vimrc
 .netrwhist

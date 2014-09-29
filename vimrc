@@ -14,10 +14,13 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 if count(g:vimified_packages, 'general')
+    "Bundle 'edkolev/tmuxline.vim'
+    "Bundle 'vim-scripts/buftabs'
+    Bundle 'bling/vim-airline'
+    Bundle 'bling/vim-bufferline'
     Bundle 'edsono/vim-matchit'
     Bundle 'scrooloose/nerdtree'
     Bundle 'msanders/snipmate.vim'
-    Bundle 'vim-scripts/buftabs'
     Bundle 'mbriggs/mark.vim'
     Bundle 'ervandew/supertab'
     Bundle 'majutsushi/tagbar'
@@ -37,8 +40,8 @@ syntax on
 "colorscheme desert 
 
 set encoding=utf-8              " encoding using utf-8
-"set autoindent                 " copy indent from current line
-"set smartindent                 " smart autoindenting when starting a new line
+set noautoindent                 " copy indent from current line
+set nosmartindent               " smart autoindenting when starting a new line
 set autoread                    " read open files again when changed outside Vim
 set autowrite                   " write a modified buffer on each :next , ...
 set backspace=indent,eol,start  " backspacing over everything in insert mode
@@ -76,7 +79,7 @@ set noswapfile
 
 set laststatus=2
 "set statusline=[%n]\ %<%f\ %([%1*%M%*%R%Y]%)\ \ \ \ %=%-19(\LINE\ [%l/%L]\ COL\ [%02c%03V]%)\ %P
-set statusline=%{buftabs#statusline()}
+"set statusline=%{buftabs#statusline()}
 
 nnoremap <silent> <Leader>l ml:execute 'match Search /\%'.line('.').'l/'<CR>
 
@@ -95,7 +98,6 @@ augroup common
 	autocmd FileType markdown set expandtab
 	autocmd FileType cpp,c set ai sw=2 ts=2 et fo=croql
 	autocmd FileType cmake set ai sw=2 ts=2 et fo=croql
-	autocmd FileType python setl nosmartindent
 	autocmd BufEnter *.py set ai sw=4 ts=4 et fo=croql
 	autocmd BufEnter *.proto set ai sw=4 ts=4 et fo=croql
 	autocmd BufEnter *.tex set ai sw=4 ts=4 et fo=croql
@@ -169,5 +171,10 @@ let g:DoxygenToolkit_compactDoc = "yes" " compact doxygen
 let g:pyflakes_use_quickfix = 0
 
 " buftabs
-let g:buftabs_only_basename=1
-let g:buftabs_in_statusline=2
+"let g:buftabs_only_basename=1
+"let g:buftabs_in_statusline=2
+
+" airline
+"let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
