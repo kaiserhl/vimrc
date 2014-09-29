@@ -6,7 +6,7 @@ import ConfigParser
 import argparse
 
 # change the current working directory
-_vimerator_path = '/home/lightmanhk/Backup/repo/vimrc'
+_vimerator_path = '/home/lightmanhk/src/repo/vimrc'
 os.chdir(_vimerator_path)
 
 sys.path.append('./lib')
