@@ -18,5 +18,17 @@ Bundle 'gmarik/vundle'
 
 " _. General {{{
 if count(g:vimified_packages, 'general')
-    Bundle 'editorconfig/editorconfig-vim'
+    Bundle 'edsono/vim-matchit'
+    Bundle 'scrooloose/nerdtree'
+    Bundle 'msanders/snipmate.vim'
+    Bundle 'fholgado/minibufexpl.vim'
+    Bundle 'mbriggs/mark.vim'
+    Bundle 'ervandew/supertab'
+    Bundle 'majutsushi/tagbar'
+    Bundle 'mrtazz/DoxygenToolkit.vim'
+    Bundle 'scrooloose/nerdcommenter'
+    Bundle 'dradtke/OmniCppComplete'
+    Bundle 'taxilian/a.vim'
+    Bundle 'tpope/vim-unimpaired'
+    Bundle 'kevinw/pyflakes-vim'
 endif

@@ -3,8 +3,8 @@
 INSTALLDIR=${INSTALLDIR:-"$PWD/vimrc"}
 echo $INSTALLDIR
 
-which git > /dev/null && echo "Need git installed" && exit 1
-which vim > /dev/null && echo "Need vim installed" && exit 1
+which git > /dev/null || (echo "Need git installed" && exit 1)
+which vim > /dev/null || (echo "Need vim installed" && exit 1)
 
 cd $INSTALLDIR
 [ ! -f ~/.vim ] && ln -sfn $INSTALLDIR ~/.vim
@@ -20,4 +20,4 @@ if [ ! -d "bundle/vundle" ]; then
     git clone https://github.com/gmarik/vundle.git bundle/vundle
 fi
 
-vim +BundleInstall +qall 2>/dev/null
+vim +BundleInstall +qall 
