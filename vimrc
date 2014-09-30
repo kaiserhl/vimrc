@@ -102,10 +102,11 @@ augroup common
   autocmd BufRead,BufNewFile cpp,c set syntax=cpp11
   autocmd BufNewFile,BufRead,BufEnter *.cc,*.h set omnifunc=omni#cpp#complete#Main
   autocmd FileType cpp set omnifunc=cppcomplete#CompleteCPP
-  autocmd FileType markdown set expandtab
   autocmd FileType cpp,c set ai sw=2 ts=2 et fo=croql
   autocmd FileType cmake set ai sw=2 ts=2 et fo=croql
   autocmd FileType python set ai sw=4 ts=4 et fo=croql
+  autocmd FileType make set ai sw=4 ts=4 et fo=croql
+  autocmd FileType markdown set et sw=4 ts=4 et fo=croql
   autocmd BufEnter *.proto set ai sw=4 ts=4 et fo=croql
   autocmd BufEnter *.tex set ai sw=4 ts=4 et fo=croql
   autocmd BufEnter *.sh set ai sw=4 ts=4 et fo=croql
