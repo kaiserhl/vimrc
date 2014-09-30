@@ -29,6 +29,7 @@ if count(g:vimified_packages, 'general')
     Bundle 'mrtazz/DoxygenToolkit.vim'
     Bundle 'scrooloose/nerdcommenter'
     Bundle 'tpope/vim-unimpaired'
+    Bundle 'tpope/vim-afterimage'
     Bundle 'kevinw/pyflakes-vim'
     Bundle 'taxilian/a.vim'
 endif
