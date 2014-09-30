@@ -16,10 +16,9 @@ Bundle 'gmarik/vundle'
 if count(g:vimified_packages, 'general')
     "Bundle 'edkolev/tmuxline.vim'
     "Bundle 'vim-scripts/buftabs'
-    "Bundle 'msanders/snipmate.vim'
-    "Bundle 'dradtke/OmniCppComplete'
-    Bundle 'SirVer/ultisnips'
-    Bundle 'Valloric/YouCompleteMe'
+    "Bundle 'SirVer/ultisnips'
+    Bundle 'vim-scripts/OmniCppComplete'
+    Bundle 'msanders/snipmate.vim'
     Bundle 'bling/vim-airline'
     Bundle 'bling/vim-bufferline'
     Bundle 'edsono/vim-matchit'
@@ -38,8 +37,10 @@ endif
 " GENERAL SETTINGS
 "===============================================================================
 syntax on            
-
 "colorscheme desert 
+
+filetype plugin on
+filetype indent on
 
 set encoding=utf-8              " encoding using utf-8
 set noautoindent                 " copy indent from current line
@@ -56,7 +57,6 @@ set formatoptions-=r
 set formatoptions-=o
 
 set complete=.,w,b,u,t,k        " scan the files used for autocomplete, no 'i'
-set completeopt=menuone,longest,preview
 
 set history=700                 " keep 50 lines of command line history
 set hlsearch                    " highlight the last used search pattern
@@ -90,14 +90,15 @@ autocmd BufEnter *.h,*.cc,*.py match BadWhiteSpace /\s\+$/
 
 augroup common 
   autocmd!
-  set completeopt=menu,menuone
   autocmd BufReadPost *
   	\ if line("'\"") > 0 && line("'\"") <= line("$") |
   	\   exe "normal! g`\"" |
   	\ endif
   autocmd BufRead,BufNewFile *.md set filetype=markdown
+  autocmd BufRead,BufNewFile cpp,c set syntax=cpp11
+  autocmd BufNewFile,BufRead,BufEnter *.cc,*.h set omnifunc=omni#cpp#complete#Main
+  autocmd FileType cpp set omnifunc=cppcomplete#CompleteCPP
   autocmd FileType markdown set expandtab
-  autocmd FileType cpp,c set syntax=cpp11
   autocmd FileType cpp,c set ai sw=2 ts=2 et fo=croql
   autocmd FileType cmake set ai sw=2 ts=2 et fo=croql
   autocmd FileType python set ai sw=4 ts=4 et fo=croql
@@ -141,7 +142,7 @@ inoremap   <silent> <F10>       :GundoToggle<CR>
 let g:SuperTabDefaultCompletionType = "context"
 
 " ctags
-set tags=./tags,tags
+"set tags=./tags,tags
 augroup ctags 
   autocmd!
   autocmd BufWritePost *.c,*.cc,*.cpp,*.h silent! !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
@@ -159,6 +160,7 @@ let g:OmniCpp_MayCompleteArrow = 1		" autocomplete with ->
 let g:OmniCpp_MayCompleteScope = 1		" autocomplete with ::
 let g:OmniCpp_SelectFirstItem = 2		" select first item (but don't insert)
 let g:OmniCpp_LocalSearchDecl = 1		" user local search function
+set completeopt=menuone,longest,menu
 
 " DoxygenToolkit
 let g:DoxygenToolkit_commentType = "C++" 

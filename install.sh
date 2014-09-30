@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-INSTALLDIR=${INSTALLDIR:-"$PWD/vimrc"}
+INSTALLDIR=${INSTALLDIR:-"$PWD"}
 echo $INSTALLDIR
 
 which git > /dev/null || (echo "Need git installed" && exit 1)
