@@ -32,7 +32,7 @@ if count(g:vimified_packages, 'general')
     Bundle 'tpope/vim-afterimage'
     Bundle 'kevinw/pyflakes-vim'
     Bundle 'taxilian/a.vim'
-    Bundle 'flazz/vim-colorschemes'
+    Bundle 'lightmanhk/vim-colorschemes'
 endif
 
 "===============================================================================
@@ -89,6 +89,7 @@ set laststatus=2
 nnoremap <silent> <Leader>l ml:execute 'match Search /\%'.line('.').'l/'<CR>
 
 hi BadWhiteSpace ctermbg=red
+hi SpellBad ctermbg=LightBlue
 autocmd BufEnter *.h,*.cc,*.py match BadWhiteSpace /\s\+$/
 
 augroup common 
