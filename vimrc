@@ -32,14 +32,16 @@ if count(g:vimified_packages, 'general')
     Bundle 'tpope/vim-afterimage'
     Bundle 'kevinw/pyflakes-vim'
     Bundle 'taxilian/a.vim'
+    Bundle 'flazz/vim-colorschemes'
 endif
 
 "===============================================================================
 " GENERAL SETTINGS
 "===============================================================================
 syntax on            
-"colorscheme desert 
+colorscheme anotherdark
 
+filetype on
 filetype plugin on
 filetype indent on
 
