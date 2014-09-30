@@ -17,6 +17,7 @@ if count(g:vimified_packages, 'general')
     "Bundle 'edkolev/tmuxline.vim'
     "Bundle 'vim-scripts/buftabs'
     "Bundle 'SirVer/ultisnips'
+    "Bundle 'ervandew/supertab'
     Bundle 'vim-scripts/OmniCppComplete'
     Bundle 'msanders/snipmate.vim'
     Bundle 'bling/vim-airline'
@@ -24,7 +25,6 @@ if count(g:vimified_packages, 'general')
     Bundle 'edsono/vim-matchit'
     Bundle 'scrooloose/nerdtree'
     Bundle 'mbriggs/mark.vim'
-    Bundle 'ervandew/supertab'
     Bundle 'majutsushi/tagbar'
     Bundle 'mrtazz/DoxygenToolkit.vim'
     Bundle 'scrooloose/nerdcommenter'
@@ -118,11 +118,11 @@ let g:tagbar_sort = 1
 let g:tagbar_compact = 1
 
 " MiniBufExplor
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModeSelTarget = 1
-let g:miniBufExplForceSyntaxEnable= 1
+"let g:miniBufExplMapWindowNavVim = 1
+"let g:miniBufExplMapWindowNavArrows = 1
+"let g:miniBufExplMapCTabSwitchBufs = 1
+"let g:miniBufExplModeSelTarget = 1
+"let g:miniBufExplForceSyntaxEnable= 1
 
 " NerdTreeToggle 
  noremap <silent> <F12>       :NERDTreeToggle<CR>
@@ -140,10 +140,10 @@ let g:NERDTreeQuitOnOpen = 1
 inoremap   <silent> <F10>       :GundoToggle<CR>
 
 " supertab 
-let g:SuperTabDefaultCompletionType = "context"
+"let g:SuperTabDefaultCompletionType = "context"
 
 " ctags
-"set tags=./tags,tags
+set tags=./tags,tags
 augroup ctags 
   autocmd!
   autocmd BufWritePost *.c,*.cc,*.cpp,*.h silent! !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
