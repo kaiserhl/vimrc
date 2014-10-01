@@ -105,7 +105,7 @@ augroup common
   autocmd FileType cpp,c set ai sw=2 ts=2 et fo=croql
   autocmd FileType cmake set ai sw=2 ts=2 et fo=croql
   autocmd FileType python set ai sw=4 ts=4 et fo=croql
-  autocmd FileType make set ai sw=4 ts=4 et fo=croql
+  autocmd FileType make set sw=4 ts=4 
   autocmd FileType markdown set et sw=4 ts=4 et fo=croql
   autocmd BufEnter *.proto set ai sw=4 ts=4 et fo=croql
   autocmd BufEnter *.tex set ai sw=4 ts=4 et fo=croql
