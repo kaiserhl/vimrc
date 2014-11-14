@@ -19,6 +19,7 @@ if count(g:vimified_packages, 'general')
     "Bundle 'SirVer/ultisnips'
     "Bundle 'ervandew/supertab'
     Bundle 'vim-scripts/OmniCppComplete'
+    Bundle 'ntpeters/vim-better-whitespace'
     Bundle 'msanders/snipmate.vim'
     Bundle 'bling/vim-airline'
     Bundle 'bling/vim-bufferline'
@@ -38,7 +39,8 @@ endif
 "===============================================================================
 " GENERAL SETTINGS
 "===============================================================================
-syntax on            
+syntax on
+set background=dark
 colorscheme anotherdark
 
 filetype on
@@ -53,11 +55,9 @@ set autowrite                   " write a modified buffer on each :next , ...
 set backspace=indent,eol,start  " backspacing over everything in insert mode
 set browsedir=current           " which directory to use for the file browser
 
-" disabling vim's autocomment; 
+" disabling vim's autocomment;
 " see http://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
-set formatoptions-=c
-set formatoptions-=r 
-set formatoptions-=o
+set formatoptions-=cro
 
 set complete=.,w,b,u,t,k        " scan the files used for autocomplete, no 'i'
 
@@ -73,7 +73,7 @@ set visualbell                  " visual bell instead of beeping
 
 set nowrap                      " do not wrap lines
 set ruler                       " show the cursor position all the time
-set nu				" display line numbers
+set nu                          " display line numbers
 set showcmd                     " display incomplete commands
 set nolist
 
@@ -81,6 +81,8 @@ set wildignore=*.bak,*.o,*.e,*~ " wildmenu: ignore these extensions
 set wildmenu                    " command-line completion in an enhanced mode
 set colorcolumn=80
 set noswapfile
+
+"set t_Co=256                    " enable 256 colors in vim
 
 set laststatus=2
 "set statusline=[%n]\ %<%f\ %([%1*%M%*%R%Y]%)\ \ \ \ %=%-19(\LINE\ [%l/%L]\ COL\ [%02c%03V]%)\ %P
@@ -92,12 +94,12 @@ hi BadWhiteSpace ctermbg=red
 hi SpellBad ctermbg=LightBlue
 autocmd BufEnter *.h,*.cc,*.py match BadWhiteSpace /\s\+$/
 
-augroup common 
+augroup common
   autocmd!
   autocmd BufReadPost *
-  	\ if line("'\"") > 0 && line("'\"") <= line("$") |
-  	\   exe "normal! g`\"" |
-  	\ endif
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   autocmd BufRead,BufNewFile cpp,c set syntax=cpp11
   autocmd BufNewFile,BufRead,BufEnter *.cc,*.h set omnifunc=omni#cpp#complete#Main
@@ -105,14 +107,15 @@ augroup common
   autocmd FileType cpp,c set ai sw=2 ts=2 et fo=croql
   autocmd FileType cmake set ai sw=2 ts=2 et fo=croql
   autocmd FileType python set ai sw=4 ts=4 et fo=croql
-  autocmd FileType make set sw=4 ts=4 
+  autocmd FileType make set sw=4 ts=4 fo=croql
   autocmd FileType markdown set et sw=4 ts=4 et fo=croql
-  autocmd BufEnter *.proto set ai sw=4 ts=4 et fo=croql
+  autocmd BufEnter *.proto set ai sw=2 ts=2 et fo=croql
   autocmd BufEnter *.tex set ai sw=4 ts=4 et fo=croql
-  autocmd BufEnter *.sh set ai sw=4 ts=4 et fo=croql
+  autocmd BufEnter *.sh set ai sw=2 ts=2 et fo=croql
+  autocmd BufEnter *.zsh set ai sw=2 ts=2 et fo=croql
 augroup END
 
-" tagbar 
+" tagbar
  noremap <silent> <F11>  :TagbarToggle<CR>
 inoremap <silent> <F11>  :TagbarToggle<CR>
 let g:tagbar_left = 0
@@ -128,7 +131,7 @@ let g:tagbar_compact = 1
 "let g:miniBufExplModeSelTarget = 1
 "let g:miniBufExplForceSyntaxEnable= 1
 
-" NerdTreeToggle 
+" NerdTreeToggle
  noremap <silent> <F12>       :NERDTreeToggle<CR>
 inoremap <silent> <F12>       :NERDTreeToggle<CR>
 let g:NERDTreeWinSize = 25
@@ -139,36 +142,36 @@ let g:NERDTreeShowFiles = 1
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeQuitOnOpen = 1
 
-" gundoToggle 
+" gundoToggle
  noremap   <silent> <F10>       :GundoToggle<CR>
 inoremap   <silent> <F10>       :GundoToggle<CR>
 
-" supertab 
+" supertab
 "let g:SuperTabDefaultCompletionType = "context"
 
 " ctags
 set tags=./tags,tags
-augroup ctags 
+augroup ctags
   autocmd!
   autocmd BufWritePost *.c,*.cc,*.cpp,*.h silent! !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
 augroup END
 
 " OmniCPP complete
 let g:OmniCpp_GlobalScopeSearch = 0
-let g:OmniCpp_NamespaceSearch = 1		
-let g:OmniCpp_DisplayMode = 1			" always show all members 
+let g:OmniCpp_NamespaceSearch = 1
+let g:OmniCpp_DisplayMode = 1           " always show all members
 let g:OmniCpp_ShowScopeInAbbr = 1
-let g:OmniCpp_ShowPrototypeInAbbr = 1		" show function prototype in popup window
-let g:OmniCpp_ShowAccess = 1			" show accessbility 
-let g:OmniCpp_MayCompleteDot = 1		" autocomplete with .
-let g:OmniCpp_MayCompleteArrow = 1		" autocomplete with ->
-let g:OmniCpp_MayCompleteScope = 1		" autocomplete with ::
-let g:OmniCpp_SelectFirstItem = 2		" select first item (but don't insert)
-let g:OmniCpp_LocalSearchDecl = 1		" user local search function
+let g:OmniCpp_ShowPrototypeInAbbr = 1       " show function prototype in popup window
+let g:OmniCpp_ShowAccess = 1            " show accessbility
+let g:OmniCpp_MayCompleteDot = 1        " autocomplete with .
+let g:OmniCpp_MayCompleteArrow = 1      " autocomplete with ->
+let g:OmniCpp_MayCompleteScope = 1      " autocomplete with ::
+let g:OmniCpp_SelectFirstItem = 2       " select first item (but don't insert)
+let g:OmniCpp_LocalSearchDecl = 1       " user local search function
 set completeopt=menuone,longest,menu
 
 " DoxygenToolkit
-let g:DoxygenToolkit_commentType = "C++" 
+let g:DoxygenToolkit_commentType = "C++"
 let g:DoxygenToolkit_compactDoc = "yes" " compact doxygen
 
 " Pyflakes
@@ -182,3 +185,4 @@ let g:pyflakes_use_quickfix = 0
 "let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
+
