@@ -47,7 +47,7 @@ filetype plugin on
 filetype indent on
 
 set encoding=utf-8              " encoding using utf-8
-set noautoindent                 " copy indent from current line
+set noautoindent                " copy indent from current line
 set nosmartindent               " smart autoindenting when starting a new line
 set autoread                    " read open files again when changed outside Vim
 set autowrite                   " write a modified buffer on each :next , ...
@@ -83,18 +83,14 @@ set wildmenu                    " command-line completion in an enhanced mode
 set colorcolumn=80
 set noswapfile
 
-"set t_Co=256                    " enable 256 colors in vim
+"" enable 256 colors in vim; don't use this unless you have to
+"set t_Co=256
 
 set laststatus=2
-"set statusline=[%n]\ %<%f\ %([%1*%M%*%R%Y]%)\ \ \ \ %=%-19(\LINE\ [%l/%L]\ COL\ [%02c%03V]%)\ %P
-"set statusline=%{buftabs#statusline()}
 
+" match whole line
 nnoremap <silent> <Leader>l ml:execute 'match Search /\%'.line('.').'l/'<CR>
-
-hi BadWhiteSpace ctermbg=red
-hi SpellBad ctermbg=LightBlue
-autocmd BufEnter *.h,*.cc,*.py match BadWhiteSpace /\s\+$/
-
+" tabs to spaces
 augroup common
   autocmd!
   autocmd BufReadPost *
@@ -125,13 +121,6 @@ let g:tagbar_autofocus = 0
 let g:tagbar_sort = 1
 let g:tagbar_compact = 1
 
-" MiniBufExplor
-"let g:miniBufExplMapWindowNavVim = 1
-"let g:miniBufExplMapWindowNavArrows = 1
-"let g:miniBufExplMapCTabSwitchBufs = 1
-"let g:miniBufExplModeSelTarget = 1
-"let g:miniBufExplForceSyntaxEnable= 1
-
 " NerdTreeToggle
  noremap <silent> <F12>       :NERDTreeToggle<CR>
 inoremap <silent> <F12>       :NERDTreeToggle<CR>
@@ -147,15 +136,12 @@ let g:NERDTreeQuitOnOpen = 1
  noremap   <silent> <F10>       :GundoToggle<CR>
 inoremap   <silent> <F10>       :GundoToggle<CR>
 
-" supertab
-let g:SuperTabDefaultCompletionType = "context"
-
 " ctags
-"set tags=./tags,tags
-"augroup ctags
-"  autocmd!
-"  autocmd BufWritePost *.c,*.cc,*.cpp,*.h silent! !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
-"augroup END
+set tags=./tags,tags
+augroup ctags
+  autocmd!
+  autocmd BufWritePost *.c,*.cc,*.cpp,*.h silent! !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
+augroup END
 
 " OmniCPP complete
 let g:OmniCpp_GlobalScopeSearch = 0
@@ -193,4 +179,8 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " vim-indent-guides
-let g:indent_guides_auto_colors = 1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=darkgrey
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=grey
+let g:indent_guides_start_level = 1
+let g:indent_guides_enable_on_vim_startup = 1
