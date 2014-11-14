@@ -15,25 +15,22 @@ Bundle 'gmarik/vundle'
 
 if count(g:vimified_packages, 'general')
     "Bundle 'edkolev/tmuxline.vim'
+    Bundle 'lightmanhk/vim-colorschemes'
     Bundle 'Valloric/vim-operator-highlight'
     Bundle 'Valloric/vim-indent-guides'
     Bundle 'gagoar/StripWhiteSpaces'
     Bundle 'SirVer/ultisnips'
-    Bundle 'lightmanhk/vim-colorschemes'
     Bundle 'lightmanhk/vim-snippets'
     Bundle 'vim-scripts/OmniCppComplete'
-    "Bundle 'msanders/snipmate.vim'
     Bundle 'bling/vim-airline'
     Bundle 'bling/vim-bufferline'
     Bundle 'edsono/vim-matchit'
     Bundle 'scrooloose/nerdtree'
     Bundle 'mbriggs/mark.vim'
-    "Bundle 'ervandew/supertab'
     Bundle 'majutsushi/tagbar'
     Bundle 'mrtazz/DoxygenToolkit.vim'
     Bundle 'scrooloose/nerdcommenter'
     Bundle 'tpope/vim-unimpaired'
-    Bundle 'tpope/vim-afterimage'
     Bundle 'kevinw/pyflakes-vim'
     Bundle 'taxilian/a.vim'
 endif
@@ -42,8 +39,10 @@ endif
 " GENERAL SETTINGS
 "===============================================================================
 syntax on
-"colorscheme desert
+set background=dark
+colorscheme anotherdark
 
+filetype on
 filetype plugin on
 filetype indent on
 
@@ -75,7 +74,7 @@ set visualbell                  " visual bell instead of beeping
 
 set nowrap                      " do not wrap lines
 set ruler                       " show the cursor position all the time
-set nu				" display line numbers
+set nu                          " display line numbers
 set showcmd                     " display incomplete commands
 set nolist
 
@@ -84,6 +83,8 @@ set wildmenu                    " command-line completion in an enhanced mode
 set colorcolumn=80
 set noswapfile
 
+"set t_Co=256                    " enable 256 colors in vim
+
 set laststatus=2
 "set statusline=[%n]\ %<%f\ %([%1*%M%*%R%Y]%)\ \ \ \ %=%-19(\LINE\ [%l/%L]\ COL\ [%02c%03V]%)\ %P
 "set statusline=%{buftabs#statusline()}
@@ -91,25 +92,28 @@ set laststatus=2
 nnoremap <silent> <Leader>l ml:execute 'match Search /\%'.line('.').'l/'<CR>
 
 hi BadWhiteSpace ctermbg=red
+hi SpellBad ctermbg=LightBlue
 autocmd BufEnter *.h,*.cc,*.py match BadWhiteSpace /\s\+$/
 
 augroup common
   autocmd!
   autocmd BufReadPost *
-  	\ if line("'\"") > 0 && line("'\"") <= line("$") |
-  	\   exe "normal! g`\"" |
-  	\ endif
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   autocmd BufRead,BufNewFile cpp,c set syntax=cpp11
   autocmd BufNewFile,BufRead,BufEnter *.cc,*.h set omnifunc=omni#cpp#complete#Main
   autocmd FileType cpp set omnifunc=cppcomplete#CompleteCPP
-  autocmd FileType markdown set expandtab
   autocmd FileType cpp,c set ai sw=2 ts=2 et fo=croql
   autocmd FileType cmake set ai sw=2 ts=2 et fo=croql
   autocmd FileType python set ai sw=4 ts=4 et fo=croql
-  autocmd BufEnter *.proto set ai sw=4 ts=4 et fo=croql
+  autocmd FileType make set sw=4 ts=4 fo=croql
+  autocmd FileType markdown set et sw=4 ts=4 et fo=croql
+  autocmd BufEnter *.proto set ai sw=2 ts=2 et fo=croql
   autocmd BufEnter *.tex set ai sw=4 ts=4 et fo=croql
-  autocmd BufEnter *.sh set ai sw=4 ts=4 et fo=croql
+  autocmd BufEnter *.sh set ai sw=2 ts=2 et fo=croql
+  autocmd BufEnter *.zsh set ai sw=2 ts=2 et fo=croql
 augroup END
 
 " tagbar
@@ -122,11 +126,11 @@ let g:tagbar_sort = 1
 let g:tagbar_compact = 1
 
 " MiniBufExplor
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModeSelTarget = 1
-let g:miniBufExplForceSyntaxEnable= 1
+"let g:miniBufExplMapWindowNavVim = 1
+"let g:miniBufExplMapWindowNavArrows = 1
+"let g:miniBufExplMapCTabSwitchBufs = 1
+"let g:miniBufExplModeSelTarget = 1
+"let g:miniBufExplForceSyntaxEnable= 1
 
 " NerdTreeToggle
  noremap <silent> <F12>       :NERDTreeToggle<CR>
@@ -156,15 +160,15 @@ let g:SuperTabDefaultCompletionType = "context"
 " OmniCPP complete
 let g:OmniCpp_GlobalScopeSearch = 0
 let g:OmniCpp_NamespaceSearch = 1
-let g:OmniCpp_DisplayMode = 1			" always show all members
+let g:OmniCpp_DisplayMode = 1           " always show all members
 let g:OmniCpp_ShowScopeInAbbr = 1
-let g:OmniCpp_ShowPrototypeInAbbr = 1		" show function prototype in popup window
-let g:OmniCpp_ShowAccess = 1			" show accessbility
-let g:OmniCpp_MayCompleteDot = 1		" autocomplete with .
-let g:OmniCpp_MayCompleteArrow = 1		" autocomplete with ->
-let g:OmniCpp_MayCompleteScope = 1		" autocomplete with ::
-let g:OmniCpp_SelectFirstItem = 2		" select first item (but don't insert)
-let g:OmniCpp_LocalSearchDecl = 1		" user local search function
+let g:OmniCpp_ShowPrototypeInAbbr = 1       " show function prototype in popup window
+let g:OmniCpp_ShowAccess = 1            " show accessbility
+let g:OmniCpp_MayCompleteDot = 1        " autocomplete with .
+let g:OmniCpp_MayCompleteArrow = 1      " autocomplete with ->
+let g:OmniCpp_MayCompleteScope = 1      " autocomplete with ::
+let g:OmniCpp_SelectFirstItem = 2       " select first item (but don't insert)
+let g:OmniCpp_LocalSearchDecl = 1       " user local search function
 set completeopt=menuone,longest,menu
 
 " DoxygenToolkit
