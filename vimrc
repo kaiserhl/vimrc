@@ -15,16 +15,20 @@ Bundle 'gmarik/vundle'
 
 if count(g:vimified_packages, 'general')
     "Bundle 'edkolev/tmuxline.vim'
-    "Bundle 'vim-scripts/buftabs'
-    "Bundle 'SirVer/ultisnips'
+    Bundle 'Valloric/vim-operator-highlight'
+    Bundle 'Valloric/vim-indent-guides'
+    Bundle 'gagoar/StripWhiteSpaces'
+    Bundle 'SirVer/ultisnips'
+    Bundle 'lightmanhk/vim-colorschemes'
+    Bundle 'lightmanhk/vim-snippets'
     Bundle 'vim-scripts/OmniCppComplete'
-    Bundle 'msanders/snipmate.vim'
+    "Bundle 'msanders/snipmate.vim'
     Bundle 'bling/vim-airline'
     Bundle 'bling/vim-bufferline'
     Bundle 'edsono/vim-matchit'
     Bundle 'scrooloose/nerdtree'
     Bundle 'mbriggs/mark.vim'
-    Bundle 'ervandew/supertab'
+    "Bundle 'ervandew/supertab'
     Bundle 'majutsushi/tagbar'
     Bundle 'mrtazz/DoxygenToolkit.vim'
     Bundle 'scrooloose/nerdcommenter'
@@ -37,8 +41,8 @@ endif
 "===============================================================================
 " GENERAL SETTINGS
 "===============================================================================
-syntax on            
-"colorscheme desert 
+syntax on
+"colorscheme desert
 
 filetype plugin on
 filetype indent on
@@ -51,10 +55,10 @@ set autowrite                   " write a modified buffer on each :next , ...
 set backspace=indent,eol,start  " backspacing over everything in insert mode
 set browsedir=current           " which directory to use for the file browser
 
-" disabling vim's autocomment; 
+" disabling vim's autocomment;
 " see http://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
 set formatoptions-=c
-set formatoptions-=r 
+set formatoptions-=r
 set formatoptions-=o
 
 set complete=.,w,b,u,t,k        " scan the files used for autocomplete, no 'i'
@@ -89,7 +93,7 @@ nnoremap <silent> <Leader>l ml:execute 'match Search /\%'.line('.').'l/'<CR>
 hi BadWhiteSpace ctermbg=red
 autocmd BufEnter *.h,*.cc,*.py match BadWhiteSpace /\s\+$/
 
-augroup common 
+augroup common
   autocmd!
   autocmd BufReadPost *
   	\ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -108,7 +112,7 @@ augroup common
   autocmd BufEnter *.sh set ai sw=4 ts=4 et fo=croql
 augroup END
 
-" tagbar 
+" tagbar
  noremap <silent> <F11>  :TagbarToggle<CR>
 inoremap <silent> <F11>  :TagbarToggle<CR>
 let g:tagbar_left = 0
@@ -124,7 +128,7 @@ let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModeSelTarget = 1
 let g:miniBufExplForceSyntaxEnable= 1
 
-" NerdTreeToggle 
+" NerdTreeToggle
  noremap <silent> <F12>       :NERDTreeToggle<CR>
 inoremap <silent> <F12>       :NERDTreeToggle<CR>
 let g:NERDTreeWinSize = 25
@@ -135,27 +139,27 @@ let g:NERDTreeShowFiles = 1
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeQuitOnOpen = 1
 
-" gundoToggle 
+" gundoToggle
  noremap   <silent> <F10>       :GundoToggle<CR>
 inoremap   <silent> <F10>       :GundoToggle<CR>
 
-" supertab 
+" supertab
 let g:SuperTabDefaultCompletionType = "context"
 
 " ctags
 "set tags=./tags,tags
-augroup ctags 
-  autocmd!
-  autocmd BufWritePost *.c,*.cc,*.cpp,*.h silent! !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
-augroup END
+"augroup ctags
+"  autocmd!
+"  autocmd BufWritePost *.c,*.cc,*.cpp,*.h silent! !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
+"augroup END
 
 " OmniCPP complete
 let g:OmniCpp_GlobalScopeSearch = 0
-let g:OmniCpp_NamespaceSearch = 1		
-let g:OmniCpp_DisplayMode = 1			" always show all members 
+let g:OmniCpp_NamespaceSearch = 1
+let g:OmniCpp_DisplayMode = 1			" always show all members
 let g:OmniCpp_ShowScopeInAbbr = 1
 let g:OmniCpp_ShowPrototypeInAbbr = 1		" show function prototype in popup window
-let g:OmniCpp_ShowAccess = 1			" show accessbility 
+let g:OmniCpp_ShowAccess = 1			" show accessbility
 let g:OmniCpp_MayCompleteDot = 1		" autocomplete with .
 let g:OmniCpp_MayCompleteArrow = 1		" autocomplete with ->
 let g:OmniCpp_MayCompleteScope = 1		" autocomplete with ::
@@ -164,7 +168,7 @@ let g:OmniCpp_LocalSearchDecl = 1		" user local search function
 set completeopt=menuone,longest,menu
 
 " DoxygenToolkit
-let g:DoxygenToolkit_commentType = "C++" 
+let g:DoxygenToolkit_commentType = "C++"
 let g:DoxygenToolkit_compactDoc = "yes" " compact doxygen
 
 " Pyflakes
@@ -178,3 +182,11 @@ let g:pyflakes_use_quickfix = 0
 "let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
+
+
+" UltiSnips
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" vim-indent-guides
+let g:indent_guides_auto_colors = 1
