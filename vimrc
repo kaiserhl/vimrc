@@ -90,6 +90,7 @@ set laststatus=2
 
 " match whole line
 nnoremap <silent> <Leader>l ml:execute 'match Search /\%'.line('.').'l/'<CR>
+
 " tabs to spaces
 augroup common
   autocmd!
@@ -140,7 +141,7 @@ inoremap   <silent> <F10>       :GundoToggle<CR>
 set tags=./tags,tags
 augroup ctags
   autocmd!
-  autocmd BufWritePost *.c,*.cc,*.cpp,*.h silent! !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
+  autocmd BufWritePost *.c,*.cc,*.cpp,*.h silent! !/opt/local/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
 augroup END
 
 " OmniCPP complete
@@ -164,15 +165,10 @@ let g:DoxygenToolkit_compactDoc = "yes" " compact doxygen
 " Pyflakes
 let g:pyflakes_use_quickfix = 0
 
-" buftabs
-"let g:buftabs_only_basename=1
-"let g:buftabs_in_statusline=2
-
 " airline
 "let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
-
 
 " UltiSnips
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
