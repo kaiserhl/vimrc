@@ -17,7 +17,6 @@ if count(g:vimified_packages, 'general')
     "Bundle 'edkolev/tmuxline.vim'
     Bundle 'lightmanhk/vim-colorschemes'
     Bundle 'Valloric/vim-operator-highlight'
-    Bundle 'Valloric/vim-indent-guides'
     Bundle 'gagoar/StripWhiteSpaces'
     Bundle 'SirVer/ultisnips'
     Bundle 'lightmanhk/vim-snippets'
@@ -138,10 +137,10 @@ inoremap   <silent> <F10>       :GundoToggle<CR>
 
 " ctags
 set tags=./tags,tags
-augroup ctags
-  autocmd!
-  autocmd BufWritePost *.c,*.cc,*.cpp,*.h silent! !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
-augroup END
+"augroup ctags
+"  autocmd!
+"  autocmd BufWritePost *.c,*.cc,*.cpp,*.h silent! !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
+"augroup END
 
 " OmniCPP complete
 let g:OmniCpp_GlobalScopeSearch = 0
