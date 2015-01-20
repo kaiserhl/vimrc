@@ -1,18 +1,14 @@
 set nocompatible
-filetype on
 filetype off
-
-source ~/.vim/functions/util.vim
 
 if ! exists('g:vimified_packages')
     let g:vimified_packages = ['general', ]
 endif
 
-let s:bundle_path=$HOME."/.vim/bundle/"
-execute "set rtp+=".s:bundle_path."vundle/"
+set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
-Bundle 'gmarik/vundle'
 
+Bundle 'gmarik/vundle'
 if count(g:vimified_packages, 'general')
     "Bundle 'edkolev/tmuxline.vim'
     Bundle 'lightmanhk/vim-colorschemes'
