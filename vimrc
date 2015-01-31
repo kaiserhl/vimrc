@@ -133,10 +133,10 @@ inoremap   <silent> <F10>       :GundoToggle<CR>
 
 " ctags
 set tags=./tags,tags
-"augroup ctags
-"  autocmd!
-"  autocmd BufWritePost *.c,*.cc,*.cpp,*.h silent! !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
-"augroup END
+augroup ctags
+  autocmd!
+  autocmd BufWritePost *.c,*.cc,*.cpp,*.h silent! !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
+augroup END
 
 " OmniCPP complete
 let g:OmniCpp_GlobalScopeSearch = 0
