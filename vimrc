@@ -11,6 +11,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 if count(g:vimified_packages, 'general')
     "Bundle 'edkolev/tmuxline.vim'
+    "Bundle 'bling/vim-bufferline'
     Bundle 'lightmanhk/vim-colorschemes'
     Bundle 'Valloric/vim-operator-highlight'
     Bundle 'gagoar/StripWhiteSpaces'
@@ -18,8 +19,9 @@ if count(g:vimified_packages, 'general')
     Bundle 'lightmanhk/vim-snippets'
     Bundle 'vim-scripts/OmniCppComplete'
     Bundle 'bling/vim-airline'
-    Bundle 'bling/vim-bufferline'
-    Bundle 'edsono/vim-matchit'
+    Bundle 'jeetsukumaran/vim-filebeagle'
+    "Bundle 'Shougo/vimfiler.vim'
+    "Bundle 'Shougo/unite.vim'
     Bundle 'scrooloose/nerdtree'
     Bundle 'mbriggs/mark.vim'
     Bundle 'majutsushi/tagbar'
@@ -28,6 +30,9 @@ if count(g:vimified_packages, 'general')
     Bundle 'tpope/vim-unimpaired'
     Bundle 'kevinw/pyflakes-vim'
     Bundle 'taxilian/a.vim'
+    Bundle 'sukima/xmledit'
+    Bundle 'spolu/dwm.vim'
+    Bundle 'tpope/vim-eunuch'
 endif
 
 "===============================================================================
@@ -62,7 +67,7 @@ set hlsearch                    " highlight the last used search pattern
 set incsearch                   " do incremental searching
 
 set listchars=tab:>.,eol:\$     " strings to use in 'list' mode
-set mouse=a                     " enable the use of the mouse
+"set mouse=a                     " enable the use of the mouse
 set popt=left:8pc,right:3pc     " print options
 set visualbell                  " visual bell instead of beeping
 "set noerrorbells visualbell t_vb=
@@ -101,10 +106,13 @@ augroup common
   autocmd FileType python set ai sw=4 ts=4 et fo=croql
   autocmd FileType make set sw=4 ts=4 fo=croql
   autocmd FileType markdown set et sw=4 ts=4 et fo=croql
+  autocmd FileType java set et sw=4 ts=4 et fo=croql
+  autocmd BufEnter *.gradle set ai sw=4 ts=4 et fo=croql
   autocmd BufEnter *.proto set ai sw=2 ts=2 et fo=croql
   autocmd BufEnter *.tex set ai sw=4 ts=4 et fo=croql
   autocmd BufEnter *.sh set ai sw=2 ts=2 et fo=croql
   autocmd BufEnter *.zsh set ai sw=2 ts=2 et fo=croql
+  autocmd BufEnter *.xml set ai sw=2 ts=2 et fo=croql
 augroup END
 
 " tagbar
@@ -126,17 +134,18 @@ let g:NERDTreeShowBookmarks = 1
 let g:NERDTreeShowFiles = 1
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeQuitOnOpen = 1
+let g:NERDTreeMapJumpNextSibling = ""
+let g:NERDTreeMapJumpPrevSibling = ""
 
 " gundoToggle
  noremap   <silent> <F10>       :GundoToggle<CR>
 inoremap   <silent> <F10>       :GundoToggle<CR>
 
-" ctags
-set tags=./tags,tags
-augroup ctags
-  autocmd!
-  autocmd BufWritePost *.c,*.cc,*.cpp,*.h silent! !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
-augroup END
+" ctags set tags=./tags,tags
+"augroup ctags
+"  autocmd!
+"  autocmd BufWritePost *.c,*.cc,*.cpp,*.h silent! !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
+"augroup END
 
 " OmniCPP complete
 let g:OmniCpp_GlobalScopeSearch = 0
@@ -166,7 +175,6 @@ let g:pyflakes_use_quickfix = 0
 " airline
 "let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
 
 
 " UltiSnips
@@ -179,3 +187,17 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=darkgrey
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=grey
 let g:indent_guides_start_level = 1
 let g:indent_guides_enable_on_vim_startup = 1
+
+" create intermediate directories on the fly
+function s:MkNonExDir(file, buf)
+    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+        let dir=fnamemodify(a:file, ':h')
+        if !isdirectory(dir)
+            call mkdir(dir, 'p')
+        endif
+    endif
+endfunction
+augroup BWCCreateDir
+    autocmd!
+    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+augroup END
