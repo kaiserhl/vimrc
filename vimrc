@@ -22,6 +22,7 @@ if count(g:vimified_packages, 'general')
     Bundle 'jeetsukumaran/vim-filebeagle'
     "Bundle 'Shougo/vimfiler.vim'
     "Bundle 'Shougo/unite.vim'
+    Bundle 'nathanaelkane/vim-indent-guides'
     Bundle 'scrooloose/nerdtree'
     Bundle 'mbriggs/mark.vim'
     Bundle 'majutsushi/tagbar'
@@ -181,10 +182,10 @@ let g:DoxygenToolkit_compactDoc = "yes" " compact doxygen
 let g:pyflakes_use_quickfix = 0
 
 " airline
-"let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 
-" UltiSnips
+" UltiSnips TODO
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
