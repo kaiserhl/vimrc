@@ -44,6 +44,8 @@ filetype indent on
 set encoding=utf-8              " encoding using utf-8
 set noautoindent                " copy indent from current line
 set nosmartindent               " smart autoindenting when starting a new line
+set nocindent
+set indentexpr=
 set autoread                    " read open files again when changed outside Vim
 set autowrite                   " write a modified buffer on each :next , ...
 set backspace=indent,eol,start  " backspacing over everything in insert mode
