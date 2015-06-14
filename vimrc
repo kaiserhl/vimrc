@@ -85,13 +85,14 @@ set wildmenu                    " command-line completion in an enhanced mode
 set colorcolumn=80
 set noswapfile
 
+set laststatus=2
+
 "" enable 256 colors in vim; don't use this unless you have to
 "set t_Co=256
 
-set laststatus=2
-
 " match whole line
 nnoremap <silent> <Leader>l ml:execute 'match Search /\%'.line('.').'l/'<CR>
+
 " tabs to spaces
 augroup common
   autocmd!
@@ -109,12 +110,12 @@ augroup common
   autocmd FileType make set sw=4 ts=4 fo=croql
   autocmd FileType markdown set et sw=4 ts=4 et fo=croql
   autocmd FileType java set et sw=4 ts=4 et fo=croql
+  autocmd FileType vim set et sw=2 ts=2 et fo=croql
+  autocmd FileType xml set ai sw=2 ts=2 et fo=croql
+  autocmd FileType sh set ai sw=2 ts=2 et fo=croql
+  autocmd FileType proto set ai sw=2 ts=2 et fo=croql
+  autocmd FileType plaintex set ai sw=4 ts=4 et fo=croql
   autocmd BufEnter *.gradle set ai sw=4 ts=4 et fo=croql
-  autocmd BufEnter *.proto set ai sw=2 ts=2 et fo=croql
-  autocmd BufEnter *.tex set ai sw=4 ts=4 et fo=croql
-  autocmd BufEnter *.sh set ai sw=2 ts=2 et fo=croql
-  autocmd BufEnter *.zsh set ai sw=2 ts=2 et fo=croql
-  autocmd BufEnter *.xml set ai sw=2 ts=2 et fo=croql
 augroup END
 
 " tagbar
@@ -143,11 +144,20 @@ let g:NERDTreeMapJumpPrevSibling = ""
  noremap   <silent> <F10>       :GundoToggle<CR>
 inoremap   <silent> <F10>       :GundoToggle<CR>
 
-" ctags set tags=./tags,tags
-"augroup ctags
-"  autocmd!
-"  autocmd BufWritePost *.c,*.cc,*.cpp,*.h silent! !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
-"augroup END
+" ctags
+if has('win32') || has('win16')
+elseif has('unix')
+  set tags=./tags,tags
+  augroup ctags
+    autocmd!
+    autocmd BufWritePost *.c,*.cc,*.cpp,*.h silent! !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
+  augroup END
+elseif has('mac')
+  augroup ctags
+    autocmd!
+    autocmd BufWritePost *.c,*.cc,*.cpp,*.h silent! !/opt/local/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
+  augroup END
+endif
 
 " OmniCPP complete
 let g:OmniCpp_GlobalScopeSearch = 0
@@ -170,14 +180,9 @@ let g:DoxygenToolkit_compactDoc = "yes" " compact doxygen
 " Pyflakes
 let g:pyflakes_use_quickfix = 0
 
-" buftabs
-"let g:buftabs_only_basename=1
-"let g:buftabs_in_statusline=2
-
 " airline
 "let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
-
 
 " UltiSnips
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
