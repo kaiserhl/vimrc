@@ -22,7 +22,7 @@ if count(g:vimified_packages, 'general')
     Bundle 'jeetsukumaran/vim-filebeagle'
     "Bundle 'Shougo/vimfiler.vim'
     "Bundle 'Shougo/unite.vim'
-    Bundle 'nathanaelkane/vim-indent-guides'
+    "Bundle 'nathanaelkane/vim-indent-guides'
     Bundle 'scrooloose/nerdtree'
     Bundle 'mbriggs/mark.vim'
     Bundle 'majutsushi/tagbar'
