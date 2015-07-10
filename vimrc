@@ -20,9 +20,10 @@ if count(g:vimified_packages, 'general')
     Bundle 'vim-scripts/OmniCppComplete'
     Bundle 'bling/vim-airline'
     Bundle 'jeetsukumaran/vim-filebeagle'
+    "Bundle 'vim-scripts/closetag.vim'
     "Bundle 'Shougo/vimfiler.vim'
     "Bundle 'Shougo/unite.vim'
-    Bundle 'nathanaelkane/vim-indent-guides'
+    "Bundle 'nathanaelkane/vim-indent-guides'
     Bundle 'scrooloose/nerdtree'
     Bundle 'mbriggs/mark.vim'
     Bundle 'majutsushi/tagbar'
@@ -32,7 +33,7 @@ if count(g:vimified_packages, 'general')
     Bundle 'kevinw/pyflakes-vim'
     Bundle 'taxilian/a.vim'
     Bundle 'sukima/xmledit'
-    Bundle 'spolu/dwm.vim'
+    "Bundle 'spolu/dwm.vim'
     Bundle 'tpope/vim-eunuch'
 endif
 
@@ -49,7 +50,7 @@ filetype indent on
 
 set encoding=utf-8              " encoding using utf-8
 set noautoindent                " copy indent from current line
-set nosmartindent               " smart autoindenting when starting a new line
+set smartindent                 " smart autoindenting when starting a new line
 set nocindent
 set indentexpr=
 set autoread                    " read open files again when changed outside Vim
@@ -104,6 +105,7 @@ augroup common
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   autocmd BufRead,BufNewFile cpp,c set syntax=cpp11
   autocmd BufNewFile,BufRead,BufEnter *.cc,*.h set omnifunc=omni#cpp#complete#Main
+  autocmd BufNewFile,BufRead,BufEnter *.html,*.css set omnifunc=htmlcomplete#CompleteTags
   autocmd FileType cpp set omnifunc=cppcomplete#CompleteCPP
   autocmd FileType cpp,c set ai sw=2 ts=2 et fo=croql
   autocmd FileType cmake set ai sw=2 ts=2 et fo=croql
@@ -116,6 +118,8 @@ augroup common
   autocmd FileType sh set ai sw=2 ts=2 et fo=croql
   autocmd FileType proto set ai sw=2 ts=2 et fo=croql
   autocmd FileType plaintex set ai sw=4 ts=4 et fo=croql
+  autocmd FileType javascript set ai sw=2 ts=2 et fo=croql
+  autocmd FileType html set ai sw=2 ts=2 et fo=croql
   autocmd BufEnter *.gradle set ai sw=4 ts=4 et fo=croql
 augroup END
 
@@ -184,6 +188,9 @@ let g:pyflakes_use_quickfix = 0
 " airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
+"let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#buffer_nr_format = '%s: '
 
 " UltiSnips TODO
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
