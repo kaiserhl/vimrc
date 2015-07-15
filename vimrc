@@ -32,7 +32,7 @@ if count(g:vimified_packages, 'general')
     Bundle 'kevinw/pyflakes-vim'
     Bundle 'taxilian/a.vim'
     Bundle 'sukima/xmledit'
-    Bundle 'spolu/dwm.vim'
+    "Bundle 'spolu/dwm.vim'
     Bundle 'tpope/vim-eunuch'
 endif
 
@@ -110,9 +110,10 @@ augroup common
   autocmd FileType python set ai sw=4 ts=4 et fo=croql
   autocmd FileType make set sw=4 ts=4 fo=croql
   autocmd FileType markdown set et sw=4 ts=4 et fo=croql
-  autocmd FileType java set et sw=4 ts=4 et fo=croql
+  autocmd FileType java set et sw=2 ts=2 et fo=croql
   autocmd FileType vim set et sw=2 ts=2 et fo=croql
   autocmd FileType xml set ai sw=2 ts=2 et fo=croql
+  autocmd FileType html set ai sw=2 ts=2 et fo=croql
   autocmd FileType sh set ai sw=2 ts=2 et fo=croql
   autocmd FileType proto set ai sw=2 ts=2 et fo=croql
   autocmd FileType plaintex set ai sw=4 ts=4 et fo=croql
@@ -149,10 +150,10 @@ inoremap   <silent> <F10>       :GundoToggle<CR>
 if has('win32') || has('win16')
 elseif has('unix')
   set tags=./tags,tags
-  augroup ctags
-    autocmd!
-    autocmd BufWritePost *.c,*.cc,*.cpp,*.h silent! !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
-  augroup END
+  "augroup ctags
+  "  autocmd!
+  "  autocmd BufWritePost *.c,*.cc,*.cpp,*.h silent! !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
+  "augroup END
 elseif has('mac')
   augroup ctags
     autocmd!
@@ -184,6 +185,7 @@ let g:pyflakes_use_quickfix = 0
 " airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " UltiSnips TODO
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
