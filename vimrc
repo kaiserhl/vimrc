@@ -2,7 +2,7 @@ set nocompatible
 filetype off
 
 if ! exists('g:vimified_packages')
-    let g:vimified_packages = ['general', ]
+  let g:vimified_packages = ['general', ]
 endif
 
 set rtp+=~/.vim/bundle/vundle
@@ -10,31 +10,31 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 if count(g:vimified_packages, 'general')
-    "Bundle 'edkolev/tmuxline.vim'
-    "Bundle 'bling/vim-bufferline'
-    Bundle 'lightmanhk/vim-colorschemes'
-    Bundle 'Valloric/vim-operator-highlight'
-    Bundle 'gagoar/StripWhiteSpaces'
-    Bundle 'SirVer/ultisnips'
-    Bundle 'lightmanhk/vim-snippets'
-    Bundle 'vim-scripts/OmniCppComplete'
-    Bundle 'bling/vim-airline'
-    Bundle 'jeetsukumaran/vim-filebeagle'
-    "Bundle 'vim-scripts/closetag.vim'
-    "Bundle 'Shougo/vimfiler.vim'
-    "Bundle 'Shougo/unite.vim'
-    "Bundle 'nathanaelkane/vim-indent-guides'
-    Bundle 'scrooloose/nerdtree'
-    Bundle 'mbriggs/mark.vim'
-    Bundle 'majutsushi/tagbar'
-    Bundle 'mrtazz/DoxygenToolkit.vim'
-    Bundle 'scrooloose/nerdcommenter'
-    Bundle 'tpope/vim-unimpaired'
-    Bundle 'kevinw/pyflakes-vim'
-    Bundle 'taxilian/a.vim'
-    Bundle 'sukima/xmledit'
-    "Bundle 'spolu/dwm.vim'
-    Bundle 'tpope/vim-eunuch'
+  "Bundle 'edkolev/tmuxline.vim'
+  "Bundle 'bling/vim-bufferline'
+  Bundle 'lightmanhk/vim-colorschemes'
+  Bundle 'Valloric/vim-operator-highlight'
+  Bundle 'gagoar/StripWhiteSpaces'
+  Bundle 'SirVer/ultisnips'
+  Bundle 'lightmanhk/vim-snippets'
+  Bundle 'vim-scripts/OmniCppComplete'
+  Bundle 'bling/vim-airline'
+  Bundle 'jeetsukumaran/vim-filebeagle'
+  "Bundle 'vim-scripts/closetag.vim'
+  "Bundle 'Shougo/vimfiler.vim'
+  "Bundle 'Shougo/unite.vim'
+  "Bundle 'nathanaelkane/vim-indent-guides'
+  Bundle 'scrooloose/nerdtree'
+  Bundle 'mbriggs/mark.vim'
+  Bundle 'majutsushi/tagbar'
+  Bundle 'mrtazz/DoxygenToolkit.vim'
+  Bundle 'scrooloose/nerdcommenter'
+  Bundle 'tpope/vim-unimpaired'
+  Bundle 'kevinw/pyflakes-vim'
+  Bundle 'lightmanhk/a.vim'
+  Bundle 'sukima/xmledit'
+  "Bundle 'spolu/dwm.vim'
+  Bundle 'tpope/vim-eunuch'
 endif
 
 "===============================================================================
@@ -99,9 +99,9 @@ nnoremap <silent> <Leader>l ml:execute 'match Search /\%'.line('.').'l/'<CR>
 augroup common
   autocmd!
   autocmd BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \   exe "normal! g`\"" |
+        \ endif
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   autocmd BufRead,BufNewFile cpp,c set syntax=cpp11
   autocmd BufNewFile,BufRead,BufEnter *.cc,*.h set omnifunc=omni#cpp#complete#Main
@@ -124,7 +124,7 @@ augroup common
 augroup END
 
 " tagbar
- noremap <silent> <F11>  :TagbarToggle<CR>
+noremap <silent> <F11>  :TagbarToggle<CR>
 inoremap <silent> <F11>  :TagbarToggle<CR>
 let g:tagbar_left = 0
 let g:tagbar_width = 30
@@ -133,7 +133,7 @@ let g:tagbar_sort = 1
 let g:tagbar_compact = 1
 
 " NerdTreeToggle
- noremap <silent> <F12>       :NERDTreeToggle<CR>
+noremap <silent> <F12>       :NERDTreeToggle<CR>
 inoremap <silent> <F12>       :NERDTreeToggle<CR>
 let g:NERDTreeWinSize = 25
 let g:NERDTreeCaseSensitiveSort = 1
@@ -146,23 +146,26 @@ let g:NERDTreeMapJumpNextSibling = ""
 let g:NERDTreeMapJumpPrevSibling = ""
 
 " gundoToggle
- noremap   <silent> <F10>       :GundoToggle<CR>
-inoremap   <silent> <F10>       :GundoToggle<CR>
+noremap  <silent> <F10> :GundoToggle<CR>
+inoremap <silent> <F10> :GundoToggle<CR>
 
 " ctags
+set tags=./tags,tags
 if has('win32') || has('win16')
 elseif has('unix')
-  set tags=./tags,tags
-  augroup ctags
+  augroup ctags_cxx
     autocmd!
-    autocmd BufWritePost *.c,*.cc,*.cpp,*.h silent! !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
+    autocmd FileType cpp noremap <silent> <F2> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
   augroup END
 elseif has('mac')
-  augroup ctags
+  augroup ctags_cxx
     autocmd!
-    autocmd BufWritePost *.c,*.cc,*.cpp,*.h silent! !/opt/local/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
+    autocmd FileType cpp noremap <silent> <F2> :!/opt/local/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
   augroup END
 endif
+
+
+" TODO a.vim AlternateExtensions is broken; have to forked it to customize
 
 " OmniCPP complete
 let g:OmniCpp_GlobalScopeSearch = 0
@@ -205,14 +208,14 @@ let g:indent_guides_enable_on_vim_startup = 1
 
 " create intermediate directories on the fly
 function s:MkNonExDir(file, buf)
-    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
-        let dir=fnamemodify(a:file, ':h')
-        if !isdirectory(dir)
-            call mkdir(dir, 'p')
-        endif
+  if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+    let dir=fnamemodify(a:file, ':h')
+    if !isdirectory(dir)
+      call mkdir(dir, 'p')
     endif
+  endif
 endfunction
 augroup BWCCreateDir
-    autocmd!
-    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+  autocmd!
+  autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
