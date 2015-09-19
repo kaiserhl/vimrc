@@ -35,6 +35,7 @@ if count(g:vimified_packages, 'general')
   Bundle 'sukima/xmledit'
   "Bundle 'spolu/dwm.vim'
   Bundle 'tpope/vim-eunuch'
+  Bundle 'kien/ctrlp.vim'
 endif
 
 "===============================================================================
@@ -112,6 +113,7 @@ augroup common
   autocmd FileType python set ai sw=4 ts=4 et fo=croql
   autocmd FileType make set ai sw=4 ts=4 fo=croql
   autocmd FileType markdown set ai sw=2 ts=2 et fo=croql
+  autocmd FileType yaml set ai sw=2 ts=2 et fo=croql
   autocmd FileType java set ai sw=2 ts=2 et fo=croql
   autocmd FileType vim set ai sw=2 ts=2 et fo=croql
   autocmd FileType xml set ai sw=2 ts=2 et fo=croql
@@ -209,6 +211,14 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=darkgrey
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=grey
 let g:indent_guides_start_level = 1
 let g:indent_guides_enable_on_vim_startup = 1
+
+" ctrl-p
+let g:ctrlp_map = '<c-l>'
+let g:ctrlp_by_filename = 1
+let g:ctrlp_regexp = 0
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:10'
+let g:ctrlp_switch_buffer = 'ev'
+let g:ctrlp_working_path_mode = 'c'
 
 " create intermediate directories on the fly
 function s:MkNonExDir(file, buf)
