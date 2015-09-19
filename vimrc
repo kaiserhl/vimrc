@@ -50,7 +50,6 @@ filetype indent on
 set encoding=utf-8              " encoding using utf-8
 set noautoindent                " copy indent from current line
 set smartindent                 " smart autoindenting when starting a new line
-set nocindent
 set indentexpr=
 set autoread                    " read open files again when changed outside Vim
 set autowrite                   " write a modified buffer on each :next , ...
@@ -109,6 +108,7 @@ augroup common
   autocmd FileType cpp,c set ai sw=2 ts=2 et fo=croql
   autocmd FileType cmake set ai sw=2 ts=2 et fo=croql
   autocmd FileType python set ai sw=4 ts=4 et fo=croql
+  autocmd FileType lua set ai sw=4 ts=4 et fo=croql
   autocmd FileType sh set ai sw=2 ts=2 et fo=croql
   autocmd FileType zsh set ai sw=2 ts=2 et fo=croql
   autocmd FileType make set ai sw=4 ts=4 fo=croql
@@ -263,7 +263,7 @@ set indentexpr=GoogleCppIndent()
 " map  <F5> <Esc>:!python ~/code/chromium/src/cef/tools/check_style.py %:p 2> lint.out<CR>:cfile lint.out<CR>:silent !rm lint.out<CR>:redraw!<CR>:cc<CR>
 "endfunction
 
-"" From https://github.com/vim-scripts/google.vim/blob/master/indent/google.vim
+""" From https://github.com/vim-scripts/google.vim/blob/master/indent/google.vim
 function! GoogleCppIndent()
   let l:cline_num = line('.')
 
