@@ -39,9 +39,7 @@ if count(g:vimified_packages, 'general')
   "Bundle 'd11wtq/ctrlp_bdelete.vim'
 endif
 
-"===============================================================================
-" GENERAL SETTINGS
-"===============================================================================
+""" General Settings
 syntax on
 set background=dark
 colorscheme anotherdark
@@ -53,7 +51,6 @@ filetype indent on
 set encoding=utf-8              " encoding using utf-8
 set noautoindent                " copy indent from current line
 set smartindent                 " smart autoindenting when starting a new line
-set nocindent
 set indentexpr=
 set autoread                    " read open files again when changed outside Vim
 set autowrite                   " write a modified buffer on each :next , ...
@@ -91,13 +88,13 @@ set noswapfile
 
 set laststatus=2
 
-"" enable 256 colors in vim; don't use this unless you have to
+""" enable 256 colors in vim; don't use this unless you have to
 "set t_Co=256
 
-" match whole line
+""" match whole line
 nnoremap <silent> <Leader>l ml:execute 'match Search /\%'.line('.').'l/'<CR>
 
-" tabs to spaces
+""" tabs to spaces
 augroup common
   autocmd!
   autocmd BufReadPost *
@@ -112,6 +109,9 @@ augroup common
   autocmd FileType cpp,c set ai sw=2 ts=2 et fo=croql
   autocmd FileType cmake set ai sw=2 ts=2 et fo=croql
   autocmd FileType python set ai sw=4 ts=4 et fo=croql
+  autocmd FileType lua set ai sw=4 ts=4 et fo=croql
+  autocmd FileType sh set ai sw=2 ts=2 et fo=croql
+  autocmd FileType zsh set ai sw=2 ts=2 et fo=croql
   autocmd FileType make set ai sw=4 ts=4 fo=croql
   autocmd FileType markdown set ai sw=2 ts=2 et fo=croql
   autocmd FileType yaml set ai sw=2 ts=2 et fo=croql
@@ -123,13 +123,16 @@ augroup common
   autocmd FileType sql set ai sw=2 ts=2 et fo=croql
   autocmd FileType proto set ai sw=2 ts=2 et fo=croql
   autocmd FileType plaintex set ai sw=4 ts=4 et fo=croql
+  autocmd FileType dot set ai sw=4 ts=4 et fo=croql
   autocmd FileType javascript set ai sw=2 ts=2 et fo=croql
   autocmd FileType html set ai sw=2 ts=2 et fo=croql
   autocmd FileType svn set ai sw=2 ts=2 et fo=croql
+  autocmd FileType json set ai sw=2 ts=2 et fo=croql
+  autocmd FileType asm set ai sw=4 ts=4 et fo=croql
   autocmd BufEnter *.gradle set ai sw=4 ts=4 et fo=croql
 augroup END
 
-" tagbar
+""" tagbar
 noremap <silent> <F11>  :TagbarToggle<CR>
 inoremap <silent> <F11>  :TagbarToggle<CR>
 let g:tagbar_left = 0
@@ -152,11 +155,11 @@ let g:NERDTreeMapJumpNextSibling = ""
 let g:NERDTreeMapJumpPrevSibling = ""
 let g:NERDTreeIgnore = ['\.pyc$[[file]]', '\.svn$[[dir]]', '\.class$[[file]]', '\.jar$[[file]]', '\.git$[[dir]]']
 
-" gundoToggle
+""" gundoToggle
 noremap  <silent> <F10> :GundoToggle<CR>
 inoremap <silent> <F10> :GundoToggle<CR>
 
-" ctags
+""" ctags
 set tags=./tags,tags
 if has('win32') || has('win16')
 elseif has('unix')
@@ -171,9 +174,10 @@ elseif has('mac')
   augroup END
 endif
 
-" TODO a.vim AlternateExtensions is broken; have to forked it to customize
+""" FIXME(lightmanhk) a.vim AlternateExtensions is broken; have to forked it to
+""" customize
 
-" OmniCPP complete
+""" OmniCPP complete
 let g:OmniCpp_GlobalScopeSearch = 0
 let g:OmniCpp_NamespaceSearch = 1
 let g:OmniCpp_DisplayMode = 1           " always show all members
@@ -187,32 +191,32 @@ let g:OmniCpp_SelectFirstItem = 2       " select first item (but don't insert)
 let g:OmniCpp_LocalSearchDecl = 1       " user local search function
 set completeopt=menuone,longest,menu
 
-" DoxygenToolkit
+""" DoxygenToolkit
 let g:DoxygenToolkit_commentType = "C++"
 let g:DoxygenToolkit_compactDoc = "yes" " compact doxygen
 
-" Pyflakes
+""" Pyflakes
 let g:pyflakes_use_quickfix = 0
 
-" airline
+""" airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 "let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#buffer_nr_format = '%s: '
 
-" UltiSnips TODO
+""" UltiSnips TODO
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-" vim-indent-guides
+""" vim-indent-guides
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=darkgrey
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=grey
 let g:indent_guides_start_level = 1
 let g:indent_guides_enable_on_vim_startup = 1
 
-" ctrl-p
+""" ctrl-p
 let g:ctrlp_map = '<c-l>'
 let g:ctrlp_by_filename = 1
 let g:ctrlp_regexp = 0
@@ -254,3 +258,87 @@ augroup BWCCreateDir
   autocmd!
   autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
+
+""" google
+"au BufNewFile,BufRead c,cpp,objc,*.mm,*.cc call SetupForCLang()
+set cindent
+set cinoptions=h1,l1,g1,t0,i4,+4,(0,w1,W4
+set indentexpr=GoogleCppIndent()
+
+" Configuration for C-like languages.
+"function! SetupForCLang()
+" Highlight lines longer than 80 characters.
+" au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+" Alternately, uncomment these lines to wrap at 80 characters.
+" setlocal textwidth=80
+" setlocal wrap
+" Use 2 spaces for indentation.
+" setlocal shiftwidth=2
+" setlocal tabstop=2
+" setlocal softtabstop=2
+" setlocal expandtab
+" Configure auto-indentation formatting.
+" setlocal cindent
+" setlocal cinoptions=h1,l1,g1,t0,i4,+4,(0,w1,W4
+" setlocal indentexpr=GoogleCppIndent()
+" let b:undo_indent = "setl sw< ts< sts< et< tw< wrap< cin< cino< inde<"
+" Uncomment these lines to map F5 to the CEF style checker. Change the path to match your system.
+" map! <F5> <Esc>:!python ~/code/chromium/src/cef/tools/check_style.py %:p 2> lint.out<CR>:cfile lint.out<CR>:silent !rm lint.out<CR>:redraw!<CR>:cc<CR>
+" map  <F5> <Esc>:!python ~/code/chromium/src/cef/tools/check_style.py %:p 2> lint.out<CR>:cfile lint.out<CR>:silent !rm lint.out<CR>:redraw!<CR>:cc<CR>
+"endfunction
+
+""" From https://github.com/vim-scripts/google.vim/blob/master/indent/google.vim
+function! GoogleCppIndent()
+  let l:cline_num = line('.')
+
+  let l:orig_indent = cindent(l:cline_num)
+
+  if l:orig_indent == 0 | return 0 | endif
+
+  let l:pline_num = prevnonblank(l:cline_num - 1)
+  let l:pline = getline(l:pline_num)
+  if l:pline =~# '^\s*template' | return l:pline_indent | endif
+
+  " TODO: I don't know to correct it:
+  " namespace test {
+  " void
+  " ....<-- invalid cindent pos
+  "
+  " void test() {
+  " }
+  "
+  " void
+  " <-- cindent pos
+  if l:orig_indent != &shiftwidth | return l:orig_indent | endif
+
+  let l:in_comment = 0
+  let l:pline_num = prevnonblank(l:cline_num - 1)
+  while l:pline_num > -1
+    let l:pline = getline(l:pline_num)
+    let l:pline_indent = indent(l:pline_num)
+
+    if l:in_comment == 0 && l:pline =~ '^.\{-}\(/\*.\{-}\)\@<!\*/'
+      let l:in_comment = 1
+    elseif l:in_comment == 1
+      if l:pline =~ '/\*\(.\{-}\*/\)\@!'
+        let l:in_comment = 0
+      endif
+    elseif l:pline_indent == 0
+      if l:pline !~# '\(#define\)\|\(^\s*//\)\|\(^\s*{\)'
+        if l:pline =~# '^\s*namespace.*'
+          return 0
+        else
+          return l:orig_indent
+        endif
+      elseif l:pline =~# '\\$'
+        return l:orig_indent
+      endif
+    else
+      return l:orig_indent
+    endif
+
+    let l:pline_num = prevnonblank(l:pline_num - 1)
+  endwhile
+
+  return l:orig_indent
+endfunction
