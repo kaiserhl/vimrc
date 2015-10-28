@@ -127,6 +127,7 @@ augroup common
   autocmd FileType svn set ai sw=2 ts=2 et fo=croql
   autocmd FileType json set ai sw=2 ts=2 et fo=croql
   autocmd FileType asm set ai sw=4 ts=4 et fo=croql
+  autocmd FileType sql set ai sw=2 ts=2 et fo=croql
   autocmd BufEnter *.gradle set ai sw=4 ts=4 et fo=croql
 augroup END
 
