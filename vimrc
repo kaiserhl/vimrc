@@ -33,9 +33,10 @@ if count(g:vimified_packages, 'general')
   Bundle 'kevinw/pyflakes-vim'
   Bundle 'lightmanhk/a.vim'
   Bundle 'sukima/xmledit'
-  "Bundle 'spolu/dwm.vim'
   Bundle 'tpope/vim-eunuch'
   Bundle 'kien/ctrlp.vim'
+  Bundle 'Dinduks/vim-java-get-set'
+  "Bundle 'd11wtq/ctrlp_bdelete.vim'
 endif
 
 """ General Settings
@@ -119,6 +120,7 @@ augroup common
   autocmd FileType xml set ai sw=2 ts=2 et fo=croql
   autocmd FileType html set ai sw=2 ts=2 et fo=croql
   autocmd FileType sh set ai sw=2 ts=2 et fo=croql
+  autocmd FileType sql set ai sw=2 ts=2 et fo=croql
   autocmd FileType proto set ai sw=2 ts=2 et fo=croql
   autocmd FileType plaintex set ai sw=4 ts=4 et fo=croql
   autocmd FileType dot set ai sw=4 ts=4 et fo=croql
@@ -140,9 +142,9 @@ let g:tagbar_autofocus = 0
 let g:tagbar_sort = 1
 let g:tagbar_compact = 1
 
-""" NerdTreeToggle
-noremap <silent> <F12>       :NERDTreeToggle<CR>
-inoremap <silent> <F12>       :NERDTreeToggle<CR>
+" NerdTreeToggle
+noremap <silent> <F12> :NERDTreeToggle<CR>
+inoremap <silent> <F12> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize = 25
 let g:NERDTreeCaseSensitiveSort = 1
 let g:NERDTreeShowHidden = 1
@@ -152,6 +154,7 @@ let g:NERDTreeDirArrows = 1
 let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeMapJumpNextSibling = ""
 let g:NERDTreeMapJumpPrevSibling = ""
+let g:NERDTreeIgnore = ['\.pyc$[[file]]', '\.svn$[[dir]]', '\.class$[[file]]', '\.jar$[[file]]', '\.git$[[dir]]']
 
 """ gundoToggle
 noremap  <silent> <F10> :GundoToggle<CR>
@@ -221,9 +224,30 @@ let g:ctrlp_regexp = 0
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:10'
 let g:ctrlp_switch_buffer = 'ev'
 let g:ctrlp_working_path_mode = 'c'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll|class|pyc)$',
+  \ }
+let g:ctrlp_prompt_mappings = {
+  \ 'AcceptSelection("t")': ['<cr>',],
+  \ }
+let g:ctrlp_cmd = 'CtrlPCurWD'
 
-""" create intermediate directories on the fly
-function s:MkNonExDir(file, buf)
+" java-getset-vim
+let b:javagetset_getterTemplate =
+          \ "\n" .
+          \ "%modifiers% %type% %funcname%() { \n " .
+          \ "  return %varname%; \n" .
+          \ "}"
+let b:javagetset_setterTemplate =
+          \ "\n" .
+          \ "%modifiers% void %funcname%(%type% %varname%) {\n" .
+          \ "  this.%varname% = %varname%; \n" .
+          \ "}"
+let b:javagetset_insertPosition  = 2
+
+" create intermediate directories on the fly
+function! s:MkNonExDir(file, buf)
   if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
     let dir=fnamemodify(a:file, ':h')
     if !isdirectory(dir)
