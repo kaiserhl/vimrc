@@ -118,6 +118,7 @@ augroup common
   autocmd FileType vim set ai sw=2 ts=2 et fo=croql
   autocmd FileType xml set ai sw=2 ts=2 et fo=croql
   autocmd FileType html set ai sw=2 ts=2 et fo=croql
+  autocmd FileType css set ai sw=2 ts=2 et fo=croql
   autocmd FileType sh set ai sw=2 ts=2 et fo=croql
   autocmd FileType proto set ai sw=2 ts=2 et fo=croql
   autocmd FileType plaintex set ai sw=4 ts=4 et fo=croql
