@@ -196,6 +196,9 @@ elseif has('mac')
   augroup END
 endif
 
+""" vim-signature
+let g:SignatureEnabledAtStartup = 1
+
 """ OmniCPP complete
 let g:OmniCpp_GlobalScopeSearch = 0
 let g:OmniCpp_NamespaceSearch = 1
