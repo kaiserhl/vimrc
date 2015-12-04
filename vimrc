@@ -110,7 +110,7 @@ set nobackup
 set laststatus=2
 
 """ pastt toggle
-set pastetoggle=<F3>
+set pastetoggle=<F2>
 
 """ match whole line
 nnoremap <silent> <Leader>l ml:execute 'match Search /\%'.line('.').'l/'<CR>
@@ -150,6 +150,7 @@ augroup common
   autocmd FileType html set ai sw=2 ts=2 et fo=croql
   autocmd FileType svn set ai sw=2 ts=2 et fo=croql
   autocmd FileType json set ai sw=2 ts=2 et fo=croql
+  autocmd FileType nginx set ai sw=2 ts=2 et fo=croql
   autocmd FileType asm set ai sw=4 ts=4 et fo=croql
   autocmd BufEnter *.gradle set ai sw=4 ts=4 et fo=croql
 augroup END
@@ -187,12 +188,12 @@ if has('win32') || has('win16')
 elseif has('unix')
   augroup ctags_cxx
     autocmd!
-    autocmd FileType cpp noremap <silent> <F9> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+    autocmd FileType c,cpp noremap <silent> <F9> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
   augroup END
 elseif has('mac')
   augroup ctags_cxx
     autocmd!
-    autocmd FileType cpp noremap <silent> <F9> :!/opt/local/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+    autocmd FileType c,cpp noremap <silent> <F9> :!/opt/local/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
   augroup END
 endif
 
@@ -240,32 +241,46 @@ let g:indent_guides_enable_on_vim_startup = 1
 
 """ ctrl-p
 let g:ctrlp_map = '<c-l>'
+let g:ctrlp_max_files = 0
+let g:ctrlp_max_depth = 40
+let g:ctrlp_regexp = 1
 let g:ctrlp_by_filename = 1
-let g:ctrlp_regexp = 0
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:10'
-let g:ctrlp_switch_buffer = 'ev'
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:15'
+let g:ctrlp_switch_buffer = 'ehv'
 let g:ctrlp_working_path_mode = 'c'
+let g:ctrlp_use_caching = 1
+let g:ctrlp_clear_cache_on_exit = 1
+let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ 'file': '\v\.(exe|so|dll|class|pyc)$',
   \ }
+
+  "\ 'AcceptSelection("t")': ['<cr>',],
+  "\ 'AcceptSelection("h")': ['<c-cr>',],
 let g:ctrlp_prompt_mappings = {
   \ 'AcceptSelection("t")': ['<cr>',],
+  \ 'AcceptSelection("h")': ['<c-s>',],
+  \ 'AcceptSelection("v")': ['<c-v>',],
   \ }
 let g:ctrlp_cmd = 'CtrlPCurWD'
 
 """ java-getset-vim
 let b:javagetset_getterTemplate =
-          \ "\n" .
-          \ "%modifiers% %type% %funcname%() { \n " .
-          \ "  return %varname%; \n" .
-          \ "}"
+  \ "\n" .
+  \ "%modifiers% %type% %funcname%() { \n " .
+  \ "  return %varname%; \n" .
+  \ "}"
 let b:javagetset_setterTemplate =
-          \ "\n" .
-          \ "%modifiers% void %funcname%(%type% %varname%) {\n" .
-          \ "  this.%varname% = %varname%; \n" .
-          \ "}"
-let b:javagetset_insertPosition  = 2
+  \ "\n" .
+  \ "%modifiers% void %funcname%(%type% %varname%) {\n" .
+  \ "  this.%varname% = %varname%; \n" .
+  \ "}"
+let b:javagetset_insertPosition = 2
+
+""" vim-signature
+let g:SignatureForceMarkerPlacement = 1
+let g:SignatureForceMarkPlacement = 1
 
 """ syntastic
 set statusline+=%#warningmsg#
@@ -276,6 +291,9 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_ignore_files = []
+let g:syntastic_python_python_exec = '/usr/bin/python2.7'
+let g:syntastic_mode_map = {'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
+nnoremap <F3> :SyntasticToggleMode<CR>
 
 """ create intermediate directories on the fly
 function! s:MkNonExDir(file, buf)
@@ -348,6 +366,5 @@ function! GoogleCppIndent()
 
     let l:pline_num = prevnonblank(l:pline_num - 1)
   endwhile
-
   return l:orig_indent
 endfunction
