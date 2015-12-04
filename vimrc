@@ -12,84 +12,105 @@ Bundle 'gmarik/vundle'
 if count(g:vimified_packages, 'general')
   "Bundle 'edkolev/tmuxline.vim'
   "Bundle 'bling/vim-bufferline'
-  Bundle 'lightmanhk/vim-colorschemes'
-  Bundle 'Valloric/vim-operator-highlight'
-  Bundle 'gagoar/StripWhiteSpaces'
-  Bundle 'SirVer/ultisnips'
-  Bundle 'lightmanhk/vim-snippets'
-  Bundle 'vim-scripts/OmniCppComplete'
-  Bundle 'bling/vim-airline'
-  Bundle 'jeetsukumaran/vim-filebeagle'
   "Bundle 'vim-scripts/closetag.vim'
   "Bundle 'Shougo/vimfiler.vim'
   "Bundle 'Shougo/unite.vim'
   "Bundle 'nathanaelkane/vim-indent-guides'
+  "Bundle 'd11wtq/ctrlp_bdelete.vim'
+  "Bundle 'jeetsukumaran/vim-filebeagle'
+  "Bundle 'google/vim-jsonnet'
+  "Bundle 'justmao945/vim-clang'
+  "Bundle 'kevinw/pyflakes-vim'
+  "Bundle 'Valloric/YouCompleteMe'
+  " libraries
+  Bundle 'google/vim-maktaba'
+  Bundle 'google/vim-glaive'
+  " colorscheme
+  Bundle 'lightmanhk/vim-colorschemes'
+  Bundle 'google/vim-colorscheme-primary'
+  " snippets
+  Bundle 'SirVer/ultisnips'
+  Bundle 'lightmanhk/vim-snippets'
+  " code checking
+  Bundle 'gagoar/StripWhiteSpaces'
+  Bundle 'Valloric/vim-operator-highlight'
+  Bundle 'kana/vim-operator-user'
+  Bundle 'pangloss/vim-javascript'
+  Bundle 'scrooloose/syntastic'
+  Bundle 'google/vim-codefmt'
+  " operations
+  Bundle 'bling/vim-airline'
   Bundle 'scrooloose/nerdtree'
   Bundle 'mbriggs/mark.vim'
+  Bundle 'kshenoy/vim-signature'
   Bundle 'majutsushi/tagbar'
-  Bundle 'mrtazz/DoxygenToolkit.vim'
-  Bundle 'scrooloose/nerdcommenter'
-  Bundle 'tpope/vim-unimpaired'
-  Bundle 'kevinw/pyflakes-vim'
-  Bundle 'lightmanhk/a.vim'
-  Bundle 'sukima/xmledit'
+  Bundle 'easymotion/vim-easymotion'
   Bundle 'tpope/vim-eunuch'
   Bundle 'kien/ctrlp.vim'
+  " coding
+  Bundle 'lightmanhk/a.vim'
+  Bundle 'sukima/xmledit'
+  Bundle 'vim-scripts/OmniCppComplete'
+  Bundle 'mrtazz/DoxygenToolkit.vim'
+  Bundle 'scrooloose/nerdcommenter'
+  Bundle 'tpope/vim-surround'
+  Bundle 'tpope/vim-repeat'
   Bundle 'Dinduks/vim-java-get-set'
-  "Bundle 'd11wtq/ctrlp_bdelete.vim'
 endif
 
 """ General Settings
 syntax on
+set t_Co=256
 set background=dark
 colorscheme anotherdark
 
 filetype on
-filetype plugin on
-filetype indent on
+filetype plugin indent on
 
-set encoding=utf-8              " encoding using utf-8
-set noautoindent                " copy indent from current line
-set smartindent                 " smart autoindenting when starting a new line
-set indentexpr=
-set autoread                    " read open files again when changed outside Vim
-set autowrite                   " write a modified buffer on each :next , ...
-set backspace=indent,eol,start  " backspacing over everything in insert mode
-set browsedir=current           " which directory to use for the file browser
+let mapleader="\\"
 
 " disabling vim's autocomment;
 " see http://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
-set formatoptions-=c
-set formatoptions-=r
-set formatoptions-=o
-
+" set mouse=a                     " enable the use of the mouse
+" set listchars=tab:>.,eol:\$     " strings to use in 'list' mode
+"
+set nohidden
+set encoding=utf-8              " encoding using utf-8
+set autoread                    " read open files again when changed outside Vim
+set autowrite                   " write a modified buffer on each :next , ...
+set noautoindent
+set noshowmatch
+set smartindent
+set smarttab
+set indentexpr=
+set backspace=indent,eol,start  " backspacing over everything in insert mode
+set browsedir=current           " which directory to use for the file browser
+set formatoptions-=cro
 set complete=.,w,b,u,t,k        " scan the files used for autocomplete, no 'i'
-
-set history=700                 " keep 50 lines of command line history
-set hlsearch                    " highlight the last used search pattern
-set incsearch                   " do incremental searching
-
-set listchars=tab:>.,eol:\$     " strings to use in 'list' mode
-"set mouse=a                     " enable the use of the mouse
+set history=500
+set undolevels=500
+set wildignore=*.swp,*.bak,*.pyc,*.class,a.out
+set hlsearch
+set incsearch
 set popt=left:8pc,right:3pc     " print options
-set visualbell                  " visual bell instead of beeping
-"set noerrorbells visualbell t_vb=
-
+set title
+set visualbell
+set noerrorbells
 set nowrap                      " do not wrap lines
 set ruler                       " show the cursor position all the time
 set nu                          " display line numbers
 set showcmd                     " display incomplete commands
 set nolist
-
 set wildignore=*.bak,*.o,*.e,*~ " wildmenu: ignore these extensions
 set wildmenu                    " command-line completion in an enhanced mode
 set colorcolumn=80
 set noswapfile
+set nobackup
 
 set laststatus=2
 
-""" enable 256 colors in vim; don't use this unless you have to
-"set t_Co=256
+""" pastt toggle
+set pastetoggle=<F2>
 
 """ match whole line
 nnoremap <silent> <Leader>l ml:execute 'match Search /\%'.line('.').'l/'<CR>
@@ -119,6 +140,7 @@ augroup common
   autocmd FileType vim set ai sw=2 ts=2 et fo=croql
   autocmd FileType xml set ai sw=2 ts=2 et fo=croql
   autocmd FileType html set ai sw=2 ts=2 et fo=croql
+  autocmd FileType css set ai sw=2 ts=2 et fo=croql
   autocmd FileType sh set ai sw=2 ts=2 et fo=croql
   autocmd FileType sql set ai sw=2 ts=2 et fo=croql
   autocmd FileType proto set ai sw=2 ts=2 et fo=croql
@@ -128,6 +150,7 @@ augroup common
   autocmd FileType html set ai sw=2 ts=2 et fo=croql
   autocmd FileType svn set ai sw=2 ts=2 et fo=croql
   autocmd FileType json set ai sw=2 ts=2 et fo=croql
+  autocmd FileType nginx set ai sw=2 ts=2 et fo=croql
   autocmd FileType asm set ai sw=4 ts=4 et fo=croql
   autocmd FileType sql set ai sw=2 ts=2 et fo=croql
   autocmd BufEnter *.gradle set ai sw=4 ts=4 et fo=croql
@@ -142,7 +165,7 @@ let g:tagbar_autofocus = 0
 let g:tagbar_sort = 1
 let g:tagbar_compact = 1
 
-" NerdTreeToggle
+""" NerdTreeToggle
 noremap <silent> <F12> :NERDTreeToggle<CR>
 inoremap <silent> <F12> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize = 25
@@ -157,8 +180,8 @@ let g:NERDTreeMapJumpPrevSibling = ""
 let g:NERDTreeIgnore = ['\.pyc$[[file]]', '\.svn$[[dir]]', '\.class$[[file]]', '\.jar$[[file]]', '\.git$[[dir]]']
 
 """ gundoToggle
-noremap  <silent> <F10> :GundoToggle<CR>
-inoremap <silent> <F10> :GundoToggle<CR>
+"noremap  <silent> <F10> :GundoToggle<CR>
+"inoremap <silent> <F10> :GundoToggle<CR>
 
 """ ctags
 set tags=./tags,tags
@@ -166,17 +189,17 @@ if has('win32') || has('win16')
 elseif has('unix')
   augroup ctags_cxx
     autocmd!
-    autocmd FileType cpp noremap <silent> <F2> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+    autocmd FileType c,cpp noremap <silent> <F9> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
   augroup END
 elseif has('mac')
   augroup ctags_cxx
     autocmd!
-    autocmd FileType cpp noremap <silent> <F2> :!/opt/local/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+    autocmd FileType c,cpp noremap <silent> <F9> :!/opt/local/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
   augroup END
 endif
 
-""" FIXME(lightmanhk) a.vim AlternateExtensions is broken; have to forked it to
-""" customize
+""" vim-signature
+let g:SignatureEnabledAtStartup = 1
 
 """ OmniCPP complete
 let g:OmniCpp_GlobalScopeSearch = 0
@@ -219,34 +242,61 @@ let g:indent_guides_enable_on_vim_startup = 1
 
 """ ctrl-p
 let g:ctrlp_map = '<c-l>'
+let g:ctrlp_max_files = 0
+let g:ctrlp_max_depth = 40
+let g:ctrlp_regexp = 1
 let g:ctrlp_by_filename = 1
-let g:ctrlp_regexp = 0
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:10'
-let g:ctrlp_switch_buffer = 'ev'
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:15'
+let g:ctrlp_switch_buffer = 'ehv'
 let g:ctrlp_working_path_mode = 'c'
+let g:ctrlp_use_caching = 1
+let g:ctrlp_clear_cache_on_exit = 1
+let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ 'file': '\v\.(exe|so|dll|class|pyc)$',
   \ }
+
+  "\ 'AcceptSelection("t")': ['<cr>',],
+  "\ 'AcceptSelection("h")': ['<c-cr>',],
 let g:ctrlp_prompt_mappings = {
   \ 'AcceptSelection("t")': ['<cr>',],
+  \ 'AcceptSelection("h")': ['<c-s>',],
+  \ 'AcceptSelection("v")': ['<c-v>',],
   \ }
 let g:ctrlp_cmd = 'CtrlPCurWD'
 
-" java-getset-vim
+""" java-getset-vim
 let b:javagetset_getterTemplate =
-          \ "\n" .
-          \ "%modifiers% %type% %funcname%() { \n " .
-          \ "  return %varname%; \n" .
-          \ "}"
+  \ "\n" .
+  \ "%modifiers% %type% %funcname%() { \n " .
+  \ "  return %varname%; \n" .
+  \ "}"
 let b:javagetset_setterTemplate =
-          \ "\n" .
-          \ "%modifiers% void %funcname%(%type% %varname%) {\n" .
-          \ "  this.%varname% = %varname%; \n" .
-          \ "}"
-let b:javagetset_insertPosition  = 2
+  \ "\n" .
+  \ "%modifiers% void %funcname%(%type% %varname%) {\n" .
+  \ "  this.%varname% = %varname%; \n" .
+  \ "}"
+let b:javagetset_insertPosition = 2
 
-" create intermediate directories on the fly
+""" vim-signature
+let g:SignatureForceMarkerPlacement = 1
+let g:SignatureForceMarkPlacement = 1
+
+""" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_ignore_files = []
+let g:syntastic_python_python_exec = '/usr/bin/python2.7'
+let g:syntastic_mode_map = {'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
+nnoremap <F3> :SyntasticToggleMode<CR>
+
+""" create intermediate directories on the fly
 function! s:MkNonExDir(file, buf)
   if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
     let dir=fnamemodify(a:file, ':h')
@@ -261,34 +311,11 @@ augroup BWCCreateDir
 augroup END
 
 """ google
-"au BufNewFile,BufRead c,cpp,objc,*.mm,*.cc call SetupForCLang()
+""" From https://github.com/vim-scripts/google.vim/blob/master/indent/google.vim
 set cindent
 set cinoptions=h1,l1,g1,t0,i4,+4,(0,w1,W4
 set indentexpr=GoogleCppIndent()
 
-" Configuration for C-like languages.
-"function! SetupForCLang()
-" Highlight lines longer than 80 characters.
-" au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-" Alternately, uncomment these lines to wrap at 80 characters.
-" setlocal textwidth=80
-" setlocal wrap
-" Use 2 spaces for indentation.
-" setlocal shiftwidth=2
-" setlocal tabstop=2
-" setlocal softtabstop=2
-" setlocal expandtab
-" Configure auto-indentation formatting.
-" setlocal cindent
-" setlocal cinoptions=h1,l1,g1,t0,i4,+4,(0,w1,W4
-" setlocal indentexpr=GoogleCppIndent()
-" let b:undo_indent = "setl sw< ts< sts< et< tw< wrap< cin< cino< inde<"
-" Uncomment these lines to map F5 to the CEF style checker. Change the path to match your system.
-" map! <F5> <Esc>:!python ~/code/chromium/src/cef/tools/check_style.py %:p 2> lint.out<CR>:cfile lint.out<CR>:silent !rm lint.out<CR>:redraw!<CR>:cc<CR>
-" map  <F5> <Esc>:!python ~/code/chromium/src/cef/tools/check_style.py %:p 2> lint.out<CR>:cfile lint.out<CR>:silent !rm lint.out<CR>:redraw!<CR>:cc<CR>
-"endfunction
-
-""" From https://github.com/vim-scripts/google.vim/blob/master/indent/google.vim
 function! GoogleCppIndent()
   let l:cline_num = line('.')
 
@@ -340,6 +367,5 @@ function! GoogleCppIndent()
 
     let l:pline_num = prevnonblank(l:pline_num - 1)
   endwhile
-
   return l:orig_indent
 endfunction
