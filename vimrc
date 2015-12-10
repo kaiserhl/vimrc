@@ -32,7 +32,7 @@ if count(g:vimified_packages, 'general')
   Bundle 'SirVer/ultisnips'
   Bundle 'lightmanhk/vim-snippets'
   " code checking
-  Bundle 'gagoar/StripWhiteSpaces'
+  "Bundle 'gagoar/StripWhiteSpaces'
   Bundle 'Valloric/vim-operator-highlight'
   Bundle 'kana/vim-operator-user'
   Bundle 'pangloss/vim-javascript'
@@ -369,3 +369,6 @@ function! GoogleCppIndent()
   endwhile
   return l:orig_indent
 endfunction
+
+set exrc
+set secure
