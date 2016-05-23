@@ -28,11 +28,12 @@ if count(g:vimified_packages, 'general')
   " colorscheme
   Bundle 'lightmanhk/vim-colorschemes'
   Bundle 'google/vim-colorscheme-primary'
+  Bundle 'fatih/molokai'
   " snippets
   Bundle 'SirVer/ultisnips'
   Bundle 'lightmanhk/vim-snippets'
   " code checking
-  "Bundle 'gagoar/StripWhiteSpaces'
+  Bundle 'gagoar/StripWhiteSpaces'
   Bundle 'Valloric/vim-operator-highlight'
   Bundle 'kana/vim-operator-user'
   Bundle 'pangloss/vim-javascript'
@@ -49,12 +50,15 @@ if count(g:vimified_packages, 'general')
   Bundle 'kien/ctrlp.vim'
   " coding
   Bundle 'lightmanhk/a.vim'
+  "Bundle 'vim-scripts/OmniCppComplete'
+  "Bundle 'Shougo/neocomplete'
   Bundle 'sukima/xmledit'
-  Bundle 'vim-scripts/OmniCppComplete'
   Bundle 'mrtazz/DoxygenToolkit.vim'
   Bundle 'scrooloose/nerdcommenter'
   Bundle 'tpope/vim-surround'
   Bundle 'tpope/vim-repeat'
+  " lang
+  Bundle 'fatih/vim-go'
   Bundle 'Dinduks/vim-java-get-set'
 endif
 
@@ -62,7 +66,8 @@ endif
 syntax on
 set t_Co=256
 set background=dark
-colorscheme anotherdark
+"colorscheme anotherdark
+colorscheme molokai
 
 filetype on
 filetype plugin indent on
@@ -130,6 +135,7 @@ augroup common
   autocmd FileType cpp,c set ai sw=2 ts=2 et fo=croql
   autocmd FileType cmake set ai sw=2 ts=2 et fo=croql
   autocmd FileType python set ai sw=4 ts=4 et fo=croql
+  autocmd FileType go set ai sw=4 ts=4 fo=croql
   autocmd FileType lua set ai sw=4 ts=4 et fo=croql
   autocmd FileType sh set ai sw=2 ts=2 et fo=croql
   autocmd FileType zsh set ai sw=2 ts=2 et fo=croql
@@ -145,7 +151,7 @@ augroup common
   autocmd FileType sql set ai sw=2 ts=2 et fo=croql
   autocmd FileType proto set ai sw=2 ts=2 et fo=croql
   autocmd FileType plaintex set ai sw=4 ts=4 et fo=croql
-  autocmd FileType dot set ai sw=4 ts=4 et fo=croql
+  autocmd FileType dot set ai sw=2 ts=2 et fo=croql
   autocmd FileType javascript set ai sw=2 ts=2 et fo=croql
   autocmd FileType html set ai sw=2 ts=2 et fo=croql
   autocmd FileType svn set ai sw=2 ts=2 et fo=croql
@@ -164,6 +170,33 @@ let g:tagbar_width = 30
 let g:tagbar_autofocus = 0
 let g:tagbar_sort = 1
 let g:tagbar_compact = 1
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+    \ }
 
 """ NerdTreeToggle
 noremap <silent> <F12> :NERDTreeToggle<CR>
@@ -295,6 +328,23 @@ let g:syntastic_ignore_files = []
 let g:syntastic_python_python_exec = '/usr/bin/python2.7'
 let g:syntastic_mode_map = {'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
 nnoremap <F3> :SyntasticToggleMode<CR>
+
+""" vim-go
+let g:go_fmt_command = "goimports"
+let g:go_fmt_autosave = 1 " enable fmt on save
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_interfaces = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_bin_path = expand("~/bin/go")
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+let g:go_list_type = "quickfix"
+
+""" neocomlete
+let g:neocomplete#enable_at_startup = 1
 
 """ create intermediate directories on the fly
 function! s:MkNonExDir(file, buf)
