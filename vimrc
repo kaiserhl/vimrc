@@ -29,6 +29,7 @@ if count(g:vimified_packages, 'general')
   "Bundle 'lightmanhk/vim-colorschemes'
   "Bundle 'google/vim-colorscheme-primary'
   Bundle 'fatih/molokai'
+  "Bundle 'justinmk/molokai'
   " snippets
   Bundle 'SirVer/ultisnips'
   Bundle 'lightmanhk/vim-snippets'
@@ -70,7 +71,8 @@ set t_Co=256
 "colorscheme anotherdark
 "
 """ molokai
-" XXX(lhe) make sure you disabled the blur
+" XXX(lhe) make sure you disabled the blur and set term bgcolor to be the same
+" color as molokai bgcolor
 let g:molokai_original = 0
 let g:rehash256 = 1
 colorscheme molokai
