@@ -26,8 +26,8 @@ if count(g:vimified_packages, 'general')
   Bundle 'google/vim-maktaba'
   Bundle 'google/vim-glaive'
   " colorscheme
-  Bundle 'lightmanhk/vim-colorschemes'
-  Bundle 'google/vim-colorscheme-primary'
+  "Bundle 'lightmanhk/vim-colorschemes'
+  "Bundle 'google/vim-colorscheme-primary'
   Bundle 'fatih/molokai'
   " snippets
   Bundle 'SirVer/ultisnips'
@@ -37,7 +37,7 @@ if count(g:vimified_packages, 'general')
   Bundle 'Valloric/vim-operator-highlight'
   Bundle 'kana/vim-operator-user'
   Bundle 'pangloss/vim-javascript'
-  Bundle 'scrooloose/syntastic'
+  "Bundle 'scrooloose/syntastic'
   Bundle 'google/vim-codefmt'
   " operations
   Bundle 'bling/vim-airline'
