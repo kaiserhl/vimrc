@@ -65,8 +65,14 @@ endif
 """ General Settings
 syntax on
 set t_Co=256
-set background=dark
+
+"set background=dark
 "colorscheme anotherdark
+"
+""" molokai
+" XXX(lhe) make sure you disabled the blur
+let g:molokai_original = 0
+let g:rehash256 = 1
 colorscheme molokai
 
 filetype on
