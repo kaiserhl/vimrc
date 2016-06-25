@@ -23,8 +23,8 @@ if count(g:vimified_packages, 'general')
   "Bundle 'kevinw/pyflakes-vim'
   "Bundle 'Valloric/YouCompleteMe'
   " libraries
-  Bundle 'google/vim-maktaba'
-  Bundle 'google/vim-glaive'
+  "Bundle 'google/vim-maktaba'
+  "Bundle 'google/vim-glaive'
   " colorscheme
   "Bundle 'lightmanhk/vim-colorschemes'
   "Bundle 'google/vim-colorscheme-primary'
@@ -39,7 +39,7 @@ if count(g:vimified_packages, 'general')
   Bundle 'kana/vim-operator-user'
   Bundle 'pangloss/vim-javascript'
   "Bundle 'scrooloose/syntastic'
-  Bundle 'google/vim-codefmt'
+  "Bundle 'google/vim-codefmt'
   " operations
   Bundle 'bling/vim-airline'
   Bundle 'scrooloose/nerdtree'
