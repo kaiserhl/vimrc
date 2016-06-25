@@ -34,7 +34,7 @@ if count(g:vimified_packages, 'general')
   Bundle 'SirVer/ultisnips'
   Bundle 'lightmanhk/vim-snippets'
   " code checking
-  Bundle 'gagoar/StripWhiteSpaces'
+  Bundle 'lightmanhk/StripWhiteSpaces'
   Bundle 'Valloric/vim-operator-highlight'
   Bundle 'kana/vim-operator-user'
   Bundle 'pangloss/vim-javascript'
@@ -350,6 +350,9 @@ let g:go_bin_path = expand("~/bin/go")
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 let g:go_list_type = "quickfix"
+
+""" StripWhiteSpaces
+let g:auto_StripWhiteSpaces = 0
 
 """ neocomlete
 let g:neocomplete#enable_at_startup = 1
