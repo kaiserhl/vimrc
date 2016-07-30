@@ -355,7 +355,7 @@ let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 let g:go_list_type = "quickfix"
 
 """ StripWhiteSpaces
-let g:auto_StripWhiteSpaces = 0
+let g:auto_StripWhiteSpaces = 1
 
 """ neocomlete
 let g:neocomplete#enable_at_startup = 1
