@@ -61,6 +61,7 @@ if count(g:vimified_packages, 'general')
   " lang
   Bundle 'fatih/vim-go'
   Bundle 'Dinduks/vim-java-get-set'
+	Bundle 'lightmanhk/vim-python-tabindent'
 endif
 
 """ General Settings
@@ -78,6 +79,7 @@ let g:rehash256 = 1
 colorscheme molokai
 
 filetype on
+filetype plugin on 
 filetype plugin indent on
 
 let mapleader="\\"
@@ -140,34 +142,35 @@ augroup common
   autocmd BufNewFile,BufRead,BufEnter *.cc,*.h set omnifunc=omni#cpp#complete#Main
   autocmd BufNewFile,BufRead,BufEnter *.html,*.css set omnifunc=htmlcomplete#CompleteTags
   autocmd FileType cpp set omnifunc=cppcomplete#CompleteCPP
-  autocmd FileType cpp,c set ai sw=2 ts=2 et fo=croql
-  autocmd FileType cmake set ai sw=2 ts=2 et fo=croql
-  autocmd FileType python set ai sw=4 ts=4 et fo=croql
+  autocmd FileType cpp set ai sw=2 ts=2 et fo=croql
+  autocmd FileType c set ai sw=4 ts=4 fo=croql
+  autocmd FileType cmake set ai sw=2 ts=2 fo=croql
+  autocmd FileType python set ai sw=4 ts=4 fo=croql
   autocmd FileType go set ai sw=4 ts=4 fo=croql
-  autocmd FileType lua set ai sw=4 ts=4 et fo=croql
-  autocmd FileType sh set ai sw=2 ts=2 et fo=croql
-  autocmd FileType zsh set ai sw=2 ts=2 et fo=croql
+  autocmd FileType lua set ai sw=4 ts=4 fo=croql
+  autocmd FileType sh set ai sw=2 ts=2 fo=croql
+  autocmd FileType zsh set ai sw=2 ts=2 fo=croql
   autocmd FileType make set ai sw=4 ts=4 fo=croql
-  autocmd FileType markdown set ai sw=2 ts=2 et fo=croql
-  autocmd FileType yaml set ai sw=2 ts=2 et fo=croql
-  autocmd FileType java set ai sw=2 ts=2 et fo=croql
-  autocmd FileType vim set ai sw=2 ts=2 et fo=croql
-  autocmd FileType xml set ai sw=2 ts=2 et fo=croql
-  autocmd FileType html set ai sw=2 ts=2 et fo=croql
-  autocmd FileType css set ai sw=2 ts=2 et fo=croql
-  autocmd FileType sh set ai sw=2 ts=2 et fo=croql
-  autocmd FileType sql set ai sw=2 ts=2 et fo=croql
-  autocmd FileType proto set ai sw=2 ts=2 et fo=croql
-  autocmd FileType plaintex set ai sw=4 ts=4 et fo=croql
-  autocmd FileType dot set ai sw=2 ts=2 et fo=croql
-  autocmd FileType javascript set ai sw=2 ts=2 et fo=croql
-  autocmd FileType html set ai sw=2 ts=2 et fo=croql
-  autocmd FileType svn set ai sw=2 ts=2 et fo=croql
-  autocmd FileType json set ai sw=2 ts=2 et fo=croql
-  autocmd FileType nginx set ai sw=2 ts=2 et fo=croql
-  autocmd FileType asm set ai sw=4 ts=4 et fo=croql
-  autocmd FileType sql set ai sw=2 ts=2 et fo=croql
-  autocmd BufEnter *.gradle set ai sw=4 ts=4 et fo=croql
+  autocmd FileType markdown set ai sw=2 ts=2 fo=croql
+  autocmd FileType yaml set ai sw=2 ts=2 fo=croql
+  autocmd FileType java set ai sw=2 ts=2 fo=croql
+  autocmd FileType vim set ai sw=2 ts=2 fo=croql
+  autocmd FileType xml set ai sw=2 ts=2 fo=croql
+  autocmd FileType html set ai sw=2 ts=2 fo=croql
+  autocmd FileType css set ai sw=2 ts=2 fo=croql
+  autocmd FileType sh set ai sw=2 ts=2 fo=croql
+  autocmd FileType sql set ai sw=2 ts=2 fo=croql
+  autocmd FileType proto set ai sw=2 ts=2 fo=croql
+  autocmd FileType plaintex set ai sw=4 ts=4 fo=croql
+  autocmd FileType dot set ai sw=2 ts=2 fo=croql
+  autocmd FileType javascript set ai sw=2 ts=2 fo=croql
+  autocmd FileType html set ai sw=2 ts=2 fo=croql
+  autocmd FileType svn set ai sw=2 ts=2 fo=croql
+  autocmd FileType json set ai sw=2 ts=2 fo=croql
+  autocmd FileType nginx set ai sw=2 ts=2 fo=croql
+  autocmd FileType asm set ai sw=4 ts=4 fo=croql
+  autocmd FileType sql set ai sw=2 ts=2 fo=croql
+  autocmd BufEnter *.gradle set ai sw=4 ts=4 fo=croql
 augroup END
 
 """ tagbar
