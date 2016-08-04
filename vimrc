@@ -79,7 +79,7 @@ let g:rehash256 = 1
 colorscheme molokai
 
 filetype on
-filetype plugin on 
+filetype plugin on
 filetype plugin indent on
 
 let mapleader="\\"
@@ -146,6 +146,7 @@ augroup common
   autocmd FileType c set ai sw=4 ts=4 fo=croql
   autocmd FileType cmake set ai sw=2 ts=2 fo=croql
   autocmd FileType python set ai sw=4 ts=4 fo=croql
+  autocmd FileType awk set ai sw=4 ts=4 fo=croql
   autocmd FileType go set ai sw=4 ts=4 fo=croql
   autocmd FileType lua set ai sw=4 ts=4 fo=croql
   autocmd FileType sh set ai sw=2 ts=2 fo=croql
