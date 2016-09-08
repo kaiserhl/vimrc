@@ -91,6 +91,7 @@ let mapleader="\\"
 "
 set nohidden
 set encoding=utf-8              " encoding using utf-8
+set fileencodings=utf-8
 set autoread                    " read open files again when changed outside Vim
 set autowrite                   " write a modified buffer on each :next , ...
 set noautoindent
