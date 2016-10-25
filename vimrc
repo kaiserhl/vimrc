@@ -153,7 +153,7 @@ augroup common
   autocmd FileType sh set ai sw=2 ts=2 fo=croql
   autocmd FileType zsh set ai sw=2 ts=2 fo=croql
   autocmd FileType make set ai sw=4 ts=4 fo=croql
-  autocmd FileType markdown set ai sw=2 ts=2 fo=croql
+  autocmd FileType markdown set ai sw=2 ts=2 et fo=croql
   autocmd FileType yaml set ai sw=2 ts=2 fo=croql
   autocmd FileType java set ai sw=2 ts=2 fo=croql
   autocmd FileType vim set ai sw=2 ts=2 fo=croql
