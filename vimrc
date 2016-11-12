@@ -15,7 +15,6 @@ if count(g:vimified_packages, 'general')
   "Bundle 'vim-scripts/closetag.vim'
   "Bundle 'Shougo/vimfiler.vim'
   "Bundle 'Shougo/unite.vim'
-  "Bundle 'nathanaelkane/vim-indent-guides'
   "Bundle 'd11wtq/ctrlp_bdelete.vim'
   "Bundle 'jeetsukumaran/vim-filebeagle'
   "Bundle 'google/vim-jsonnet'
@@ -34,7 +33,9 @@ if count(g:vimified_packages, 'general')
   Bundle 'SirVer/ultisnips'
   Bundle 'lightmanhk/vim-snippets'
   " code checking
+  Bundle 'nathanaelkane/vim-indent-guides'
   Bundle 'lightmanhk/StripWhiteSpaces'
+  Bundle 'ntpeters/vim-better-whitespace'
   Bundle 'Valloric/vim-operator-highlight'
   Bundle 'kana/vim-operator-user'
   Bundle 'pangloss/vim-javascript'
@@ -63,7 +64,7 @@ if count(g:vimified_packages, 'general')
   " lang
   "Bundle 'rhysd/vim-clang-format'
   "Bundle 'fatih/vim-go'
-	Bundle 'Rip-Rip/clang_complete'
+  Bundle 'Rip-Rip/clang_complete'
   Bundle 'Dinduks/vim-java-get-set'
   Bundle 'Chiel92/vim-autoformat'
 
@@ -280,18 +281,18 @@ endif
 let g:SignatureEnabledAtStartup = 1
 
 """ OmniCPP complete
-let g:OmniCpp_GlobalScopeSearch = 0
-let g:OmniCpp_NamespaceSearch = 1
-let g:OmniCpp_DisplayMode = 1           " always show all members
-let g:OmniCpp_ShowScopeInAbbr = 1
-let g:OmniCpp_ShowPrototypeInAbbr = 1       " show function prototype in popup window
-let g:OmniCpp_ShowAccess = 1            " show accessbility
-let g:OmniCpp_MayCompleteDot = 1        " autocomplete with .
-let g:OmniCpp_MayCompleteArrow = 1      " autocomplete with ->
-let g:OmniCpp_MayCompleteScope = 1      " autocomplete with ::
-let g:OmniCpp_SelectFirstItem = 2       " select first item (but don't insert)
-let g:OmniCpp_LocalSearchDecl = 1       " user local search function
-set completeopt=menuone,longest,menu
+"let g:OmniCpp_GlobalScopeSearch = 0
+"let g:OmniCpp_NamespaceSearch = 1
+"let g:OmniCpp_DisplayMode = 1           " always show all members
+"let g:OmniCpp_ShowScopeInAbbr = 1
+"let g:OmniCpp_ShowPrototypeInAbbr = 1       " show function prototype in popup window
+"let g:OmniCpp_ShowAccess = 1            " show accessbility
+"let g:OmniCpp_MayCompleteDot = 1        " autocomplete with .
+"let g:OmniCpp_MayCompleteArrow = 1      " autocomplete with ->
+"let g:OmniCpp_MayCompleteScope = 1      " autocomplete with ::
+"let g:OmniCpp_SelectFirstItem = 2       " select first item (but don't insert)
+"let g:OmniCpp_LocalSearchDecl = 1       " user local search function
+"set completeopt=menuone,longest,menu
 
 """ DoxygenToolkit
 let g:DoxygenToolkit_commentType = "C++"
@@ -316,7 +317,7 @@ let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=darkgrey
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=grey
 let g:indent_guides_start_level = 1
-let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_enable_on_vim_startup = 0
 
 """ ctrl-p
 let g:ctrlp_map = '<c-l>'
