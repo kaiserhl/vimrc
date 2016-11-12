@@ -62,6 +62,7 @@ if count(g:vimified_packages, 'general')
   " lang
   "Bundle 'rhysd/vim-clang-format'
   "Bundle 'fatih/vim-go'
+	Bundle 'Rip-Rip/clang_complete'
   Bundle 'Dinduks/vim-java-get-set'
   Bundle 'Chiel92/vim-autoformat'
 
@@ -192,12 +193,15 @@ augroup END
 """ yapf
 "let g:yapf_style = "google"
 
-"" autoformat
+""" autoformat
 noremap <F4> :Autoformat<CR>
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0
 let g:formatter_yapf_style = 'google'
+
+"""
+let g:clang_library_path='/usr/lib64/libclang.so'
 
 """ tagbar
 noremap <silent> <F11>  :TagbarToggle<CR>
