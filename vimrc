@@ -49,6 +49,7 @@ if count(g:vimified_packages, 'general')
   Bundle 'easymotion/vim-easymotion'
   Bundle 'tpope/vim-eunuch'
   Bundle 'kien/ctrlp.vim'
+  Bundle 'ervandew/supertab'
   " coding
   Bundle 'lightmanhk/a.vim'
   Bundle 'sukima/xmledit'
@@ -200,8 +201,11 @@ let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0
 let g:formatter_yapf_style = 'google'
 
-"""
+""" clang-complete
 let g:clang_library_path='/usr/lib64/libclang.so'
+
+""" supertab
+let g:SuperTabDefaultCompletionType = "<c-n>"
 
 """ tagbar
 noremap <silent> <F11>  :TagbarToggle<CR>
