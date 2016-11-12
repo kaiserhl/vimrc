@@ -51,17 +51,22 @@ if count(g:vimified_packages, 'general')
   Bundle 'kien/ctrlp.vim'
   " coding
   Bundle 'lightmanhk/a.vim'
+  Bundle 'sukima/xmledit'
   "Bundle 'vim-scripts/OmniCppComplete'
   "Bundle 'Shougo/neocomplete'
-  Bundle 'sukima/xmledit'
-  Bundle 'mrtazz/DoxygenToolkit.vim'
-  Bundle 'scrooloose/nerdcommenter'
   Bundle 'tpope/vim-surround'
   Bundle 'tpope/vim-repeat'
+  "
+  Bundle 'mrtazz/DoxygenToolkit.vim'
+  Bundle 'scrooloose/nerdcommenter'
   " lang
-  Bundle 'fatih/vim-go'
+  "Bundle 'rhysd/vim-clang-format'
+  "Bundle 'fatih/vim-go'
   Bundle 'Dinduks/vim-java-get-set'
-	Bundle 'lightmanhk/vim-python-tabindent'
+  Bundle 'Chiel92/vim-autoformat'
+
+  "Bundle 'mindriot101/vim-yapf'
+  "Bundle 'lightmanhk/vim-python-tabindent'
 endif
 
 """ General Settings
@@ -142,8 +147,12 @@ augroup common
   autocmd BufRead,BufNewFile cpp,c set syntax=cpp11
   autocmd BufNewFile,BufRead,BufEnter *.cc,*.h set omnifunc=omni#cpp#complete#Main
   autocmd BufNewFile,BufRead,BufEnter *.html,*.css set omnifunc=htmlcomplete#CompleteTags
+  "autocmd BufWrite * :Autoformat
   autocmd FileType cpp set omnifunc=cppcomplete#CompleteCPP
   autocmd FileType cpp set ai sw=2 ts=2 et fo=croql
+  "autocmd FileType cpp ClangFormatAutoEnable
+  "autocmd FileType cpp nnoremap <silent> <F4> :ClangFormat<CR>
+  "autocmd FileType cpp vnoremap <silent> <F4> :ClangFormat<CR>
   autocmd FileType c set ai sw=4 ts=4 fo=croql
   autocmd FileType cmake set ai sw=2 ts=2 fo=croql
   autocmd FileType python set ai sw=4 ts=4 fo=croql
@@ -157,6 +166,7 @@ augroup common
   autocmd FileType yaml set ai sw=2 ts=2 fo=croql
   autocmd FileType java set ai sw=2 ts=2 fo=croql
   autocmd FileType vim set ai sw=2 ts=2 fo=croql
+  autocmd FileType vim,tex let b:autoformat_autoindent=0
   autocmd FileType xml set ai sw=2 ts=2 fo=croql
   autocmd FileType html set ai sw=2 ts=2 fo=croql
   autocmd FileType css set ai sw=2 ts=2 fo=croql
@@ -174,6 +184,20 @@ augroup common
   autocmd FileType sql set ai sw=2 ts=2 fo=croql
   autocmd BufEnter *.gradle set ai sw=4 ts=4 fo=croql
 augroup END
+
+""" clang-format
+"let g:clang_format#code_style = 'google'
+"let g:clang_format#auto_format=1
+
+""" yapf
+"let g:yapf_style = "google"
+
+"" autoformat
+noremap <F4> :Autoformat<CR>
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+let g:autoformat_remove_trailing_spaces = 0
+let g:formatter_yapf_style = 'google'
 
 """ tagbar
 noremap <silent> <F11>  :TagbarToggle<CR>
@@ -330,17 +354,17 @@ let g:SignatureForceMarkerPlacement = 1
 let g:SignatureForceMarkPlacement = 1
 
 """ syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_ignore_files = []
-let g:syntastic_python_python_exec = '/usr/bin/python2.7'
-let g:syntastic_mode_map = {'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
-nnoremap <F3> :SyntasticToggleMode<CR>
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_ignore_files = []
+"let g:syntastic_python_python_exec = '/usr/bin/python2.7'
+"let g:syntastic_mode_map = {'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
+"nnoremap <F3> :SyntasticToggleMode<CR>
 
 """ vim-go
 let g:go_fmt_command = "goimports"
@@ -360,7 +384,7 @@ let g:go_list_type = "quickfix"
 let g:auto_StripWhiteSpaces = 1
 
 """ neocomlete
-let g:neocomplete#enable_at_startup = 1
+"let g:neocomplete#enable_at_startup = 1
 
 """ create intermediate directories on the fly
 function! s:MkNonExDir(file, buf)
@@ -378,63 +402,62 @@ augroup END
 
 """ google
 """ From https://github.com/vim-scripts/google.vim/blob/master/indent/google.vim
-set cindent
-set cinoptions=h1,l1,g1,t0,i4,+4,(0,w1,W4
-set indentexpr=GoogleCppIndent()
+"set cindent
+"set cinoptions=h1,l1,g1,t0,i4,+4,(0,w1,W4
+"set indentexpr=GoogleCppIndent()
+"function! GoogleCppIndent()
+  "let l:cline_num = line('.')
 
-function! GoogleCppIndent()
-  let l:cline_num = line('.')
+  "let l:orig_indent = cindent(l:cline_num)
 
-  let l:orig_indent = cindent(l:cline_num)
+  "if l:orig_indent == 0 | return 0 | endif
 
-  if l:orig_indent == 0 | return 0 | endif
+  "let l:pline_num = prevnonblank(l:cline_num - 1)
+  "let l:pline = getline(l:pline_num)
+  "if l:pline =~# '^\s*template' | return l:pline_indent | endif
 
-  let l:pline_num = prevnonblank(l:cline_num - 1)
-  let l:pline = getline(l:pline_num)
-  if l:pline =~# '^\s*template' | return l:pline_indent | endif
+  "" TODO: I don't know to correct it:
+  "" namespace test {
+  "" void
+  "" ....<-- invalid cindent pos
+  ""
+  "" void test() {
+  "" }
+  ""
+  "" void
+  "" <-- cindent pos
+  "if l:orig_indent != &shiftwidth | return l:orig_indent | endif
 
-  " TODO: I don't know to correct it:
-  " namespace test {
-  " void
-  " ....<-- invalid cindent pos
-  "
-  " void test() {
-  " }
-  "
-  " void
-  " <-- cindent pos
-  if l:orig_indent != &shiftwidth | return l:orig_indent | endif
+  "let l:in_comment = 0
+  "let l:pline_num = prevnonblank(l:cline_num - 1)
+  "while l:pline_num > -1
+    "let l:pline = getline(l:pline_num)
+    "let l:pline_indent = indent(l:pline_num)
 
-  let l:in_comment = 0
-  let l:pline_num = prevnonblank(l:cline_num - 1)
-  while l:pline_num > -1
-    let l:pline = getline(l:pline_num)
-    let l:pline_indent = indent(l:pline_num)
+    "if l:in_comment == 0 && l:pline =~ '^.\{-}\(/\*.\{-}\)\@<!\*/'
+      "let l:in_comment = 1
+    "elseif l:in_comment == 1
+      "if l:pline =~ '/\*\(.\{-}\*/\)\@!'
+        "let l:in_comment = 0
+      "endif
+    "elseif l:pline_indent == 0
+      "if l:pline !~# '\(#define\)\|\(^\s*//\)\|\(^\s*{\)'
+        "if l:pline =~# '^\s*namespace.*'
+          "return 0
+        "else
+          "return l:orig_indent
+        "endif
+      "elseif l:pline =~# '\\$'
+        "return l:orig_indent
+      "endif
+    "else
+      "return l:orig_indent
+    "endif
 
-    if l:in_comment == 0 && l:pline =~ '^.\{-}\(/\*.\{-}\)\@<!\*/'
-      let l:in_comment = 1
-    elseif l:in_comment == 1
-      if l:pline =~ '/\*\(.\{-}\*/\)\@!'
-        let l:in_comment = 0
-      endif
-    elseif l:pline_indent == 0
-      if l:pline !~# '\(#define\)\|\(^\s*//\)\|\(^\s*{\)'
-        if l:pline =~# '^\s*namespace.*'
-          return 0
-        else
-          return l:orig_indent
-        endif
-      elseif l:pline =~# '\\$'
-        return l:orig_indent
-      endif
-    else
-      return l:orig_indent
-    endif
-
-    let l:pline_num = prevnonblank(l:pline_num - 1)
-  endwhile
-  return l:orig_indent
-endfunction
+    "let l:pline_num = prevnonblank(l:pline_num - 1)
+  "endwhile
+  "return l:orig_indent
+"endfunction
 
 set exrc
 set secure
