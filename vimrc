@@ -39,6 +39,7 @@ if count(g:vimified_packages, 'general')
   Bundle 'Valloric/vim-operator-highlight'
   Bundle 'kana/vim-operator-user'
   Bundle 'pangloss/vim-javascript'
+  Bundle 'tpope/vim-characterize'
   "Bundle 'scrooloose/syntastic'
   "Bundle 'google/vim-codefmt'
   " operations
@@ -67,7 +68,6 @@ if count(g:vimified_packages, 'general')
   Bundle 'Rip-Rip/clang_complete'
   Bundle 'Dinduks/vim-java-get-set'
   Bundle 'Chiel92/vim-autoformat'
-
   "Bundle 'mindriot101/vim-yapf'
   "Bundle 'lightmanhk/vim-python-tabindent'
 endif
@@ -483,7 +483,7 @@ set secure
 "
 " Don't backup files in temp directories or shm
 if exists('&backupskip')
-    set backupskip+=/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*
+  set backupskip+=/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*
 endif
 
 " Don't keep swap files in temp directories or shm
