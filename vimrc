@@ -5,7 +5,7 @@ if ! exists('g:vimified_packages')
 	let g:vimified_packages = ['general', ]
 endif
 
-set rtp+=~/.vim/bundle/vundle
+set runtimepath+=~/.vim/bundle/vundle
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
