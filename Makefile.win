@@ -1,0 +1,35 @@
+VIM=gvim
+SOURCEDIR=%cd%
+
+.PHONY:all
+all:
+
+.PHONY: install
+install:
+	@echo "=== install vimrc"
+	@if exist %%USERPROFILE%%\_vimrc ( \
+		echo "%%USERPROFILE%%\_vimrc already exists." \
+	) else ( \
+		mklink /h  %%USERPROFILE%%\_vimrc $(SOURCEDIR)\vimrc \
+	)
+	@if exist %%USERPROFILE%%\vimfiles\bundle\Vundle.vim ( \
+		echo "%%USERPROFILE%%\vimfiles\bundle\Vundle.vim already exists." \
+	) else ( \
+		echo "install Vundle.vim" & \
+		git clone https://github.com/VundleVim/Vundle.vim.git %%USERPROFILE%%\vimfiles\bundle\Vundle.vim \
+	)
+	$(VIM) +PluginInstall +qall
+
+# TODO(lin.he) check if _vimrc is a hard link of vimrc
+.PHONY: uninstall
+uninstall:
+	@echo "=== uninstall vimrc"
+	@fsutil.exe hardlink list %%USERPROFILE%%\_vimrc
+	@if exist %%USERPROFILE%%\_vimrc ( \
+		del %%USERPROFILE%%\_vimrc \
+	) else ( \
+		echo "file doesn't exist" \
+	)
+
+.PHONY: reinstall
+reinstall: uninstall install

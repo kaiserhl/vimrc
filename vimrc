@@ -5,10 +5,17 @@ if ! exists('g:vimified_packages')
 	let g:vimified_packages = ['general', ]
 endif
 
-set runtimepath+=~/.vim/bundle/vundle
-call vundle#rc()
+if !exists("g:os")
+	if has("win64") || has("win32") || has("win16")
+		set rtp+=$USERPROFILE/vimfiles/bundle/Vundle.vim/
+		call vundle#begin('$USERPROFILE/vimfiles/bundle/')
+	else
+		set runtimepath+=~/.vim/bundle/vundle
+		call vundle#rc()
+	endif
+endif
 
-Bundle 'gmarik/vundle'
+Bundle 'VundleVim/Vundle.vim'
 if count(g:vimified_packages, 'general')
 	"Bundle 'edkolev/tmuxline.vim'
 	"Bundle 'bling/vim-bufferline'
@@ -72,23 +79,23 @@ if count(g:vimified_packages, 'general')
 	"Bundle 'lightmanhk/vim-python-tabindent'
 endif
 
-""" General Settings
+call vundle#end()
+filetype on
+filetype plugin on
+filetype plugin indent on
+
 syntax on
 set t_Co=256
 
 "set background=dark
 "colorscheme anotherdark
-"
+
 """ molokai
 " XXX(lhe) make sure you disabled the blur and set term bgcolor to be the same
 " color as molokai bgcolor
 let g:molokai_original = 0
 let g:rehash256 = 1
 colorscheme molokai
-
-filetype on
-filetype plugin on
-filetype plugin indent on
 
 let mapleader="\\"
 
@@ -132,6 +139,17 @@ set noswapfile
 set nobackup
 
 set laststatus=2
+
+""" gui
+if has("gui_running")
+  if has("gui_gtk2")
+    set guifont=Inconsolata\ 12
+  elseif has("gui_macvim")
+    set guifont=Menlo\ Regular:h14
+  elseif has("gui_win32")
+    set guifont=Consolas:h11:cANSI
+  endif
+endif
 
 """ pastt toggle
 set pastetoggle=<F2>

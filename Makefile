@@ -1,35 +1,36 @@
-GIT?=git
-LN?=ln
-MKDIR?=mkdir
 VIM?=vim
-INSTALLDIR=${PWD}
+SOURCEDIR=${PWD}
 
-.PHONY: all install uninstall reinstall
-
+.PHONY: all
 all:
 
+.PHONY: install
 install:
+	@echo "=== install vimrc"
 	@if [ ! -f ~/.vim ]; then \
-		${LN} -vsfn ${INSTALLDIR} ~/.vim; \
+		ln -vsfn $(SOURCEDIR) ~/.vim; \
 	fi
 	@if [ ! -f ~/.vimrc ]; then \
-		${LN} -vsfn ${INSTALLDIR}/vimrc ~/.vimrc; \
+		ln -vsfn $(SOURCEDIR)/vimrc ~/.vimrc; \
 	fi
 	@if [ ! -d "bundle" ]; then \
-		${MKDIR} -v bundle;  \
+		mkdir -v bundle;  \
 	fi
 	@if [ ! -d "bundle/vundle" ]; then \
 		echo "Installing Vundle (https://github.com/gmarik/vundle) ..."; \
-		${GIT} clone https://github.com/gmarik/vundle.git bundle/vundle; \
+		git clone https://github.com/gmarik/vundle.git bundle/vundle; \
 	fi
-	${VIM} +BundleInstall +qall
+	$(VIM) +BundleInstall +qall
 
+.PHONY: uninstall
 uninstall:
-	@if [ -e ${HOME}/.vimrc ] && [ ${INSTALLDIR}/vimrc = `readlink ~/.vimrc` ]; then \
-		rm -v ${HOME}/.vimrc; \
+	@echo "=== uninstall vimrc"
+	@if [ -e $(HOME)/.vimrc ] && [ $(SOURCEDIR)/vimrc = `readlink ~/.vimrc` ]; then \
+		rm -v $(HOME)/.vimrc; \
 	fi
-	@if [ -e ${HOME}/.vim ] && [ ${INSTALLDIR} = `readlink ~/.vim` ]; then \
-		rm -v ${HOME}/.vim; \
+	@if [ -e $(HOME)/.vim ] && [ $(SOURCEDIR) = `readlink ~/.vim` ]; then \
+		rm -v $(HOME)/.vim; \
 	fi
 
+.PHONY: reinstall
 reinstall: uninstall install
