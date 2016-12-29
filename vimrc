@@ -41,7 +41,7 @@ if count(g:vimified_packages, 'general')
   Bundle 'lightmanhk/vim-snippets'
   " code checking
   Bundle 'nathanaelkane/vim-indent-guides'
-  Bundle 'lightmanhk/StripWhiteSpaces'
+  Bundle 'lightmanhk/vim-StripWhiteSpaces'
   Bundle 'ntpeters/vim-better-whitespace'
   Bundle 'Valloric/vim-operator-highlight'
   Bundle 'kana/vim-operator-user'
@@ -60,7 +60,7 @@ if count(g:vimified_packages, 'general')
   Bundle 'kien/ctrlp.vim'
   Bundle 'ervandew/supertab'
   " coding
-  Bundle 'lightmanhk/a.vim'
+  Bundle 'lightmanhk/vim-a'
   Bundle 'sukima/xmledit'
   "Bundle 'vim-scripts/OmniCppComplete'
   "Bundle 'Shougo/neocomplete'
@@ -76,7 +76,6 @@ if count(g:vimified_packages, 'general')
   Bundle 'Dinduks/vim-java-get-set'
   Bundle 'Chiel92/vim-autoformat'
   "Bundle 'mindriot101/vim-yapf'
-  "Bundle 'lightmanhk/vim-python-tabindent'
 endif
 
 call vundle#end()
