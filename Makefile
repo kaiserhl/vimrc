@@ -1,5 +1,4 @@
 VIM?=vim
-SOURCEDIR=${PWD}
 
 .PHONY: all
 all:
@@ -8,10 +7,10 @@ all:
 install:
 	@echo "=== install vimrc"
 	@if [ ! -f ~/.vim ]; then \
-		ln -vsfn $(SOURCEDIR) ~/.vim; \
+		ln -vsfn $(PWD) ~/.vim; \
 	fi
 	@if [ ! -f ~/.vimrc ]; then \
-		ln -vsfn $(SOURCEDIR)/vimrc ~/.vimrc; \
+		ln -vsfn $(PWD)/vimrc ~/.vimrc; \
 	fi
 	@if [ ! -d "bundle" ]; then \
 		mkdir -v bundle;  \
@@ -25,10 +24,10 @@ install:
 .PHONY: uninstall
 uninstall:
 	@echo "=== uninstall vimrc"
-	@if [ -e $(HOME)/.vimrc ] && [ $(SOURCEDIR)/vimrc = `readlink ~/.vimrc` ]; then \
+	@if [ -e $(HOME)/.vimrc ] && [ $(PWD)/vimrc = `readlink ~/.vimrc` ]; then \
 		rm -v $(HOME)/.vimrc; \
 	fi
-	@if [ -e $(HOME)/.vim ] && [ $(SOURCEDIR) = `readlink ~/.vim` ]; then \
+	@if [ -e $(HOME)/.vim ] && [ $(PWD) = `readlink ~/.vim` ]; then \
 		rm -v $(HOME)/.vim; \
 	fi
 
