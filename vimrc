@@ -32,16 +32,16 @@ if count(g:vimified_packages, 'general')
   "Bundle 'google/vim-maktaba'
   "Bundle 'google/vim-glaive'
   " colorscheme
-  "Bundle 'lightmanhk/vim-colorschemes'
+  "Bundle 'kaiserhl/vim-colorschemes'
   "Bundle 'google/vim-colorscheme-primary'
   Bundle 'fatih/molokai'
   "Bundle 'justinmk/molokai'
   " snippets
   Bundle 'SirVer/ultisnips'
-  Bundle 'lightmanhk/vim-snippets'
+  Bundle 'kaiserhl/vim-snippets'
   " code checking
   Bundle 'nathanaelkane/vim-indent-guides'
-  Bundle 'lightmanhk/vim-StripWhiteSpaces'
+  Bundle 'kaiserhl/vim-StripWhiteSpaces'
   Bundle 'ntpeters/vim-better-whitespace'
   Bundle 'Valloric/vim-operator-highlight'
   Bundle 'kana/vim-operator-user'
@@ -60,7 +60,7 @@ if count(g:vimified_packages, 'general')
   Bundle 'kien/ctrlp.vim'
   Bundle 'ervandew/supertab'
   " coding
-  Bundle 'lightmanhk/vim-a'
+  Bundle 'kaiserhl/vim-a'
   Bundle 'sukima/xmledit'
   "Bundle 'vim-scripts/OmniCppComplete'
   "Bundle 'Shougo/neocomplete'
