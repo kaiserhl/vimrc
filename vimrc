@@ -85,6 +85,8 @@ filetype plugin indent on
 
 syntax on
 set t_Co=256
+" XXX(lhe) resolving the vim color won't get displayed properly under tmux
+set term=screen-256color
 
 "set background=dark
 "colorscheme anotherdark
@@ -220,7 +222,8 @@ noremap <F4> :Autoformat<CR>
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0
-let g:formatter_yapf_style = 'google'
+let g:formatdef_yapf = "'yapf --style google'"
+let g:formatters_python = ['yapf']
 
 """ clang-complete
 let g:clang_library_path='/usr/lib64/libclang.so'
