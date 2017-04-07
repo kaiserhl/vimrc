@@ -4,7 +4,21 @@
 #include <string>
 #include <utility>
 
-struct S {
+class A
+{
+  public:
+    explicit A() {}
+    explicit A()
+      : a_(199) {
+    }
+    ~A() {
+    }
+  private:
+    int a_;
+};
+
+struct S
+{
   int data;
 
   // simple converting constructor (declaration)
@@ -48,12 +62,19 @@ struct D : S {
   }
 };
 
-int main() {
-  D d1 = 1;
-  S s2("2");
-  try {
-    S s3("not a number");
-  } catch (const std::exception&) {
+int main()
+{
+  D
+    d1 = 1;
+  S
+    s2(
+        "2");
+  try
+  {
+    S s3(
+        "not a number");
+  } catch (const std::exception&)
+  {
   }
   std::cout << s2.getData() << '\n';
 
