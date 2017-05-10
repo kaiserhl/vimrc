@@ -33,3 +33,34 @@ uninstall:
 
 .PHONY: reinstall
 reinstall: uninstall install
+
+.PHONY: install-nvim
+install-nvim:
+	@echo "=== install vimrc to nvim"
+	@if [ ! -f ~/.config/nvim ]; then \
+		ln -vsfn $(PWD) ~/.config/nvim; \
+	fi
+	@if [ ! -f ~/.config/nvim/init.vim ]; then \
+		ln -vsfn $(PWD)/vimrc ~/.config/nvim/init.vim; \
+	fi
+	@if [ ! -d "bundle" ]; then \
+		mkdir -v bundle;  \
+	fi
+	@if [ ! -d "bundle/vundle" ]; then \
+		echo "Installing Vundle (https://github.com/gmarik/vundle) ..."; \
+		git clone https://github.com/gmarik/vundle.git bundle/vundle; \
+	fi
+	$(VIM) +BundleInstall +qall
+
+.PHONY: uninstall-nvim
+uninstall-nvim:
+	@echo "=== uninstall vimrc from nvim"
+	@if [ -e $(HOME)/.config/nvim/init.vim ] && [ $(PWD)/vimrc = `readlink ~/.config/nvim/init.vim` ]; then \
+		rm -v $(HOME)/.config/nvim/init.vim; \
+	fi
+	@if [ -e $(HOME)/.config/nvim ] && [ $(PWD) = `readlink ~/.config/nvim` ]; then \
+		rm -v $(HOME)/.config/nvim; \
+	fi
+
+.PHONY: reinstall-nvim
+reinstall-nvim: uninstall install
