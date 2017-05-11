@@ -86,7 +86,9 @@ filetype plugin indent on
 syntax on
 set t_Co=256
 " XXX(lhe) resolving the vim color won't get displayed properly under tmux
+if !has('nvim')
 set term=screen-256color
+endif
 
 "set background=dark
 "colorscheme anotherdark
