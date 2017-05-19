@@ -37,6 +37,9 @@ reinstall: uninstall install
 .PHONY: install-nvim
 install-nvim:
 	@echo "=== install vimrc to nvim"
+	@if [ ! -d ~/.config ]; then \
+		mkdir -p ~/.config; \
+	fi
 	@if [ ! -f ~/.config/nvim ]; then \
 		ln -vsfn $(PWD) ~/.config/nvim; \
 	fi
