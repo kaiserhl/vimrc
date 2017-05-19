@@ -222,9 +222,9 @@ augroup END
 """ autoformat
 noremap <F4> :Autoformat<CR>
 " let g:autoformat_verbosemode=1
-let g:autoformat_autoindent = 0
-let g:autoformat_retab = 0
-let g:autoformat_remove_trailing_spaces = 0
+let g:autoformat_autoindent = 1
+let g:autoformat_retab = 1
+let g:autoformat_remove_trailing_spaces = 1
 let g:formatdef_c_clangformat = "'clang-format --style=\"{BasedOnStyle: LLVM, IndentWidth: 8, UseTab: Always, BreakBeforeBraces: Linux, AllowShortIfStatementsOnASingleLine: false, IndentCaseLabels: false}\"'"
 let g:formatters_c = ['c_clangformat']
 let g:formatdef_cpp_clangformat = "'clang-format --style=\"{BasedOnStyle: google}\" '"
