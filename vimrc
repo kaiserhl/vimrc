@@ -231,6 +231,8 @@ let g:formatdef_cpp_clangformat = "'clang-format --style=\"{BasedOnStyle: google
 let g:formatters_cpp = ['cpp_clangformat']
 let g:formatdef_py_yapf = "'yapf --style google'"
 let g:formatters_python = ['py_yapf']
+let g:formatdef_sh_shfmt = "'shfmt'"
+let g:formatters_sh= ['sh_shfmt']
 
 """ clang-complete
 let g:clang_library_path='/usr/lib64/libclang.so'
