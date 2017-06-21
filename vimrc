@@ -47,8 +47,7 @@ if count(g:vimified_packages, 'general')
   Bundle 'kana/vim-operator-user'
   Bundle 'pangloss/vim-javascript'
   Bundle 'tpope/vim-characterize'
-  "Bundle 'scrooloose/syntastic'
-  "Bundle 'google/vim-codefmt'
+  Bundle 'vim-syntastic/syntastic'
   " operations
   Bundle 'vim-airline/vim-airline'
   Bundle 'scrooloose/nerdtree'
@@ -70,12 +69,13 @@ if count(g:vimified_packages, 'general')
   Bundle 'mrtazz/DoxygenToolkit.vim'
   Bundle 'scrooloose/nerdcommenter'
   " lang
-  "Bundle 'rhysd/vim-clang-format'
-  "Bundle 'fatih/vim-go'
   Bundle 'Rip-Rip/clang_complete'
   Bundle 'Dinduks/vim-java-get-set'
   Bundle 'Chiel92/vim-autoformat'
+  "Bundle 'rhysd/vim-clang-format'
+  "Bundle 'fatih/vim-go'
   "Bundle 'mindriot101/vim-yapf'
+  "Bundle 'google/vim-codefmt'
 endif
 
 call vundle#end()
@@ -401,10 +401,13 @@ let g:SignatureForceMarkPlacement = 1
 "set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
 "set statusline+=%*
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_python_pylint_args = "--rcfile=~/.vim/etc/pylint.rc"
+
 "let g:syntastic_ignore_files = []
 "let g:syntastic_python_python_exec = '/usr/bin/python2.7'
 "let g:syntastic_mode_map = {'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
