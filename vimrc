@@ -186,8 +186,8 @@ augroup common
   autocmd FileType awk set ai sw=4 ts=4 fo=croql
   autocmd FileType go set ai sw=4 ts=4 fo=croql
   autocmd FileType lua set ai sw=4 ts=4 fo=croql
-  autocmd FileType sh set ai sw=2 ts=2 fo=croql
-  autocmd FileType zsh set ai sw=2 ts=2 fo=croql
+  autocmd FileType sh set ai sw=2 ts=2 et fo=croql
+  autocmd FileType zsh set ai sw=2 ts=2 et fo=croql
   autocmd FileType make set ai sw=4 ts=4 fo=croql
   autocmd FileType markdown set ai sw=2 ts=2 et fo=croql
   autocmd FileType yaml set ai sw=2 ts=2 fo=croql
@@ -199,7 +199,7 @@ augroup common
   autocmd FileType css set ai sw=2 ts=2 fo=croql
   autocmd FileType sh set ai sw=2 ts=2 fo=croql
   autocmd FileType sql set ai sw=2 ts=2 fo=croql
-  autocmd FileType proto set ai sw=2 ts=2 fo=croql
+  autocmd FileType proto set ai sw=2 ts=2 et fo=croql
   autocmd FileType plaintex set ai sw=4 ts=4 fo=croql
   autocmd FileType dot set ai sw=2 ts=2 fo=croql
   autocmd FileType javascript set ai sw=2 ts=2 fo=croql
