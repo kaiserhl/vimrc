@@ -401,16 +401,18 @@ let g:SignatureForceMarkPlacement = 1
 "set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
 "set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 let g:syntastic_python_pylint_args = "--rcfile=~/.vim/etc/pylint.rc"
-
 "let g:syntastic_ignore_files = []
 "let g:syntastic_python_python_exec = '/usr/bin/python2.7'
-"let g:syntastic_mode_map = {'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
+let g:syntastic_mode_map = { "mode": "passive" }
+"let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go', 'python'] }
+
 "nnoremap <F3> :SyntasticToggleMode<CR>
 
 """ vim-go
@@ -423,8 +425,6 @@ let g:go_highlight_interfaces = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_bin_path = expand("~/bin/go")
-let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 let g:go_list_type = "quickfix"
 
 """ StripWhiteSpaces
