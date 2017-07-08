@@ -32,7 +32,6 @@ if count(g:vimified_packages, 'general')
   "Bundle 'google/vim-maktaba'
   "Bundle 'google/vim-glaive'
   " colorscheme
-  "Bundle 'kaiserhl/vim-colorschemes'
   "Bundle 'google/vim-colorscheme-primary'
   Bundle 'fatih/molokai'
   "Bundle 'justinmk/molokai'
