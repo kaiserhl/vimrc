@@ -46,6 +46,9 @@ install-nvim:
 	@if [ ! -f ~/.config/nvim/init.vim ]; then \
 		ln -vsfn $(PWD)/vimrc ~/.config/nvim/init.vim; \
 	fi
+	@if [ ! -f ~/.vim ]; then \
+		ln -vsfn $(PWD) ~/.vim; \
+	fi
 	@if [ ! -d "bundle" ]; then \
 		mkdir -v bundle;  \
 	fi
@@ -58,6 +61,9 @@ install-nvim:
 .PHONY: uninstall-nvim
 uninstall-nvim:
 	@echo "=== uninstall vimrc from nvim"
+	@if [ -e $(HOME)/.vim ] && [ $(PWD) = `readlink ~/.vim` ]; then \
+		rm -v $(HOME)/.vim; \
+	fi
 	@if [ -e $(HOME)/.config/nvim/init.vim ] && [ $(PWD)/vimrc = `readlink ~/.config/nvim/init.vim` ]; then \
 		rm -v $(HOME)/.config/nvim/init.vim; \
 	fi
