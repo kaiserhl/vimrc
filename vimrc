@@ -64,6 +64,8 @@ if count(g:vimified_packages, 'general')
   "Bundle 'Shougo/neocomplete'
   Bundle 'tpope/vim-surround'
   Bundle 'tpope/vim-repeat'
+  Bundle 'dhruvasagar/vim-table-mode'
+  Bundle 'mzlogin/vim-markdown-toc'
   "
   Bundle 'mrtazz/DoxygenToolkit.vim'
   Bundle 'scrooloose/nerdcommenter'
@@ -430,6 +432,9 @@ let g:auto_StripWhiteSpaces = 1
 
 """ neocomlete
 "let g:neocomplete#enable_at_startup = 1
+
+""" vim-markdown-toc
+let g:vmt_dont_insert_fence = 1
 
 """ create intermediate directories on the fly
 function! s:MkNonExDir(file, buf)
