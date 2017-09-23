@@ -88,7 +88,10 @@ syntax on
 set t_Co=256
 " XXX(lhe) resolving the vim color won't get displayed properly under tmux
 if !has('nvim')
-set term=screen-256color
+  if has('gui_win32')
+  elseif
+    set term=screen-256color
+  endif
 endif
 
 "set background=dark
