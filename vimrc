@@ -404,17 +404,26 @@ let g:SignatureForceMarkPlacement = 1
 "set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
 "set statusline+=%*
-let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_aggregate_errors = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-let g:syntastic_python_pylint_args = "--rcfile=~/.vim/etc/pylint.rc"
 "let g:syntastic_ignore_files = []
-"let g:syntastic_python_python_exec = '/usr/bin/python2.7'
 let g:syntastic_mode_map = { "mode": "passive" }
 "let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go', 'python'] }
+"let g:syntastic_quiet_messages = { "type": "style" }
+let g:syntastic_c_checkers = ['splint']
+"let g:syntastic_splint_config_file = ''
+let g:syntastic_cpp_checkers = ['cpplint', 'cppcheck']
+let g:syntastic_cpp_cpplint_exec = 'cpplint'
+"let g:syntastic_cpp_cpplint_thre = 5
+"let g:syntastic_cpp_cpplint_args = '--verbose=3'
+let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_python_pylint_args = "--rcfile=~/.vim/etc/pylint.rc"
+"let g:syntastic_python_python_exec = '/usr/bin/python2.7'
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_sh_checkers = ['shellcheck']
 
 "nnoremap <F3> :SyntasticToggleMode<CR>
 
