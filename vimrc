@@ -145,6 +145,7 @@ set colorcolumn=80
 set noswapfile
 set nobackup
 set binary " similar to `vim -b`
+set foldmethod=marker
 
 """ need for airline
 set laststatus=2
