@@ -1,7 +1,7 @@
 README
 ========================================
 
-Unix
+UNIX
 ----------------------------------------
 `${HOME}\.vimrc`
 `${HOME}\.vim`
@@ -11,18 +11,20 @@ Unix
 make reinstall
 ```
 
-Windows
+WIN
 ----------------------------------------
 `%USERPROFILE%\_vimrc`
 `%USERPROFILE%\vimfiles`
 
-### step1
-Git on Windows
+### step1: Git on Windows
 Download [msysgit](https://git-for-windows.github.io/) installer
 
-### step2
-Curl (bundled with msysgit) on Windows
-Installing Curl on Windows is easy as Curl is bundled with msysgit! But before it can be used with Vundle it's required make curl run in command prompt. The easiest way is to create curl.cmd with this content
+### step2: Curl (bundled with msysgit) on Windows
+
+Installing Curl on Windows is easy as Curl is bundled with msysgit! But before
+it can be used with Vundle it's required make curl run in command prompt. The
+easiest way is to create curl.cmd with this content
+
 ```
 @rem Do not use "echo off" to not affect any child calls.
 @setlocal
@@ -40,7 +42,8 @@ Installing Curl on Windows is easy as Curl is bundled with msysgit! But before i
 ```
 *see [this](https://gist.github.com/gmarik/912993) for more details*
 
-And copy it to `C:\Program Files\Git\cmd\curl.cmd`, assuming msysgit was installed to `c:\Program Files\Git`
+And copy it to `C:\Program Files\Git\cmd\curl.cmd`, assuming msysgit was
+installed to `c:\Program Files\Git`
 
 to verify all good, run:
 ```
@@ -50,12 +53,21 @@ Protocols: dict file ftp ftps http https imap imaps ldap ldaps pop3 pop3s rtsp s
 Features: Largefile NTLM SSL SSPI libz
 ```
 
-### step3
+### step3: get the VS2017 Community edition
+
+[follow this link](https://www.visualstudio.com/downloads/) to download the
+VS2017 Community edition
+
+### step4: install the VIMRC
+
 ```
 $ "C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\vsvars32.bat"
-$ cd c:\src\0self\vimrc
-$ nmake -f Makefile.win reinstall
+$ nmake -f Makefile.win install
+```
 
+or, if VIMRC was installed before, you can run the following
+
+```
 $ "C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\vsvars32.bat"
 $ nmake -f Makefile.win reinstall
 ```
