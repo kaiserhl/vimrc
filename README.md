@@ -52,8 +52,7 @@ Features: Largefile NTLM SSL SSPI libz
 
 ### step3
 ```
-$ cd C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools
-$ .\vsvars32.bat
+$ "C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\vsvars32.bat"
 $ cd c:\src\0self\vimrc
 $ nmake -f Makefile.win reinstall
 
