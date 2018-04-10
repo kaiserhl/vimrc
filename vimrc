@@ -175,6 +175,8 @@ augroup common
         \   exe "normal! g`\"" |
         \ endif
   autocmd BufRead,BufNewFile *.md set filetype=markdown
+  autocmd BufRead,BufNewFile *.mdref set filetype=markdown_reference
+
   autocmd BufRead,BufNewFile cpp,c set syntax=cpp11
   autocmd BufNewFile,BufRead,BufEnter *.cc,*.h set omnifunc=omni#cpp#complete#Main
   autocmd BufNewFile,BufRead,BufEnter *.html,*.css set omnifunc=htmlcomplete#CompleteTags
@@ -200,6 +202,7 @@ augroup common
   autocmd FileType plaintex set ai sw=4 ts=4 et fo=croql
   "
   autocmd FileType markdown set ai sw=2 ts=2 et fo=croql
+  autocmd FileType markdown_reference set ai sw=2 ts=2 et fo=croql
   autocmd FileType dot set ai sw=2 ts=2 et fo=croql
   autocmd FileType yaml set ai sw=2 ts=2 et fo=croql
   autocmd FileType xml set ai sw=2 ts=2 et fo=croql
