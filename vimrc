@@ -57,6 +57,8 @@ if count(g:vimified_packages, 'general')
   Bundle 'tpope/vim-eunuch'
   Bundle 'kien/ctrlp.vim'
   Bundle 'ervandew/supertab'
+  "Bundle 'tmhedberg/SimpylFold'
+  "Bundle 'Konfekt/FastFold'
   " coding
   Bundle 'kaiserhl/vim-a'
   Bundle 'sukima/xmledit'
