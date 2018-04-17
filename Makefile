@@ -19,7 +19,7 @@ install:
 		echo "Installing Vundle (https://github.com/gmarik/vundle) ..."; \
 		git clone https://github.com/gmarik/vundle.git bundle/vundle; \
 	fi
-	$(VIM) +BundleInstall +qall
+	echo | $(VIM) +BundleInstall +qall
 
 .PHONY: uninstall
 uninstall:
