@@ -101,9 +101,9 @@ endif
 """ molokai
 " XXX(lhe) make sure you disabled the blur and set term bgcolor to be the same
 " color as molokai bgcolor
-" let g:molokai_original = 0
-" let g:rehash256 = 1
-" colorscheme molokai
+let g:molokai_original = 0
+let g:rehash256 = 1
+silent! colorscheme molokai
 
 """ the leader key
 let mapleader="\\"
