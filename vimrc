@@ -178,7 +178,7 @@ augroup common
         \ endif
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   autocmd BufRead,BufNewFile *.mdref set filetype=markdown_reference
-
+  "
   autocmd BufRead,BufNewFile cpp,c set syntax=cpp11
   autocmd BufNewFile,BufRead,BufEnter *.cc,*.h set omnifunc=omni#cpp#complete#Main
   autocmd BufNewFile,BufRead,BufEnter *.html,*.css set omnifunc=htmlcomplete#CompleteTags
@@ -215,6 +215,9 @@ augroup common
   "
   autocmd FileType awk set ai sw=4 ts=4 et fo=croql
   autocmd FileType lua set ai sw=4 ts=4 et fo=croql
+  "
+  autocmd FileType dockerfile set ai sw=2 ts=2 et fo=croql
+  autocmd FileType *.conf set ai sw=2 ts=2 et fo=croql
   "
   autocmd FileType java set ai sw=2 ts=2 et fo=croql
   autocmd BufEnter *.gradle set ai sw=4 ts=4 et fo=croql
