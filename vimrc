@@ -189,7 +189,7 @@ augroup common
   autocmd FileType cpp set omnifunc=cppcomplete#CompleteCPP
   autocmd FileType cpp set ai sw=2 ts=2 et fo=croql
   autocmd FileType python set ai sw=4 ts=4 et fo=croql
-  autocmd FileType go set ai sw=4 ts=4 et fo=croql
+  autocmd FileType go set ai sw=4 ts=4 fo=croql
   autocmd FileType sh set ai sw=2 ts=2 et fo=croql
   autocmd FileType zsh set ai sw=2 ts=2 et fo=croql
   autocmd FileType cmake set ai sw=2 ts=2 et fo=croql
