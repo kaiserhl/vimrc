@@ -1,87 +1,93 @@
+"
+"
+" ### Plugins
+"
+" Here are the list of plugins that are out-of-date.
+" - `Vundle` (replaced by `vim-plug`)
+"
+"
 set nocompatible
 filetype off
 
-if ! exists('g:vimified_packages')
-  let g:vimified_packages = ['general', ]
-endif
+""""""""""""""""""""""""""""""""""""""""
+" Loading the Plugs
 
-if !exists("g:os")
-  if has("win64") || has("win32") || has("win16")
-    set rtp+=$USERPROFILE/vimfiles/bundle/Vundle.vim/
-    call vundle#begin('$USERPROFILE/vimfiles/bundle/')
-  else
-    set runtimepath+=~/.vim/bundle/vundle
-    call vundle#rc()
-  endif
-endif
+call plug#begin('~/.vim/plug-plugins')
 
-Bundle 'VundleVim/Vundle.vim'
-if count(g:vimified_packages, 'general')
-  "Bundle 'edkolev/tmuxline.vim'
-  "Bundle 'bling/vim-bufferline'
-  "Bundle 'vim-scripts/closetag.vim'
-  "Bundle 'Shougo/vimfiler.vim'
-  "Bundle 'Shougo/unite.vim'
-  "Bundle 'd11wtq/ctrlp_bdelete.vim'
-  "Bundle 'jeetsukumaran/vim-filebeagle'
-  "Bundle 'google/vim-jsonnet'
-  "Bundle 'justmao945/vim-clang'
-  "Bundle 'kevinw/pyflakes-vim'
-  "Bundle 'Valloric/YouCompleteMe'
-  " libraries
-  "Bundle 'google/vim-maktaba'
-  "Bundle 'google/vim-glaive'
-  " colorscheme
-  "Bundle 'google/vim-colorscheme-primary'
-  Bundle 'fatih/molokai'
-  "Bundle 'justinmk/molokai'
-  " snippets
-  Bundle 'SirVer/ultisnips'
-  Bundle 'kaiserhl/vim-snippets'
-  " code checking
-  Bundle 'nathanaelkane/vim-indent-guides'
-  Bundle 'kaiserhl/vim-StripWhiteSpaces'
-  Bundle 'ntpeters/vim-better-whitespace'
-  Bundle 'Valloric/vim-operator-highlight'
-  Bundle 'kana/vim-operator-user'
-  Bundle 'pangloss/vim-javascript'
-  Bundle 'tpope/vim-characterize'
-  Bundle 'vim-syntastic/syntastic'
-  " operations
-  Bundle 'vim-airline/vim-airline'
-  Bundle 'scrooloose/nerdtree'
-  Bundle 'mbriggs/mark.vim'
-  Bundle 'kshenoy/vim-signature'
-  Bundle 'majutsushi/tagbar'
-  Bundle 'easymotion/vim-easymotion'
-  Bundle 'tpope/vim-eunuch'
-  Bundle 'kien/ctrlp.vim'
-  Bundle 'ervandew/supertab'
-  "Bundle 'tmhedberg/SimpylFold'
-  "Bundle 'Konfekt/FastFold'
-  " coding
-  Bundle 'kaiserhl/vim-a'
-  Bundle 'sukima/xmledit'
-  "Bundle 'vim-scripts/OmniCppComplete'
-  "Bundle 'Shougo/neocomplete'
-  Bundle 'tpope/vim-surround'
-  Bundle 'tpope/vim-repeat'
-  Bundle 'dhruvasagar/vim-table-mode'
-  Bundle 'mzlogin/vim-markdown-toc'
-  "
-  Bundle 'mrtazz/DoxygenToolkit.vim'
-  Bundle 'scrooloose/nerdcommenter'
-  " lang
-  Bundle 'Rip-Rip/clang_complete'
-  Bundle 'Dinduks/vim-java-get-set'
-  Bundle 'Chiel92/vim-autoformat'
-  "Bundle 'rhysd/vim-clang-format'
-  "Bundle 'fatih/vim-go'
-  "Bundle 'mindriot101/vim-yapf'
-  "Bundle 'google/vim-codefmt'
-endif
+"Plug 'edkolev/tmuxline.vim'
+"Plug 'bling/vim-bufferline'
+"Plug 'vim-scripts/closetag.vim'
+"Plug 'Shougo/vimfiler.vim'
+"Plug 'Shougo/unite.vim'
+"Plug 'd11wtq/ctrlp_bdelete.vim'
+"Plug 'jeetsukumaran/vim-filebeagle'
+"Plug 'google/vim-jsonnet'
+"Plug 'justmao945/vim-clang'
+"Plug 'kevinw/pyflakes-vim'
+"Plug 'Valloric/YouCompleteMe'
 
-call vundle#end()
+" libraries
+"Plug 'google/vim-maktaba'
+"Plug 'google/vim-glaive'
+
+" colorscheme
+"Plug 'google/vim-colorscheme-primary'
+Plug 'fatih/molokai'
+"Plug 'justinmk/molokai'
+
+" snippets
+Plug 'SirVer/ultisnips'
+Plug 'kaiserhl/vim-snippets'
+
+" code checking
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'kaiserhl/vim-StripWhiteSpaces'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'Valloric/vim-operator-highlight'
+Plug 'kana/vim-operator-user'
+Plug 'pangloss/vim-javascript'
+Plug 'tpope/vim-characterize'
+Plug 'vim-syntastic/syntastic'
+
+" operations
+Plug 'vim-airline/vim-airline'
+Plug 'scrooloose/nerdtree'
+Plug 'mbriggs/mark.vim'
+Plug 'kshenoy/vim-signature'
+Plug 'majutsushi/tagbar'
+Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-eunuch'
+Plug 'kien/ctrlp.vim'
+Plug 'ervandew/supertab'
+"Plug 'tmhedberg/SimpylFold'
+"Plug 'Konfekt/FastFold'
+
+" coding
+Plug 'kaiserhl/vim-a'
+Plug 'sukima/xmledit'
+"Plug 'vim-scripts/OmniCppComplete'
+"Plug 'Shougo/neocomplete'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'mzlogin/vim-markdown-toc'
+
+Plug 'mrtazz/DoxygenToolkit.vim'
+Plug 'scrooloose/nerdcommenter'
+
+" lang
+Plug 'Rip-Rip/clang_complete'
+Plug 'Dinduks/vim-java-get-set'
+Plug 'Chiel92/vim-autoformat'
+"Plug 'rhysd/vim-clang-format'
+"Plug 'fatih/vim-go'
+"Plug 'mindriot101/vim-yapf'
+"Plug 'google/vim-codefmt'
+
+call plug#end()
+
+""""""""""""""""""""""""""""""""""""""""
+
 filetype on
 filetype plugin on
 filetype plugin indent on

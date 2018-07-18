@@ -1,4 +1,8 @@
+autoload/
+
 bundle/
+plug-plugins/
+
 tmp/
 
 .DS_Store

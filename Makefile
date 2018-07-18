@@ -12,14 +12,11 @@ install:
 	@if [ ! -f ~/.vimrc ]; then \
 		ln -vsfn $(PWD)/vimrc ~/.vimrc; \
 	fi
-	@if [ ! -d "bundle" ]; then \
-		mkdir -v bundle;  \
-	fi
-	@if [ ! -d "bundle/vundle" ]; then \
+	@if [ ! -f "autoload/plug.vim" ]; then \
 		echo "Installing Vundle (https://github.com/gmarik/vundle) ..."; \
-		git clone https://github.com/gmarik/vundle.git bundle/vundle; \
+		curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim; \
 	fi
-	$(VIM) +BundleInstall +qall
+	$(VIM) +PlugInstall +qall
 
 .PHONY: uninstall
 uninstall:
