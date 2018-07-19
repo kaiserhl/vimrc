@@ -70,3 +70,11 @@ uninstall-nvim:
 
 .PHONY: reinstall-nvim
 reinstall-nvim: uninstall install
+
+
+.PHONY: clean
+clean:
+	@rm -vrf autoload
+	@rm -vrf cache
+	@rm -vrf .plugins
+
