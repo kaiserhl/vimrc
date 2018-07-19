@@ -9,7 +9,7 @@ init.vim
 bundle/
 .plugins
 
-### others 
+### others
 .DS_Store
 *.swp
 *.vimrc
