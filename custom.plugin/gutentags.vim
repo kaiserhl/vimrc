@@ -3,6 +3,8 @@
 "
 " - https://www.zhihu.com/question/47691414/answer/373700711
 "
+set tags=./.tags;,.tags
+
 let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
 let g:gutentags_ctags_tagfile = '.tags'
 let s:vim_tags = expand('~/.cache/tags')

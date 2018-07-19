@@ -9,10 +9,13 @@
 "
 let g:Lf_ShortcutF = '<c-p>'
 let g:Lf_ShortcutB = '<m-n>'
+
 noremap <c-n> :LeaderfMru<cr>
 noremap <leader> <c-p> :LeaderfFunction!<cr>
 noremap <leader> <c-n> :LeaderfBuffer<cr>
 noremap <leader> <c-m> :LeaderfTag<cr>
+
+let g:Lf_MruMaxFiles = 2048
 let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
 let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
 let g:Lf_WorkingDirectoryMode = 'Ac'
