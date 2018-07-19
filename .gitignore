@@ -1,13 +1,16 @@
 autoload/
-
-bundle/
-plug-plugins/
-
+cache/
 tmp/
 
+### neovim
+init.vim
+
+### plugins
+bundle/
+.plugins
+
+### others 
 .DS_Store
 *.swp
 *.vimrc
 .netrwhist
-
-init.vim
