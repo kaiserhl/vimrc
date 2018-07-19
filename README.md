@@ -61,3 +61,13 @@ $ nmake -f Makefile.win reinstall
 References
 ----------
 [Vundle-for-Windows](https://github.com/VundleVim/Vundle.vim/wiki/Vundle-for-Windows)
+
+
+Usage Cases
+-----------
+
+```
+Ctrl + ]   // jump to the definition
+Ctrl-W + ] // open a new windows with the jump of that definition
+Ctrl-W + } // preview a new windows with the jump of that definition
+```
