@@ -14,3 +14,4 @@ bundle/
 *.swp
 *.vimrc
 .netrwhist
+.tags
