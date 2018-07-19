@@ -4,6 +4,7 @@ README
 Here are the list of plugins that I used to use.
 
 ### General
+
 - 'Vundle' -> 'vim-plug')
 - 'gitgutter' -> 'vim-signify'
 - 'edkolev/tmuxline.vim' -> 'vim-airline.vim'
@@ -11,6 +12,7 @@ Here are the list of plugins that I used to use.
 - 'Valloric/vim-operator-highlight' -> 'vim-cpp-enhanced-highlight'
 - 'kana/vim-operator-user' -> 'vim-cpp-enhanced-highlight'
 - 'd11wtq/ctrlp_bdelete.vim' -> 'LeaderF'
+- 'kien/ctrlp.vim' -> 'LeaderF'
 - 'Fzf' -> 'LeaderF'
 - 'kaiserhl/vim-StripWhiteSpaces' -> 'ntpeters/vim-better-whitespace'
 - 'pangloss/vim-javascript'
@@ -22,8 +24,9 @@ Here are the list of plugins that I used to use.
 - 'jeetsukumaran/vim-filebeagle'
 - 'google/vim-jsonnet'
 - 'justmao945/vim-clang'
-- 'kevinw/pyflakes-vim'
 - 'Valloric/YouCompleteMe'
+- 'ervandew/supertab'
+- 'majutsushi/tagbar' -> vim-gutentags
 
 ###  Libraries
 
@@ -43,14 +46,25 @@ Here are the list of plugins that I used to use.
 ### Lang
 
 - 'rhysd/vim-clang-format'
-- 'Rip-Rip/clang_complete'
-- 'fatih/vim-go'
-- 'mindriot101/vim-yapf'
 - 'google/vim-codefmt'
-- 'Dinduks/vim-java-get-set'
+- 'mindriot101/vim-yapf'
+- 'fatih/vim-go'
 - 'Chiel92/vim-autoformat'
+
+- 'Rip-Rip/clang_complete'
+
+- 'kevinw/pyflakes-vim' -> ALE
+- 'kaiserhl/vim-a' -> 'projectionist'
+
+- 'Dinduks/vim-java-get-set' 
 
 ### Colorscheme
 
 - 'google/vim-colorscheme-primary'
 - 'justinmk/molokai'
+
+
+Pending Plugins 
+----------------------------------------
+
+- 'justinmk/vim-dirvish'
