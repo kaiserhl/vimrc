@@ -136,6 +136,10 @@ call plug#begin('~/.vim/.plugins')
     Plug 'ludovicchabant/vim-gutentags'
     exec 'so '.fnameescape(s:home).'/custom.plugin/gutentags.vim'
   endif
+  if index(g:bundle_group, 'YCM') >= 0
+    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --go-completer --js-completer'  }
+    exec 'so '.fnameescape(s:home).'/custom.plugin/YouCompleteMe.vim'
+  endif
 
   if index(g:bundle_group, 'text') >= 0
     Plug 'kana/vim-textobj-user'
