@@ -1,29 +1,70 @@
-""""""""""""""""""""""""""""""""""""""""
-" `vim-unimpaired`
+" https://github.com/tpope/vim-unimpaired
 "
-"Much of unimpaired.vim was extracted from my vimrc when I noticed a pattern: 
-"complementary pairs of mappings. They mostly fall into four categories.
+"INTRODUCTION                                    *unimpaired*
 "
-"- There are mappings which are simply short normal mode aliases for commonly 
-"  used ex commands. ]q is :cnext. [q is :cprevious. ]a is :next. [b is :bprevious. 
-"  See the documentation for the full set of 20 mappings and mnemonics. All of 
-"  them take a count.
+"This plugin provides several pairs of bracket maps.
 "
-"- There are linewise mappings. [<Space> and ]<Space> add newlines before and 
-"  after the cursor line. [e and ]e exchange the current line with the one above 
-"  or below it.
+"NEXT AND PREVIOUS                               *unimpaired-next*
 "
-"- There are mappings for toggling options. [os, ]os, and =os perform :set spell, 
-"  :set nospell, and :set invspell, respectively. There's also l (list), 
-"  n (number), w (wrap), x (cursorline cursorcolumn), and several others, plus 
-"  mappings to help alleviate the set paste dance. Consult the documentation.
+"The following maps all correspond to normal mode commands.  If a count is
+"given, it becomes an argument to the command.  A mnemonic for the "a" commands
+"is "args" and for the "q" commands is "quickfix".
 "
-"- There are mappings for encoding and decoding. [x and ]x encode and decode XML 
-"  (and HTML). [u and ]u encode and decode URLs. [y and ]y do C String style 
-"  escaping.
+"*[a*     |:previous|
+"*]a*     |:next|
+"*[A*     |:first|
+"*]A*     |:last|
+"*[b*     |:bprevious|
+"*]b*     |:bnext|
+"*[B*     |:bfirst|
+"*]B*     |:blast|
+"*[l*     |:lprevious|
+"*]l*     |:lnext|
+"*[L*     |:lfirst|
+"*]L*     |:llast|
+"*[<C-L>* |:lpfile|
+"*]<C-L>* |:lnfile|
+"*[q*     |:cprevious|
+"*]q*     |:cnext|
+"*[Q*     |:cfirst|
+"*]Q*     |:clast|
+"*[<C-Q>* |:cpfile| (Note that <C-Q> only works in a terminal if you disable
+"*]<C-Q>* |:cnfile| flow control: stty -ixon)
+"*[t*     |:tprevious|
+"*]t*     |:tnext|
+"*[T*     |:tfirst|
+"*]T*     |:tlast|
+"*[<C-T>* |:ptprevious|
+"*]<C-T>* |:ptnext|
 "
-"- And in the miscellaneous category, there's [f and ]f to go to the next/previous 
-"  file in the directory, and [n and ]n to jump between SCM conflict markers.
+"                                                *[f*
+"[f                      Go to the file preceding the current one
+"                        alphabetically in the current file's directory.
 "
-"The . command works with all operator mappings, and will work with the linewise 
-"mappings as well if you install repeat.vim.
+"                                                *]f*
+"]f                      Go to the file succeeding the current one
+"                        alphabetically in the current file's directory.
+"
+"                                                *[n*
+"[n                      Go to the previous SCM conflict marker or diff/patch
+"                        hunk.  Try d[n inside a conflict.
+"
+"                                                *]n*
+"]n                      Go to the next SCM conflict marker or diff/patch hunk.
+"                        Try d]n inside a conflict.
+"
+"LINE OPERATIONS                                 *unimpaired-lines*
+"
+"                                                *[<Space>*
+"[<Space>                Add [count] blank lines above the cursor.
+"
+"                                                *]<Space>*
+"]<Space>                Add [count] blank lines below the cursor.
+"
+"                                                *[e* *v_[e*
+"[e                      Exchange the current line with [count] lines above it.
+"
+"                                                *]e* *v_]e*
+"]e                      Exchange the current line with [count] lines below it.
+"
+"
