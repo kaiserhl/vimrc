@@ -54,6 +54,7 @@ call plug#begin('~/.vim/.plugins')
     Plug 'kshenoy/vim-signature'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-repeat'
+    Plug 'ervandew/supertab'
     Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 
     exec 'so '.fnameescape(s:home).'/custom.plugin/easymotion.vim'
