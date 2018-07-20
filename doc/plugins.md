@@ -68,3 +68,19 @@ Pending Plugins
 ----------------------------------------
 
 - 'justinmk/vim-dirvish'
+
+
+Top Plugins
+----------------------------------------
+
+### format
+- neoformat
+
+### linter
+- ALE
+
+### completion 
+- YCM
+
+### tags
+- gutentags
