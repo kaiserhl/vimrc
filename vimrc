@@ -29,9 +29,11 @@ if !exists('g:bundle_group')
   let g:bundle_group = [
   \ 'move',
   \ 'system',
-  \ 'view',
   \ 'molokai',
+  \ 'view',
   \ 'ale',
+  \ 'neoformat',
+  \ 'gutentags',
   \ 'airline',
   \ 'code',
   \ 'text', ]
@@ -44,7 +46,7 @@ call plug#begin('~/.vim/.plugins')
 
   if index(g:bundle_group, 'move') >= 0
     Plug 'easymotion/vim-easymotion'
-    Plug 'Raimondi/delimitMate'
+    Plug 'jiangmiao/auto-pairs'
     Plug 'justinmk/vim-sneak'
     Plug 'tpope/vim-unimpaired'
     Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
@@ -54,8 +56,14 @@ call plug#begin('~/.vim/.plugins')
     Plug 'tpope/vim-repeat'
     Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 
-    exec 'so '.fnameescape(s:home).'/custom.plugin/tabular.vim'
+    exec 'so '.fnameescape(s:home).'/custom.plugin/easymotion.vim'
+    exec 'so '.fnameescape(s:home).'/custom.plugin/auto-pairs.vim'
     exec 'so '.fnameescape(s:home).'/custom.plugin/sneak.vim'
+    exec 'so '.fnameescape(s:home).'/custom.plugin/unimpaired.vim'
+    exec 'so '.fnameescape(s:home).'/custom.plugin/tabular.vim'
+    exec 'so '.fnameescape(s:home).'/custom.plugin/mark.vim'
+    exec 'so '.fnameescape(s:home).'/custom.plugin/signature.vim'
+    exec 'so '.fnameescape(s:home).'/custom.plugin/surround.vim'
     exec 'so '.fnameescape(s:home).'/custom.plugin/LeaderF.vim'
   endif
 
@@ -92,9 +100,6 @@ call plug#begin('~/.vim/.plugins')
     Plug 'scrooloose/nerdcommenter'
     Plug 'tpope/vim-projectionist'
     Plug 'kaiserhl/vim-snippets'
-    Plug 'ludovicchabant/vim-gutentags'
-    Plug 'sbdchd/neoformat'
-    " snipmate ?
     Plug 'SirVer/ultisnips'
     Plug 'mh21/errormarker.vim'
     Plug 't9md/vim-choosewin'
@@ -113,7 +118,6 @@ call plug#begin('~/.vim/.plugins')
     Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 
     exec 'so '.fnameescape(s:home).'/custom.plugin/errormarker.vim'
-    exec 'so '.fnameescape(s:home).'/custom.plugin/gutentags.vim'
     exec 'so '.fnameescape(s:home).'/custom.plugin/UltiSnips.vim'
     exec 'so '.fnameescape(s:home).'/custom.plugin/DoxygenToolkit.vim'
     exec 'so '.fnameescape(s:home).'/custom.plugin/markdown-toc.vim'
@@ -122,8 +126,15 @@ call plug#begin('~/.vim/.plugins')
 
   if index(g:bundle_group, 'ale') >= 0
     Plug 'w0rp/ale'
-
     exec 'so '.fnameescape(s:home).'/custom.plugin/ALE.vim'
+  endif
+  if index(g:bundle_group, 'neoformat') >= 0
+    Plug 'sbdchd/neoformat'
+    exec 'so '.fnameescape(s:home).'/custom.plugin/neoformat.vim'
+  endif
+  if index(g:bundle_group, 'gutentags') >= 0
+    Plug 'ludovicchabant/vim-gutentags'
+    exec 'so '.fnameescape(s:home).'/custom.plugin/gutentags.vim'
   endif
 
   if index(g:bundle_group, 'text') >= 0
