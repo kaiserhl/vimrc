@@ -107,22 +107,24 @@ call plug#begin('~/.vim/.plugins')
     Plug 'Shougo/echodoc.vim'
     Plug 'rhysd/vim-grammarous'
 
-    Plug 'octol/vim-cpp-enhanced-highlight', { 'for':['c', 'cpp'] }
-    Plug 'mrtazz/DoxygenToolkit.vim', { 'for':['c', 'cpp'] }
-    Plug 'mzlogin/vim-markdown-toc', { 'for':['md'] }
-    Plug 'dhruvasagar/vim-table-mode', { 'for':['md'] }
-    Plug 'justinmk/vim-syntax-extra', { 'for': ['c', 'bison', 'flex', 'cpp'] }
-    Plug 'vim-python/python-syntax', { 'for': ['python'] }
-    Plug 'sukima/xmledit', { 'for':['html', 'xml'] }
-    Plug 'pprovost/vim-ps1', { 'for': 'ps1' }
-    Plug 'tbastos/vim-lua', { 'for': 'lua' }
-    Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+    Plug 'octol/vim-cpp-enhanced-highlight', {'for':['c', 'cpp']}
+    Plug 'mrtazz/DoxygenToolkit.vim', {'for':['c', 'cpp']}
+    Plug 'mzlogin/vim-markdown-toc', {'for':['md']}
+    Plug 'dhruvasagar/vim-table-mode', {'for':['md']}
+    Plug 'justinmk/vim-syntax-extra', {'for': ['c', 'bison', 'flex', 'cpp']}
+    Plug 'vim-python/python-syntax', {'for': ['python']}
+    Plug 'sukima/xmledit', {'for':['html', 'xml']}
+    Plug 'pprovost/vim-ps1', {'for': 'ps1'}
+    Plug 'tbastos/vim-lua', {'for': 'lua'}
+    Plug 'rust-lang/rust.vim', {'for': 'rust'}
+    Plug 'heavenshell/vim-pydocstring', {'for':'python'}
 
     exec 'so '.fnameescape(s:home).'/custom.plugin/errormarker.vim'
     exec 'so '.fnameescape(s:home).'/custom.plugin/UltiSnips.vim'
     exec 'so '.fnameescape(s:home).'/custom.plugin/DoxygenToolkit.vim'
     exec 'so '.fnameescape(s:home).'/custom.plugin/markdown-toc.vim'
     exec 'so '.fnameescape(s:home).'/custom.plugin/vim-cpp-enhanced-highlight.vim'
+    exec 'so '.fnameescape(s:home).'/custom.plugin/vim-pydocstring.vim'
   endif
 
   if index(g:bundle_group, 'ale') >= 0
