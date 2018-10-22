@@ -12,10 +12,10 @@ install:
 	) else ( \
 		mklink /h  %%USERPROFILE%%\_vimrc $(SOURCEDIR)\vimrc \
 	)
-	@if exist %%USERPROFILE%%\vimfiles\bundle\Vundle.vim ( \
-		echo "%%USERPROFILE%%\vimfiles\bundle\Vundle.vim already exists." \
+	@if exist %%USERPROFILE%%\vimfiles\autoload\plug.vim ( \
+		echo "%%USERPROFILE%%\vimfiles\autoload\plug.vim already exists." \
 	) else ( \
-		echo "install Vundle.vim" & \
+		echo "Installing plug.vim ..." & \
 		git clone https://github.com/VundleVim/Vundle.vim.git %%USERPROFILE%%\vimfiles\bundle\Vundle.vim \
 	)
 	$(VIM) +PluginInstall +qall
