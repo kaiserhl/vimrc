@@ -1,4 +1,4 @@
-#!/bin/bash  
+#!/bin/bash
 
 rm -rf /usr/local/bin/python3*
 rm -rf /usr/local/bin/pydoc3*
