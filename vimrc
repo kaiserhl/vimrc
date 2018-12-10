@@ -56,6 +56,7 @@ call plug#begin('~/.vim/.plugins')
     Plug 'tpope/vim-repeat'
     Plug 'ervandew/supertab'
     Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+    Plug 'szw/vim-maximizer'
 
     exec 'so '.fnameescape(s:home).'/custom.plugin/easymotion.vim'
     exec 'so '.fnameescape(s:home).'/custom.plugin/auto-pairs.vim'
