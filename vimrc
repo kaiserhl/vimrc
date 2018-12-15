@@ -40,7 +40,7 @@ if !exists('g:bundle_group')
 endif
 
 """"""""""""""""""""""""""""""""""""""""
-exec 'so '.fnameescape(s:home).'/custom.script.before/main.vim'
+exec 'so '.fnameescape(s:home).'/custom/script/before/main.vim'
 
 call plug#begin('~/.vim/.plugins')
 
@@ -58,15 +58,15 @@ call plug#begin('~/.vim/.plugins')
     Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
     Plug 'szw/vim-maximizer'
 
-    exec 'so '.fnameescape(s:home).'/custom.plugin/easymotion.vim'
-    exec 'so '.fnameescape(s:home).'/custom.plugin/auto-pairs.vim'
-    exec 'so '.fnameescape(s:home).'/custom.plugin/sneak.vim'
-    exec 'so '.fnameescape(s:home).'/custom.plugin/unimpaired.vim'
-    exec 'so '.fnameescape(s:home).'/custom.plugin/tabular.vim'
-    exec 'so '.fnameescape(s:home).'/custom.plugin/mark.vim'
-    exec 'so '.fnameescape(s:home).'/custom.plugin/signature.vim'
-    exec 'so '.fnameescape(s:home).'/custom.plugin/surround.vim'
-    exec 'so '.fnameescape(s:home).'/custom.plugin/LeaderF.vim'
+    exec 'so '.fnameescape(s:home).'/custom/plugin/easymotion.vim'
+    exec 'so '.fnameescape(s:home).'/custom/plugin/auto-pairs.vim'
+    exec 'so '.fnameescape(s:home).'/custom/plugin/sneak.vim'
+    exec 'so '.fnameescape(s:home).'/custom/plugin/unimpaired.vim'
+    exec 'so '.fnameescape(s:home).'/custom/plugin/tabular.vim'
+    exec 'so '.fnameescape(s:home).'/custom/plugin/mark.vim'
+    exec 'so '.fnameescape(s:home).'/custom/plugin/signature.vim'
+    exec 'so '.fnameescape(s:home).'/custom/plugin/surround.vim'
+    exec 'so '.fnameescape(s:home).'/custom/plugin/LeaderF.vim'
   endif
 
   if index(g:bundle_group, 'system') >= 0
@@ -74,16 +74,16 @@ call plug#begin('~/.vim/.plugins')
     Plug 'scrooloose/nerdtree'
     Plug 'skywind3000/asyncrun.vim'
 
-    exec 'so '.fnameescape(s:home).'/custom.plugin/NerdTreeToggle.vim'
-    exec 'so '.fnameescape(s:home).'/custom.plugin/asyncrun.vim'
+    exec 'so '.fnameescape(s:home).'/custom/plugin/NerdTreeToggle.vim'
+    exec 'so '.fnameescape(s:home).'/custom/plugin/asyncrun.vim'
   endif
 
   if index(g:bundle_group, 'view') >= 0
     Plug 'nathanaelkane/vim-indent-guides'
     Plug 'mhinz/vim-startify'
 
-    exec 'so '.fnameescape(s:home).'/custom.plugin/indent-guides.vim'
-    exec 'so '.fnameescape(s:home).'/custom.plugin/startify.vim'
+    exec 'so '.fnameescape(s:home).'/custom/plugin/indent-guides.vim'
+    exec 'so '.fnameescape(s:home).'/custom/plugin/startify.vim'
   endif
 
   if index(g:bundle_group, 'molokai') >= 0
@@ -93,7 +93,7 @@ call plug#begin('~/.vim/.plugins')
   if index(g:bundle_group, 'airline') >= 0
     Plug 'vim-airline/vim-airline'
 
-    exec 'so '.fnameescape(s:home).'/custom.plugin/airline.vim'
+    exec 'so '.fnameescape(s:home).'/custom/plugin/airline.vim'
   endif
 
   if index(g:bundle_group, 'code') >= 0
@@ -120,29 +120,29 @@ call plug#begin('~/.vim/.plugins')
     Plug 'rust-lang/rust.vim', {'for': 'rust'}
     Plug 'heavenshell/vim-pydocstring', {'for':'python'}
 
-    exec 'so '.fnameescape(s:home).'/custom.plugin/errormarker.vim'
-    exec 'so '.fnameescape(s:home).'/custom.plugin/UltiSnips.vim'
-    exec 'so '.fnameescape(s:home).'/custom.plugin/DoxygenToolkit.vim'
-    exec 'so '.fnameescape(s:home).'/custom.plugin/markdown-toc.vim'
-    exec 'so '.fnameescape(s:home).'/custom.plugin/vim-cpp-enhanced-highlight.vim'
-    exec 'so '.fnameescape(s:home).'/custom.plugin/vim-pydocstring.vim'
+    exec 'so '.fnameescape(s:home).'/custom/plugin/errormarker.vim'
+    exec 'so '.fnameescape(s:home).'/custom/plugin/UltiSnips.vim'
+    exec 'so '.fnameescape(s:home).'/custom/plugin/DoxygenToolkit.vim'
+    exec 'so '.fnameescape(s:home).'/custom/plugin/markdown-toc.vim'
+    exec 'so '.fnameescape(s:home).'/custom/plugin/vim-cpp-enhanced-highlight.vim'
+    exec 'so '.fnameescape(s:home).'/custom/plugin/vim-pydocstring.vim'
   endif
 
   if index(g:bundle_group, 'ale') >= 0
     Plug 'w0rp/ale'
-    exec 'so '.fnameescape(s:home).'/custom.plugin/ALE.vim'
+    exec 'so '.fnameescape(s:home).'/custom/plugin/ALE.vim'
   endif
   if index(g:bundle_group, 'neoformat') >= 0
     Plug 'sbdchd/neoformat'
-    exec 'so '.fnameescape(s:home).'/custom.plugin/neoformat.vim'
+    exec 'so '.fnameescape(s:home).'/custom/plugin/neoformat.vim'
   endif
   if index(g:bundle_group, 'gutentags') >= 0
     Plug 'ludovicchabant/vim-gutentags'
-    exec 'so '.fnameescape(s:home).'/custom.plugin/gutentags.vim'
+    exec 'so '.fnameescape(s:home).'/custom/plugin/gutentags.vim'
   endif
   if index(g:bundle_group, 'YCM') >= 0
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --go-completer --js-completer'  }
-    exec 'so '.fnameescape(s:home).'/custom.plugin/YouCompleteMe.vim'
+    exec 'so '.fnameescape(s:home).'/custom/plugin/YouCompleteMe.vim'
   endif
 
   if index(g:bundle_group, 'text') >= 0
@@ -157,7 +157,7 @@ call plug#begin('~/.vim/.plugins')
 
 call plug#end()
 
-exec 'so '.fnameescape(s:home).'/custom.plugin.after/molokai.vim'
+exec 'so '.fnameescape(s:home).'/custom/plugin/after/molokai.vim'
 
 """"""""""""""""""""""""""""""""""""""""
 filetype on
@@ -170,7 +170,7 @@ syntax on
 let mapleader="\\"
 
 """"""""""""""""""""
-exec 'so '.fnameescape(s:home).'/custom.script/tabstop.vim'
-exec 'so '.fnameescape(s:home).'/custom.script/MkNonExDir.vim'
-exec 'so '.fnameescape(s:home).'/custom.script/pass.vim'
-exec 'so '.fnameescape(s:home).'/custom.script/map_leader.vim'
+exec 'so '.fnameescape(s:home).'/custom/script/tabstop.vim'
+exec 'so '.fnameescape(s:home).'/custom/script/MkNonExDir.vim'
+exec 'so '.fnameescape(s:home).'/custom/script/pass.vim'
+exec 'so '.fnameescape(s:home).'/custom/script/map_leader.vim'
