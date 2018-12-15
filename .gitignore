@@ -1,6 +1,5 @@
 autoload/
 cache/
-tmp/
 
 ### neovim
 init.vim
