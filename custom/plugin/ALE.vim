@@ -28,7 +28,7 @@ let g:ale_linters = {
       \ }
 
 function s:lintcfg(name)
-  let path2 = expand('~/.vim/custom.etc/'. a:name)
+  let path2 = expand('~/.vim/custom/etc/'. a:name)
   if filereadable(path2)
     return path2
   endif
