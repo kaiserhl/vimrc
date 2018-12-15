@@ -24,6 +24,7 @@ let g:ale_linters = {
       \ 'go': ['go build', 'gofmt'],
       \ 'java': ['javac'],
       \ 'javascript': ['eslint'],
+      \ 'tex': ['alex'],
       \ }
 
 function s:lintcfg(name)
