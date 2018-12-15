@@ -17,21 +17,21 @@
 
 let g:airline#extensions#ale#enabled = 1
 let g:ale_linters = {
-			\ 'c': ['gcc', 'cppcheck'],
-			\ 'cpp': ['gcc', 'cppcheck'],
-			\ 'python': ['flake8', 'pylint'],
-			\ 'lua': ['luac'],
-			\ 'go': ['go build', 'gofmt'],
-			\ 'java': ['javac'],
-			\ 'javascript': ['eslint'],
-			\ }
+      \ 'c': ['gcc', 'cppcheck'],
+      \ 'cpp': ['gcc', 'cppcheck'],
+      \ 'python': ['flake8', 'pylint'],
+      \ 'lua': ['luac'],
+      \ 'go': ['go build', 'gofmt'],
+      \ 'java': ['javac'],
+      \ 'javascript': ['eslint'],
+      \ }
 
 function s:lintcfg(name)
-	let path2 = expand('~/.vim/custom.etc/'. a:name)
-	if filereadable(path2)
-		return path2
-	endif
-	return shellescape(path2)
+  let path2 = expand('~/.vim/custom.etc/'. a:name)
+  if filereadable(path2)
+    return path2
+  endif
+  return shellescape(path2)
 endfunc
 
 let g:ale_python_flake8_options = '--conf='.s:lintcfg('flake8.conf')
@@ -45,6 +45,6 @@ let g:ale_cpp_cppcheck_options = ''
 let g:ale_linters.text = ['textlint', 'write-good', 'languagetool']
 
 if executable('gcc') == 0 && executable('clang')
-	let g:ale_linters.c += ['clang']
-	let g:ale_linters.cpp += ['clang']
+  let g:ale_linters.c += ['clang']
+  let g:ale_linters.cpp += ['clang']
 endif
