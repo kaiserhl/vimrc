@@ -33,10 +33,10 @@ if !exists('g:bundle_group')
   \ 'view',
   \ 'ale',
   \ 'neoformat',
-  \ 'gutentags',
   \ 'airline',
   \ 'code',
   \ 'text', ]
+  "\ 'gutentags',
 endif
 
 """"""""""""""""""""""""""""""""""""""""
