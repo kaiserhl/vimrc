@@ -21,10 +21,10 @@ install:
 .PHONY: uninstall
 uninstall:
 	@echo "=== uninstall vimrc"
-	@if [ -e $(HOME)/.vimrc ] && [ $(PWD)/vimrc = `readlink ~/.vimrc` ]; then \
+	if [ -e "$(HOME)/.vimrc" ] && [ "$(PWD)/vimrc" = "`readlink ~/.vimrc`" ]; then \
 		rm -v $(HOME)/.vimrc; \
 	fi
-	@if [ -e $(HOME)/.vim ] && [ $(PWD) = `readlink ~/.vim` ]; then \
+	if [ -e "$(HOME)/.vim" ] && [ "$(PWD)" = "`readlink ~/.vim`" ]; then \
 		rm -v $(HOME)/.vim; \
 	fi
 
