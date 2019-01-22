@@ -23,7 +23,7 @@ let g:ale_linters = {
       \ 'lua': ['luac'],
       \ 'go': ['go build', 'gofmt'],
       \ 'java': ['javac'],
-      \ 'javascript': ['eslint'],
+      \ 'javascript': ['eslint', 'prettier'],
       \ 'tex': ['alex'],
       \ }
 
