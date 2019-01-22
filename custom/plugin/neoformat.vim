@@ -28,7 +28,7 @@ let g:neoformat_python_yapf = {
 let g:neoformat_enabled_sh = ['shfmt']
 
 " JS
-let g:neoformat_enabled_javascript = ['jsbeautify']
+"let g:neoformat_enabled_javascript = ['jsbeautify']
 " https://medium.com/@dingvanmao/install-js-beautify-for-neoformat-b355e31a6233
 "let g:neoformat_javascript_jsbeautify = {
 "        \ 'exe': 'jsbeautify',
@@ -39,7 +39,8 @@ let g:neoformat_enabled_javascript = ['jsbeautify']
 "        \ 'valid_exit_codes': [0, 23],
 "        \ 'no_append': 1
 "        \ }
-"let g:neoformat_enabled_javascript = ['js-beautify']
+let g:neoformat_enabled_javascript = ['prettier']
+"let g:neoformat_enabled_javascript = ['prettier']
 "let g:neoformat_basic_format_align = 1 " Enable alignment
 "let g:neoformat_basic_format_retab = 1 " Enable tab to spaces conversion
 "let g:neoformat_basic_format_trim = 1 " Enable trimmming of trailing whitespace
