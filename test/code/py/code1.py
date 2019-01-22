@@ -9,6 +9,8 @@ def function_with_types_in_docstring(param1, param2):
     pass
 
 def module_level_function(param1, param2=None, *args, **kwargs):
+    def test(a, b, c):
+        pass
     if param1 == param2:
         raise ValueError('param1 may not be equal to param2')
     return True
