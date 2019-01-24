@@ -40,7 +40,7 @@ if !exists('g:bundle_group')
 endif
 
 """"""""""""""""""""""""""""""""""""""""
-exec 'so '.fnameescape(s:home).'/custom/script/before/main.vim'
+exec 'so '.fnameescape(s:home).'/custom/main.vim'
 
 call plug#begin('~/.vim/.plugins')
 
