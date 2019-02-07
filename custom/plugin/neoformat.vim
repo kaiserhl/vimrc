@@ -18,9 +18,9 @@ let g:neoformat_cpp_clangformat = {
 let g:neoformat_enabled_go = ['gofmt', 'goimports']
 
 " PYTHON
-let g:neoformat_enabled_python = ['yapf']
+let g:neoformat_enabled_python = ['yapf3']
 let g:neoformat_python_yapf = {
-            \ 'exe': 'yapf',
+            \ 'exe': 'yapf3',
             \ 'args': ['--style google'],
             \ }"
 
