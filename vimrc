@@ -103,7 +103,7 @@ call plug#begin('~/.vim/.plugins')
     Plug 'tpope/vim-projectionist'
     Plug 'kaiserhl/vim-snippets'
     Plug 'SirVer/ultisnips'
-    Plug 'mh21/errormarker.vim'
+    "Plug 'mh21/errormarker.vim'
     Plug 't9md/vim-choosewin'
     Plug 'Shougo/echodoc.vim'
     Plug 'rhysd/vim-grammarous'
