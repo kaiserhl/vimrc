@@ -19,7 +19,7 @@ let g:airline#extensions#ale#enabled = 1
 let g:ale_linters = {
       \ 'c': ['gcc', 'cppcheck'],
       \ 'cpp': ['gcc', 'cppcheck'],
-      \ 'python': ['flake8', 'pylint'],
+      \ 'python': ['mypy', 'flake8', 'pylint'],
       \ 'lua': ['luac'],
       \ 'go': ['go build', 'gofmt'],
       \ 'java': ['javac'],

@@ -28,15 +28,15 @@ endif
 if !exists('g:bundle_group')
   let g:bundle_group = [
   \ 'visual',
-  \ 'move',
   \ 'system',
   \ 'molokai',
-  \ 'neoformat',
   \ 'code',
+  \ 'ale',
   \ 'text', ]
+  "\ 'neoformat',
+  "\ 'move',
   "\ 'airline',
   "\ 'view',
-  "\ 'ale',
   "\ 'gutentags',
 endif
 
@@ -57,15 +57,15 @@ call plug#begin('~/.vim/.plugins')
   endif
 
   if index(g:bundle_group, 'move') >= 0
-    "Plug 'easymotion/vim-easymotion'
-    "Plug 'jiangmiao/auto-pairs'
-    "Plug 'justinmk/vim-sneak'
-    "Plug 'tpope/vim-unimpaired'
-    "Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
-    "Plug 'tpope/vim-surround'
-    "Plug 'tpope/vim-repeat'
-    "Plug 'ervandew/supertab'
-    "Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+    Plug 'easymotion/vim-easymotion'
+    Plug 'jiangmiao/auto-pairs'
+    Plug 'justinmk/vim-sneak'
+    Plug 'tpope/vim-unimpaired'
+    Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
+    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-repeat'
+    Plug 'ervandew/supertab'
+    Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 
     exec 'so '.fnameescape(s:home).'/custom/plugin/easymotion.vim'
     exec 'so '.fnameescape(s:home).'/custom/plugin/auto-pairs.vim'
@@ -112,7 +112,7 @@ call plug#begin('~/.vim/.plugins')
     "Plug 't9md/vim-choosewin'
     "Plug 'Shougo/echodoc.vim'
     "Plug 'rhysd/vim-grammarous'
-
+    "
     Plug 'octol/vim-cpp-enhanced-highlight', {'for':['c', 'cpp']}
     Plug 'mrtazz/DoxygenToolkit.vim', {'for':['c', 'cpp']}
     Plug 'mzlogin/vim-markdown-toc', {'for':['md']}
