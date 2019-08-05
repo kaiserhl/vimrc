@@ -1,4 +1,4 @@
-VIM?=vim
+VIM?=/usr/local/bin/vim
 
 .PHONY: all
 all:
