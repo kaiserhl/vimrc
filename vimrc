@@ -27,13 +27,16 @@ endif
 """"""""""""""""""""""""""""""""""""""""
 if !exists('g:bundle_group')
   let g:bundle_group = [
-  \ 'move',
-  \ 'ale',
-  \ 'system',
   \ 'molokai',
-  \ 'view',
-  \ 'neoformat',
   \ 'airline',
+  \
+  \ 'system',
+  \
+  \ 'ale',
+  \ 'neoformat',
+  \
+  \ 'move',
+  \ 'view',
   \ 'code',
   \ 'text', ]
   "\ 'gutentags',
@@ -130,18 +133,25 @@ call plug#begin('~/.vim/.plugins')
 
   if index(g:bundle_group, 'ale') >= 0
     Plug 'w0rp/ale'
+
     exec 'so '.fnameescape(s:home).'/custom/plugin/ALE.vim'
   endif
+
   if index(g:bundle_group, 'neoformat') >= 0
     Plug 'sbdchd/neoformat'
+
     exec 'so '.fnameescape(s:home).'/custom/plugin/neoformat.vim'
   endif
+
   if index(g:bundle_group, 'gutentags') >= 0
     Plug 'ludovicchabant/vim-gutentags'
+
     exec 'so '.fnameescape(s:home).'/custom/plugin/gutentags.vim'
   endif
+
   if index(g:bundle_group, 'YCM') >= 0
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --go-completer --js-completer'  }
+
     exec 'so '.fnameescape(s:home).'/custom/plugin/YouCompleteMe.vim'
   endif
 
