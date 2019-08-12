@@ -28,10 +28,10 @@ endif
 if !exists('g:bundle_group')
   let g:bundle_group = [
   \ 'move',
+  \ 'ale',
   \ 'system',
   \ 'molokai',
   \ 'view',
-  \ 'ale',
   \ 'neoformat',
   \ 'airline',
   \ 'code',

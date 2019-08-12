@@ -47,6 +47,21 @@ let g:ale_python_pylint_use_global = 1
 let g:ale_python_pylint_options = '--rcfile='.s:lintcfg('pylint.conf')
 let g:ale_python_pylint_options .= ' --disable=W'
 
+" c
+let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
+let g:ale_c_cppcheck_options = ''
+" cpp
+let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
+let g:ale_cpp_cppcheck_options = ''
+" python
+let g:ale_python_flake8_executable = 'python3'
+let g:ale_python_flake8_use_global = 1
+let g:ale_python_flake8_options = '--conf='.s:lintcfg('flake8.conf')
+let g:ale_python_pylint_executable = 'python3'
+let g:ale_python_pylint_use_global = 1
+let g:ale_python_pylint_options = '--rcfile='.s:lintcfg('pylint.conf')
+let g:ale_python_pylint_options .= ' --disable=W'
+
 let g:ale_linters.text = ['textlint', 'write-good', 'languagetool']
 
 if executable('gcc') == 0 && executable('clang')
