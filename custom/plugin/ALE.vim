@@ -20,7 +20,7 @@ let g:airline#extensions#ale#enabled = 1
 let g:ale_linters = {
       \ 'c': ['gcc', 'cppcheck'],
       \ 'cpp': ['gcc', 'cppcheck'],
-      \ 'python': ['flake8', 'pylint', 'mypy'],
+      \ 'python': ['flake8', 'mypy'],
       \ 'lua': ['luac'],
       \ 'go': ['go build', 'gofmt'],
       \ 'java': ['javac'],
@@ -32,6 +32,11 @@ if executable('gcc') == 0 && executable('clang')
   let g:ale_linters.c += ['clang']
   let g:ale_linters.cpp += ['clang']
 endif
+" See https://github.com/dense-analysis/ale#5vii-how-can-i-change-the-format-for-echo-messages
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
 
 function s:lintcfg(name)
   let path2 = expand('~/.vim/custom/etc/'. a:name)
@@ -48,10 +53,9 @@ let g:ale_c_cppcheck_options = ''
 let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
 let g:ale_cpp_cppcheck_options = ''
 " python
-let g:ale_python_pylint_executable = 'python3'
-let g:ale_python_pylint_use_global = 1
-let g:ale_python_pylint_options = '--rcfile='.s:lintcfg('pylint.conf')
-let g:ale_python_pylint_options .= ' --disable=W'
-let g:ale_python_flake8_executable = 'python3'
+"let g:ale_python_pylint_executable = 'pylint'
+"let g:ale_python_pylint_use_global = 1
+"let g:ale_python_pylint_options = '--rcfile='.s:lintcfg('pylint.conf')
+let g:ale_python_flake8_executable = 'flake8'
 let g:ale_python_flake8_use_global = 1
 let g:ale_python_flake8_options = '--conf='.s:lintcfg('flake8.conf')
