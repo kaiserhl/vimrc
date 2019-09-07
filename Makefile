@@ -16,7 +16,7 @@ install:
 		echo "Installing Vundle (https://github.com/gmarik/vundle) ..."; \
 		curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim; \
 	fi
-	$(VIM) +'PlugInstall --sync' +qall &> /dev/null </dev/tty
+	$(VIM) +PlugInstall +qall
 
 .PHONY: uninstall
 uninstall:
