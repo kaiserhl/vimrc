@@ -5,6 +5,8 @@
 "
 set tags=./.tags;,.tags
 
+let g:airline#extensions#gutentags#enabled = 1
+
 let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
 let g:gutentags_ctags_tagfile = '.tags'
 let s:vim_tags = expand('~/.cache/tags')

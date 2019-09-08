@@ -38,8 +38,8 @@ if !exists('g:bundle_group')
   \ 'move',
   \ 'view',
   \ 'code',
-  \ 'text', ]
-  "\ 'gutentags',
+  \ 'text',
+  \ 'gutentags' ]
 endif
 
 """"""""""""""""""""""""""""""""""""""""
