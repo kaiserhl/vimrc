@@ -34,6 +34,7 @@ if !exists('g:bundle_group')
   \
   \ 'ale',
   \ 'neoformat',
+  \ 'finder',
   \
   \ 'move',
   \ 'view',
@@ -58,7 +59,6 @@ call plug#begin('~/.vim/.plugins')
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-repeat'
     Plug 'ervandew/supertab'
-    Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
     Plug 'szw/vim-maximizer'
 
     exec 'so '.fnameescape(s:home).'/custom/plugin/easymotion.vim'
@@ -69,7 +69,15 @@ call plug#begin('~/.vim/.plugins')
     exec 'so '.fnameescape(s:home).'/custom/plugin/mark.vim'
     exec 'so '.fnameescape(s:home).'/custom/plugin/signature.vim'
     exec 'so '.fnameescape(s:home).'/custom/plugin/surround.vim'
-    exec 'so '.fnameescape(s:home).'/custom/plugin/LeaderF.vim'
+  endif
+
+  if index(g:bundle_group, 'finder') >= 0
+    "Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+    "exec 'so '.fnameescape(s:home).'/custom/plugin/LeaderF.vim'
+
+    Plug '/usr/local/opt/fzf'
+    Plug 'junegunn/fzf.vim'
+    exec 'so '.fnameescape(s:home).'/custom/plugin/fzf.vim'
   endif
 
   if index(g:bundle_group, 'system') >= 0
