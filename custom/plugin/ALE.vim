@@ -7,7 +7,6 @@
 "\   'javascript': ['eslint'],
 "\   'cpp': ['cppcheck'],
 "\}
-"let g:ale_linters_explicit = 1
 "let g:ale_completion_delay = 500
 "let g:ale_echo_delay = 20
 "let g:ale_lint_delay = 500
@@ -17,6 +16,7 @@
 
 let g:airline#extensions#ale#enabled = 1
 
+let g:ale_linters_explicit = 1
 let g:ale_linters = {
       \ 'c': ['gcc', 'cppcheck'],
       \ 'cpp': ['gcc', 'cppcheck'],
@@ -32,6 +32,7 @@ if executable('gcc') == 0 && executable('clang')
   let g:ale_linters.c += ['clang']
   let g:ale_linters.cpp += ['clang']
 endif
+
 " See https://github.com/dense-analysis/ale#5vii-how-can-i-change-the-format-for-echo-messages
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
@@ -59,3 +60,13 @@ let g:ale_cpp_cppcheck_options = ''
 let g:ale_python_flake8_executable = 'flake8'
 let g:ale_python_flake8_use_global = 1
 let g:ale_python_flake8_options = '--conf='.s:lintcfg('flake8.conf')
+
+" https://github.com/dense-analysis/ale/issues/1914
+let g:ale_cache_executable_check_failures = 1
+
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_filetype_changed = 0
+let g:ale_lint_on_save = 0
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_insert_leave = 0
+let g:ale_enabled = 1
