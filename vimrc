@@ -75,7 +75,7 @@ call plug#begin('~/.vim/.plugins')
     "Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
     "exec 'so '.fnameescape(s:home).'/custom/plugin/LeaderF.vim'
 
-    Plug '/usr/local/opt/fzf'
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
     exec 'so '.fnameescape(s:home).'/custom/plugin/fzf.vim'
   endif
