@@ -1,7 +1,8 @@
 " https://github.com/sbdchd/neoformat
+" https://github.com/sbdchd/neoformat/blob/master/autoload/neoformat/formatters/python.vim
 "
 " To debug:
-" let g:neoformat_verbose = 1 " only affects the verbosity of Neoformat
+"let g:neoformat_verbose = 1 " only affects the verbosity of Neoformat
 
 " ASM
 let g:neoformat_enabled_asm = ['asmfmt']
@@ -65,11 +66,8 @@ let g:neoformat_enabled_markdown = ['prettier']
 let g:neoformat_enabled_proto = ['clangformat']
 
 " Python
-let g:neoformat_enabled_python = ['yapf']
-let g:neoformat_python_yapf = {
-            \ 'exe': 'yapf',
-            \ 'args': ['--style google'],
-            \ }"
+" See https://www.kevinpeters.net/auto-formatters-for-python
+let g:neoformat_enabled_python = ['black']
 
 " Shell
 let g:neoformat_enabled_sh = ['shfmt']
