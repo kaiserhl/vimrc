@@ -64,9 +64,9 @@ let g:ale_python_flake8_options = '--conf='.s:lintcfg('flake8.conf')
 " https://github.com/dense-analysis/ale/issues/1914
 let g:ale_cache_executable_check_failures = 1
 
-let g:ale_lint_on_enter = 0
-let g:ale_lint_on_filetype_changed = 0
-let g:ale_lint_on_save = 0
-let g:ale_lint_on_text_changed = 0
-let g:ale_lint_on_insert_leave = 0
-let g:ale_enabled = 1
+"let g:ale_lint_on_enter = 0
+"let g:ale_lint_on_filetype_changed = 0
+"let g:ale_lint_on_save = 0
+"let g:ale_lint_on_text_changed = 0
+"let g:ale_lint_on_insert_leave = 0
+let g:ale_enabled = 0
