@@ -27,20 +27,23 @@ endif
 """"""""""""""""""""""""""""""""""""""""
 if !exists('g:bundle_group')
   let g:bundle_group = [
-  \ 'molokai',
-  \ 'airline',
-  \
-  \ 'system',
-  \
-  \ 'ale',
-  \ 'neoformat',
-  \ 'finder',
-  \
-  \ 'move',
-  \ 'view',
-  \ 'code',
-  \ 'text',
-  \ 'gutentags' ]
+    \ 'molokai',
+    \ 'airline',
+    \
+    \ 'system',
+    \
+    \ 'ale',
+    \ 'neoformat',
+    \ 'finder',
+    \
+    \ 'magic-yank',
+    \
+    \ 'move',
+    \ 'view',
+    \ 'code',
+    \ 'text',
+    \ 'gutentags',
+  \ ]
 endif
 
 """"""""""""""""""""""""""""""""""""""""
@@ -78,6 +81,10 @@ call plug#begin('~/.vim/.plugins')
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
     exec 'so '.fnameescape(s:home).'/custom/plugin/fzf.vim'
+  endif
+
+  if index(g:bundle_group, 'magic-yank') >= 0
+    Plug 'greymd/oscyank.vim'
   endif
 
   if index(g:bundle_group, 'system') >= 0
