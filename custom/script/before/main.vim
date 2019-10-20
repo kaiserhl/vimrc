@@ -51,6 +51,7 @@ set undolevels=500
 
 set foldmethod=marker
 
+set shell=/usr/bin/zsh
 """""""""""""""""""""
 " Disabling vim's autocomment;
 " see http://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
