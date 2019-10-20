@@ -84,7 +84,9 @@ call plug#begin('~/.vim/.plugins')
   endif
 
   if index(g:bundle_group, 'magic-yank') >= 0
-    Plug 'greymd/oscyank.vim'
+    Plug 'fcpg/vim-osc52'
+
+    xmap <F9> y:call SendViaOSC52(getreg('"'))<cr>
   endif
 
   if index(g:bundle_group, 'system') >= 0
