@@ -44,7 +44,6 @@ set signcolumn=yes
 set ruler
 set colorcolumn=80
 set title
-set nu
 
 set history=500
 set undolevels=500
@@ -52,6 +51,9 @@ set undolevels=500
 set foldmethod=marker
 
 set shell=/usr/bin/zsh
+
+set relativenumber
+
 """""""""""""""""""""
 " Disabling vim's autocomment;
 " see http://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
