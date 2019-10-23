@@ -50,7 +50,7 @@ set undolevels=500
 
 set foldmethod=marker
 
-set shell=/usr/bin/zsh
+set shell=zsh
 
 set relativenumber
 
