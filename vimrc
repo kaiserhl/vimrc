@@ -38,11 +38,13 @@ if !exists('g:bundle_group')
     \
     \ 'magic-yank',
     \
-    \ 'move',
     \ 'view',
+    \ 'move',
+    \ 'edit',
+    \
     \ 'code',
     \ 'text',
-    \ 'gutentags',
+    "\ 'gutentags',
   \ ]
 endif
 
@@ -50,28 +52,37 @@ endif
 exec 'so '.fnameescape(s:home).'/custom/script/before/main.vim'
 
 call plug#begin('~/.vim/.plugins')
-
-  if index(g:bundle_group, 'move') >= 0
-    Plug 'easymotion/vim-easymotion'
-    Plug 'jiangmiao/auto-pairs'
-    Plug 'justinmk/vim-sneak'
-    Plug 'tpope/vim-unimpaired'
-    Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
-    Plug 'mbriggs/mark.vim'
+  if index(g:bundle_group, 'view') >= 0
+    Plug 'nathanaelkane/vim-indent-guides'
+    Plug 'szw/vim-maximizer'
     Plug 'kshenoy/vim-signature'
+
+    exec 'so '.fnameescape(s:home).'/custom/plugin/indent-guides.vim'
+    exec 'so '.fnameescape(s:home).'/custom/plugin/signature.vim'
+  endif
+
+  if index(g:bundle_group, 'edit') >= 0
+    Plug 'jiangmiao/auto-pairs'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-repeat'
     Plug 'ervandew/supertab'
-    Plug 'szw/vim-maximizer'
+    Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
+
+    exec 'so '.fnameescape(s:home).'/custom/plugin/tabular.vim'
+    exec 'so '.fnameescape(s:home).'/custom/plugin/auto-pairs.vim'
+    exec 'so '.fnameescape(s:home).'/custom/plugin/surround.vim'
+  endif
+
+  if index(g:bundle_group, 'move') >= 0
+    Plug 'easymotion/vim-easymotion'
+    Plug 'justinmk/vim-sneak'
+    Plug 'tpope/vim-unimpaired'
+    Plug 'mbriggs/mark.vim'
 
     exec 'so '.fnameescape(s:home).'/custom/plugin/easymotion.vim'
-    exec 'so '.fnameescape(s:home).'/custom/plugin/auto-pairs.vim'
     exec 'so '.fnameescape(s:home).'/custom/plugin/sneak.vim'
     exec 'so '.fnameescape(s:home).'/custom/plugin/unimpaired.vim'
-    exec 'so '.fnameescape(s:home).'/custom/plugin/tabular.vim'
     exec 'so '.fnameescape(s:home).'/custom/plugin/mark.vim'
-    exec 'so '.fnameescape(s:home).'/custom/plugin/signature.vim'
-    exec 'so '.fnameescape(s:home).'/custom/plugin/surround.vim'
   endif
 
   if index(g:bundle_group, 'finder') >= 0
@@ -98,13 +109,6 @@ call plug#begin('~/.vim/.plugins')
     exec 'so '.fnameescape(s:home).'/custom/plugin/asyncrun.vim'
   endif
 
-  if index(g:bundle_group, 'view') >= 0
-    Plug 'nathanaelkane/vim-indent-guides'
-    Plug 'mhinz/vim-startify'
-
-    exec 'so '.fnameescape(s:home).'/custom/plugin/indent-guides.vim'
-    exec 'so '.fnameescape(s:home).'/custom/plugin/startify.vim'
-  endif
 
   if index(g:bundle_group, 'molokai') >= 0
     Plug 'fatih/molokai'
@@ -118,6 +122,7 @@ call plug#begin('~/.vim/.plugins')
 
   if index(g:bundle_group, 'code') >= 0
     Plug 'mhinz/vim-signify'
+    Plug 'mhinz/vim-startify'
     Plug 'ntpeters/vim-better-whitespace'
     Plug 'scrooloose/nerdcommenter'
     Plug 'tpope/vim-projectionist'
@@ -140,6 +145,7 @@ call plug#begin('~/.vim/.plugins')
     Plug 'rust-lang/rust.vim', {'for': 'rust'}
     Plug 'heavenshell/vim-pydocstring', {'for':'python'}
 
+    exec 'so '.fnameescape(s:home).'/custom/plugin/startify.vim'
     exec 'so '.fnameescape(s:home).'/custom/plugin/errormarker.vim'
     exec 'so '.fnameescape(s:home).'/custom/plugin/UltiSnips.vim'
     exec 'so '.fnameescape(s:home).'/custom/plugin/DoxygenToolkit.vim'
