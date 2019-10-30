@@ -56,6 +56,7 @@ call plug#begin('~/.vim/.plugins')
     Plug 'nathanaelkane/vim-indent-guides'
     Plug 'szw/vim-maximizer'
     Plug 'kshenoy/vim-signature'
+    Plug 'jeffkreeftmeijer/vim-numbertoggle'
 
     exec 'so '.fnameescape(s:home).'/custom/plugin/indent-guides.vim'
     exec 'so '.fnameescape(s:home).'/custom/plugin/signature.vim'

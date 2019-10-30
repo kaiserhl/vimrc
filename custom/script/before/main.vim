@@ -52,7 +52,7 @@ set foldmethod=marker
 
 set shell=zsh
 
-set relativenumber
+set number relativenumber
 
 """""""""""""""""""""
 " Disabling vim's autocomment;
