@@ -80,6 +80,12 @@ let g:neoformat_sql_sqlfmt = {
             \ }"
 
 " Terraform
+let g:neoformat_enabled_tf = ['terraform']
+let g:neoformat_tf_terraform = {
+            \ 'exe': 'terraform',
+            \ 'args': ['fmt', '-'],
+            \ 'stdin': 1,
+            \ }"
 
 " YAML
 let g:neoformat_enabled_yaml = ['pyaml']
