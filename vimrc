@@ -128,7 +128,7 @@ call plug#begin('~/.vim/.plugins')
     Plug 'scrooloose/nerdcommenter'
     Plug 'tpope/vim-projectionist'
     Plug 'kaiserhl/vim-snippets'
-    Plug 'SirVer/ultisnips'
+    "Plug 'SirVer/ultisnips'
     Plug 'mh21/errormarker.vim'
     Plug 't9md/vim-choosewin'
     Plug 'Shougo/echodoc.vim'
@@ -148,7 +148,7 @@ call plug#begin('~/.vim/.plugins')
 
     exec 'so '.fnameescape(s:home).'/custom/plugin/startify.vim'
     exec 'so '.fnameescape(s:home).'/custom/plugin/errormarker.vim'
-    exec 'so '.fnameescape(s:home).'/custom/plugin/UltiSnips.vim'
+    "exec 'so '.fnameescape(s:home).'/custom/plugin/UltiSnips.vim'
     exec 'so '.fnameescape(s:home).'/custom/plugin/DoxygenToolkit.vim'
     exec 'so '.fnameescape(s:home).'/custom/plugin/markdown-toc.vim'
     exec 'so '.fnameescape(s:home).'/custom/plugin/vim-cpp-enhanced-highlight.vim'
