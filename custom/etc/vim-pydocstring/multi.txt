@@ -1,10 +1,18 @@
-"""{{_header_}} 
+"""{{_header_}}
 
 {{_indent_}}Note:
+
+{{_indent_}}Attributes: [class-only]
 
 {{_indent_}}Args:
 {{_nested_indent_}}{{_args_}}:
 
 {{_indent_}}Returns:
 {{_nested_indent_}}{{_return_type_}}:
+
+{{_indent_}}Raises: [optional]
+
+{{_indent_}}Yields: [optional]
+
+{{_indent_}}Example(s): [optional]
 """
